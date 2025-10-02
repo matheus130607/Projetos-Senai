@@ -1,20 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Tech Fit</title>
 </head>
 
 <body>
 
-    <header class="">
+    <header class="header">
         <h1 class="titulo-techfit">TECHFIT</h1>
 
+        <button onclick="franquias()" id="franquias">Franquias</button>
+        <button onclick="planos()" id="planos">Planos</button>
+        <button onclick="faleconosco()" id="faleconosco">Fale Conosco</button>
 
+        <select name="modalidades" id="modalidades">
+            <option value="">Modalidades</option>
+            <option value="pilates">Pilates</option>
+            <option value="boxe">Boxe</option>
+        </select>
+
+        <button onclick="loja()" id="loja">Loja</button>
+
+        <div class="usuario">
+            <select name="usuario" id="usuario">
+                <option value=""></option>
+                <option value="perfil">Perfil</option>
+                <option value="login">Fazer Login</option>
+            </select>
+        </div>
     </header>
 
+    <div class="anuncios">
+        <img src="mulher-com-abdomen-visivel-fazendo-fitness.jpg" alt="Fitness">
+        <h1 class="anuncio">
+            Transforme <br>
+            suor <br>
+            em <br>
+            resultado
+        </h1>
+    </div>
+
+
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Pro</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light">/mo</small>
+                </h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>20 users included</li>
+                    <li>10 GB of storage</li>
+                    <li>Priority email support</li>
+                    <li>Help center access</li>
+                </ul> <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
+            </div>
+        </div>
+    </div>
 
 </body>
+
 </html>

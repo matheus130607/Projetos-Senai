@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Orbitron:wght@400..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #000000 40%, #4b0082 100%);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1c1c1c;
+    padding: 10px 30px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.titulo-techfit {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: white;
+    margin-right: 30px;
+}
+
+/* Botões e select modalidades com hover */
+.header button,
+.header select {
+    background: none;
+    border: none;
+    color: whitesmoke;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.header button:hover,
+#modalidades:hover {
+    color: #8a2be2; 
+}
+
+/* Select modalidades */
+#modalidades {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+}
+
+/* Options do select modalidades */
+#modalidades option {
+    background-color: #1c1c1c;
+    color: white;
+    padding: 5px 10px;
+}
+
+/* Select usuario como imagem */
+.usuario {
+    display: flex;
+    align-items: center;
+}
+
+.usuario select {
+    appearance: none; /* remove seta padrão */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: url("usuario.png") no-repeat center center / cover;
+    cursor: pointer;
+    color: white; /* option visível */
+    padding: 0;
+}
+
+/* Options do select usuario */
+.usuario select option {
+    background-color: #1c1c1c;
+    color: white;
+    padding: 5px 10px;
+}
+
+/* anúncios mais pra baixo */
+.anuncios {
+    margin-top: 50px;
+    width: 100%;
+    height: 70vh; 
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    padding-left: 8%;
+    position: relative;
+}
+
+.anuncios img {
+    max-width: 1000px;
+    max-height: 20000px;
+    object-fit: contain; 
+    opacity: 0.8;
+    border-radius: 10px;
+}
+
+.anuncio {
+    position: absolute;
+    top: 60%;
+    left: 10%;
+    transform: translateY(-50%);
+    font-family: 'Anton SC', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    line-height: 1.1;
+    text-transform: uppercase;
+    text-shadow: 4px 4px 12px rgba(0,0,0,0.8);
+}
