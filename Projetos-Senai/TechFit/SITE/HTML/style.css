@@ -13,6 +13,8 @@ body {
     color: white;
     font-family: 'Orbitron', sans-serif;
     min-height: 100vh;
+    
+
 }
 
 /* ===== Header ===== */
@@ -58,38 +60,80 @@ body {
     color: #8a2be2;
 }
 
-/* Select Modalidades */
-#modalidades {
-    background-color: transparent;
+/* ===== Dropdown padrão ===== */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: none;
     border: none;
-    outline: none;
+    color: whitesmoke;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.dropbtn:hover {
+    color: #8a2be2;
+}
+
+/* Conteúdo do dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(28, 28, 28, 0.95);
+    min-width: 160px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 1;
+    backdrop-filter: blur(5px);
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #8a2be2;
     color: white;
 }
 
-#modalidades option {
-    background-color: #1c1c1c;
-    color: white;
-    border-radius: 30px;
+/* Mostrar o menu quando passa o mouse */
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
-/* Ícone de usuário */
-.usuario select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 60px;
-    height: 60px;
+/* ===== Dropdown do usuário ===== */
+.usuario-dropdown {
+    position: relative;
+}
+
+.usuario-btn {
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     border: none;
-    background: url("usuario.png") no-repeat center center / cover;
     cursor: pointer;
-    color: rgb(0, 0, 0);
+    transition: transform 0.3s;
 }
 
-#usuario option {
-    background-color: #1c1c1c;
-    color: white;
-    border-radius: 30px;
+.usuario-btn:hover {
+    transform: scale(1.05);
+}
+
+.usuario-dropdown .dropdown-content {
+    right: 0;
+    min-width: 140px;
+    text-align: center;
 }
 
 
@@ -98,7 +142,7 @@ body {
 .anuncios {
     margin-top: 50px;
     width: 100%;
-    height: 90vh;
+    height: 99vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -120,7 +164,7 @@ body {
     left: 10%;
     transform: translateY(-50%);
     font-family: 'Anton SC', sans-serif;
-    font-size: 7rem;
+    font-size: 5rem;
     text-transform: uppercase;
     text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8);
 }
