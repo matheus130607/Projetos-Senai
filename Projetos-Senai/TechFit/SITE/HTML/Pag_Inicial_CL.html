@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Tech Fit</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -35,7 +37,7 @@
     </header>
 
     <div class="anuncios">
-        <img src="mulher-com-abdomen-visivel-fazendo-fitness.jpg" alt="Fitness">
+        <img src="de-pe-com-pular-corda-nas-maos-linda-mulher-loira-na-academia-no-fim-de-semana.jpg" alt="Fitness">
         <h1 class="anuncio">
             Transforme <br>
             suor <br>
@@ -44,25 +46,51 @@
         </h1>
     </div>
 
-
-    <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-            <div class="card-header py-3">
-                <h4 class="my-0 fw-normal">Pro</h4>
-            </div>
-            <div class="card-body">
-                <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light">/mo</small>
-                </h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>20 users included</li>
-                    <li>10 GB of storage</li>
-                    <li>Priority email support</li>
-                    <li>Help center access</li>
-                </ul> <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
-            </div>
+    <!-- Planos -->
+    <section class="planos-container">
+        <div class="cursos">
+            <h4 class="cursos-titulo">Plano Básico</h4>
+            <h1 class="valor">R$119,99<span class="mes">/mês</span></h1>
+            <ul class="cursos-opcoes">
+                <li>Acesso as academias ❌</li>
+                <li>Renovação automática ✅</li>
+                <li>Treine com 5 amigos ❌</li>
+                <li>Acesso a massagem ❌</li>
+                <li>Acesso a equipamentos ✅</li>
+                <li>Avaliação física ❌</li>
+            </ul>
+            <button type="button" class="cursos-compra" onclick="compras()">Comprar</button>
         </div>
-    </div>
+
+        <div class="cursos destaque">
+            <h4 class="cursos-titulo">Plano Casal</h4>
+            <h1 class="valor">R$199,99<span class="mes">/mês</span></h1>
+            <p class="desconto">20% de desconto</p>
+            <ul class="cursos-opcoes">
+                <li>Acesso as academias ❌</li>
+                <li>Renovação automática ✅</li>
+                <li>Treine com 5 amigos ❌</li>
+                <li>Acesso a massagem ❌</li>
+                <li>Acesso a equipamentos ✅</li>
+                <li>Avaliação física ❌</li>
+            </ul>
+            <button type="button" class="cursos-compra" onclick="compras()">Comprar</button>
+        </div>
+
+        <div class="cursos">
+            <h4 class="cursos-titulo">Plano Premium</h4>
+            <h1 class="valor">R$199,99<span class="mes">/mês</span></h1>
+            <ul class="cursos-opcoes">
+                <li>Acesso as academias ✅</li>
+                <li>Renovação automática ✅</li>
+                <li>Treine com 5 amigos ✅</li>
+                <li>Acesso a massagem ✅</li>
+                <li>Acesso a equipamentos ✅</li>
+                <li>Avaliação física ✅</li>
+            </ul>
+            <button type="button" class="cursos-compra" onclick="compras()">Comprar</button>
+        </div>
+    </section>
 
 </body>
-
 </html>
