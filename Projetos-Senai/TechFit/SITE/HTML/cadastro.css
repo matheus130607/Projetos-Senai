@@ -21,7 +21,7 @@
         body {  
             background-color: #000000;
             background: linear-gradient(135deg, #000000 40%, #4b0082 100%);
-            height: 609px;
+            height: auto;
         }
         button.btn.btn-primary {
                         display: block;
