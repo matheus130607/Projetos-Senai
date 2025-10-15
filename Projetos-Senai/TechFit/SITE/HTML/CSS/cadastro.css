@@ -3,7 +3,7 @@
             font-size: 14px;
             font-family: 'Orbitron', Arial, sans-serif;
             color: white;
-            background-color: black;
+            background-color: rgba(0, 0, 0, 0);
             padding: 20px;
             border-radius: 8px;
 
@@ -19,7 +19,7 @@
             text-align: center;
         }
         body {  
-            background-color: #000000;
+            background-color: rgba(0, 0, 0, 0);
             background: linear-gradient(135deg, #000000 40%, #4b0082 100%);
             height: auto;
         }
