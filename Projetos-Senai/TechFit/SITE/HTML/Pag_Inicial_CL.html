@@ -11,7 +11,7 @@
 <body>
 
     <header class="header">
-        <h1 class="titulo-techfit">TECHFIT</h1>
+        <h1 class="titulo-techfit" onclick="home()">TECHFIT</h1>
 
         <button onclick="franquias()" id="franquias">Franquias</button>
         <button  onclick="plano()" id="planos" >Planos</button>
@@ -20,8 +20,8 @@
        <div class="dropdown">
             <button class="dropbtn">Modalidades</button>
             <div class="dropdown-content">
-                <a href="#">Pilates</a>
-                <a href="#">Boxe</a>
+                <a href="modalidades.html">Pilates</a>
+                <a href="modalidades.html">Boxe</a>
             </div>
         </div>
 
@@ -31,8 +31,8 @@
         <div class="dropdown usuario-dropdown">
             <img  src="IMG/usuario.png" class="dropbtn usuario-btn"></img>
             <div class="dropdown-content">
-                <a href="#">Perfil</a>
-                <a href="login.html">Fazer Login</a>
+                <a href="#"><i class="bi bi-person"></i>Perfil</a>
+                <a href="login.html"><i class="bi bi-house"></i>Login</a>
             </div>
         </div>
     </header>
@@ -115,21 +115,7 @@
         </footer>
 
 
-    <script>
-
-        function Login() {
-            window.location.href = "login.html"; 
-        
-        }
-
-        function plano() {
-            location.href ="#planos-container";
-        }
-
-        function faleconosco() {
-            location.href ="#links-footer"
-        }
-    </script>
+    <script src="JS/index.js"></script>
 
 </body>
 </html>
