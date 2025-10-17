@@ -103,6 +103,10 @@ INSERT INTO Funcionarios (nome_funcionario, CPF_funcioario, CEP_funcionario, dat
 ('Mariana Santos', '888.999.000-11', '13482151', '1991-08-18 00:00:00', 'mariana.santos@email.com', 'senhaForte130', 'Rua das Violetas, 80, Jardim Nobre, Limeira'),
 ('Gabriel Pereira', '999.000.111-22', '13484331', '1996-06-22 00:00:00', 'gabriel.pereira@email.com', 'senhaForte131', 'Avenida Secundaria, 90, Parque das Nações, Limeira'),
 ('Aline Ribeiro', '000.111.222-33', '13486101', '1994-04-28 00:00:00', 'aline.ribeiro@email.com', 'senhaForte132', 'Rua dos Jasmins, 100, Vila Nova, Limeira');
+INSERT INTO Funcionarios (nome_funcionario, CPF_funcioario, CEP_funcionario, data_nasc_funcionario, email_funcionario, senha_funcionario, endereco_funcionario) VALUES
+('Roberto Mendes', '111.000.999-88', '13480012', '1987-12-01 00:00:00', 'roberto.mendes@email.com', 'senhaNova11', 'Rua dos Sabias, 110, Centro, Limeira'),
+('Vanessa Lima', '222.111.000-99', '13482152', '1999-02-14 00:00:00', 'vanessa.lima@email.com', 'senhaNova12', 'Rua das Begônias, 120, Jardim Nobre, Limeira'),
+('Thiago Barbosa', '333.222.111-00', '13484332', '1990-10-03 00:00:00', 'thiago.barbosa@email.com', 'senhaNova13', 'Avenida Terciaria, 130, Parque das Nações, Limeira');
 
 select * from Funcionarios;
 
@@ -117,6 +121,10 @@ INSERT INTO Clientes (nome_cliente, CPF_cliente, CEP_cliente, data_nasc_cliente,
 ('Heitor Correia', '891.012.345-67', '13482330', '1975-04-17 00:00:00', 'heitor.correia@email.com', 'Avenida da Brisa, 8, Jardim Paulista', 'clienteSenha8'),
 ('Isabela Dias', '910.123.456-78', '13484440', '1996-08-21 00:00:00', 'isabela.dias@email.com', 'Rua da Alegria, 9, Cidade Jardim', 'clienteSenha9'),
 ('João Mendes', '012.345.678-90', '13486550', '2000-11-29 00:00:00', 'joao.mendes@email.com', 'Travessa da Amizade, 10, Vila Glória', 'clienteSenha10');
+INSERT INTO Clientes (nome_cliente, CPF_cliente, CEP_cliente, data_nasc_cliente, email_cliente, endereco_cliente, senha_cliente) VALUES
+('Larissa Moreira', '112.233.445-56', '13480111', '1998-05-20 00:00:00', 'larissa.moreira@email.com', 'Rua dos Bem-te-vis, 11, Centro', 'clienteSenha11'),
+('Marcos Vinicius', '223.344.556-67', '13482333', '1989-01-15 00:00:00', 'marcos.vinicius@email.com', 'Avenida da Neblina, 12, Jardim Paulista', 'clienteSenha12'),
+('Natália Fernandes', '334.455.667-78', '13486555', '2002-09-09 00:00:00', 'natalia.fernandes@email.com', 'Travessa da União, 13, Vila Glória', 'clienteSenha13');
 
 select * from Clientes;
 
@@ -131,6 +139,10 @@ INSERT INTO Produtos (tipo_produtos, nome_produtos, quant_produtos, data_venc_pr
 ('Suplemento', 'BCAA 2:1:1 200 Cápsulas', 90, '2027-11-10 00:00:00'),
 ('Acessório', 'Luva de Musculação com Munhequeira', 60, '2999-12-31 00:00:00'),
 ('Vestuário', 'Legging Feminina - Azul G', 85, '2999-12-31 00:00:00');
+INSERT INTO Produtos (tipo_produtos, nome_produtos, quant_produtos, data_venc_produtos) VALUES
+('Suplemento', 'Glutamina 300g', 110, '2028-10-20 00:00:00'),
+('Alimento', 'Pasta de Amendoim Integral 500g', 250, '2026-08-15 00:00:00'),
+('Acessório', 'Monitor Cardíaco de Pulso', 40, '2999-12-31 00:00:00');
 
 select * from Produtos;
 
@@ -145,6 +157,10 @@ INSERT INTO Modalidades (nome_modalidades, tipo_modalidades, id_funcionario) VAL
 ('Boxe', 'Artes Marciais', 8),
 ('Natação Adulto', 'Aquático', 9),
 ('Avaliação Física', 'Serviço', 10);
+INSERT INTO Modalidades (nome_modalidades, tipo_modalidades, id_funcionario) VALUES
+('Jump', 'Cardiovascular', 11),
+('Alongamento e Flexibilidade', 'Mente e Corpo', 12),
+('Hidroginástica', 'Aquático', 13);
 
 select * from Modalidades;
 
@@ -159,6 +175,10 @@ INSERT INTO Agendamentos (data_agendamentos, id_funcionario, id_modalidades) VAL
 ('2025-10-29 15:00:00', 7, 7), -- Treinamento Funcional com Lucas
 ('2025-10-30 20:00:00', 9, 9), -- Natação com Gabriel
 ('2025-11-03 11:30:00', 10, 10); -- Avaliação Física com Aline
+INSERT INTO Agendamentos (data_agendamentos, id_funcionario, id_modalidades) VALUES
+('2025-11-04 18:00:00', 11, 11), -- Jump com Roberto
+('2025-11-05 09:30:00', 12, 12), -- Alongamento com Vanessa
+('2025-11-06 16:00:00', 13, 13); -- Hidroginástica com Thiago
 
 select * from Agendamentos;
 
@@ -167,4 +187,4 @@ INSERT INTO Planos (id_planos, beneficios_planos, nome_planos, id_cliente, id_fu
 (2,'renovamento altomatico, acesso a equipamentos', 'plano casal', 2, 2),
 (3,'acesso as academias, renovamento altomatico, treine com 5 amigos, acesso a massagem, acesso a equipamentos, avaliação fisica', 'plano premium', 3, 3);
 
-select * from planos
+select * from Planos
