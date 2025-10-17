@@ -6,11 +6,11 @@
         }
 
         function plano() {
-            location.href ="#planos-container";
+            location.href ="Pag_Inicial_CL.html #planos-container";
         }
 
         function faleconosco() {
-            location.href ="#links-footer"
+            location.href ="Pag_Inicial_CL.html #links-footer"
         }
 
         function loja() {
@@ -18,6 +18,10 @@
         }
 
         function home() {
+            window.location.href = "Pag_Inicial_CL.html"
+        }
+
+        function entrar() {
             window.location.href = "Pag_Inicial_CL.html"
         }
 

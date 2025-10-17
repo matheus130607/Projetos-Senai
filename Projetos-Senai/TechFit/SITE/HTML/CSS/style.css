@@ -266,78 +266,211 @@ body {
     box-shadow: 0 0 25px rgba(138, 43, 226, 0.6);
 }
 
+/* Parte do Rodapé */
+
 .footer {
-    position: relative;
-    background-color: rgba(28, 28, 28, 0.708);
-    backdrop-filter: blur(5px);
-    padding: 30px;
-    color: white;
-    font-family: 'Orbitron', sans-serif;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+  position: relative;
+  background-color: rgba(28, 28, 28, 0.708);
+  backdrop-filter: blur(5px);
+  padding: 30px 50px;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 180px;
+  flex-wrap: wrap;
+}
+
+/* Left side: título + ícones alinhados à esquerda */
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-left h2 {
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+/* Ícones em linha */
+.links-footer {
+  display: flex;
+  gap: 15px;
+}
+
+.links-footer a {
+  color: white;
+  font-size: 20px; /* tamanho dos ícones */
+  transition: transform 0.25s ease, color 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.links-footer a:hover {
+  color: #8a2be2;
+  transform: scale(1.2);
+}
+
+/* Right side: links deslocados para direita */
+/* Variável para ajustar margin-left e deslocar os links */
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 50px; 
+  
+}
+
+.footer-right .link {
+  font-size: 1.1rem;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  user-select: none;
+  transition: color 0.3s;
+}
+
+.footer-right .link:hover {
+  color: #8a2be2;
+}
+
+/* Direitos autorais centralizado embaixo e full width */
+.direitos {
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #aaa;
+  font-family: 'Orbitron', sans-serif;
+  margin-top: 25px;
+}
+
+/* Responsividade simples */
+@media (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+  }
+  .footer-left, .footer-right {
+    margin-left: 0 !important; /* remove deslocamento no mobile */
+    align-items: center;
+    text-align: center;
+  }
+  .footer-right {
+    margin-top: 20px;
+  }
+}
+
+
+/* Pagina modalidades.html */
+
+
+/* ===== Seção Modalidades ===== */
+.modalidades {
+    margin-top: 150px; /* distância do header fixo */
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 180px;
 }
 
-.footer h2 {
-    margin-bottom: 20px;
-    font-weight: 600;
+.modalidades h1 {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 50px;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+    text-align: center; /* centraliza o texto */
+    width: 100%; /* para garantir que o texto fique centralizado no container */
+}
+
+/* Container de cada modalidade */
+.modalidades .pilates,
+.modalidades .boxe {
+    background-color: rgba(28, 28, 28, 0.85);
+    border-radius: 15px;
+    padding: 30px;
+    width: 300px;
+    margin: 20px;
     text-align: center;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-#links-footer {
-    display: flex;
-    justify-content: center;
-    gap: 12px; /* reduzido para ficar proporcional aos ícones pequenos */
-    margin-bottom: 30px;
+.modalidades .pilates:hover,
+.modalidades .boxe:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(138, 43, 226, 0.7);
 }
 
-#links-footer img,
-.footer-icon {
-    width: 32px;
-    height: 32px;
-    max-width: 50px;
-    max-height: 50px;
-    transition: transform 0.25s ease, filter 0.25s ease;
-    cursor: pointer;
-    display: inline-block; /* garante que transform funcione bem */
-    object-fit: contain;
-    vertical-align: middle;
+/* Título das modalidades */
+.modalidades h2 {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #fff;
 }
 
-#links-footer a img:hover,
-.footer-icon:hover {
-    transform: translateY(-2px) scale(1.15);
-    filter: brightness(1.2);
+/* Imagens */
+.modalidades img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
-.footer-links {
-    margin-left: 80px; /* espaço para não sobrepor os ícones */
-    margin-bottom: 40px;
-}
-
-.footer-links .link {
-    color: white;
-    font-size: 1rem;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 5px;
-    transition: color 0.3s;
-}
-
-.footer-links .link:hover {
-    color: #8a2be2;
-}
-
-.direitos {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.85rem;
-    color: #aaa;
+/* Descrição */
+.modalidades p {
     font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 20px;
 }
+
+/* Botão “Agendar” */
+.agendar {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    background-color: #8a2be2;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.agendar:hover {
+    background-color: #a855f7;
+    transform: scale(1.05);
+}
+
+/* Layout das modalidades em linha */
+.modalidades {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modalidades .pilates,
+.modalidades .boxe {
+    display: inline-block;
+}
+
+@media (min-width: 768px) {
+    .modalidades {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
 
