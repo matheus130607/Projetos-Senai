@@ -25,4 +25,8 @@
             window.location.href = "Pag_Inicial_CL.html"
         }
 
+        function entrar_login() {
+            window.location.href = "login.html"
+        }
+
        
