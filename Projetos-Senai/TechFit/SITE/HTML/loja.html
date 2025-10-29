@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,26 +7,25 @@
     <title>Tech Fit - Loja</title>
 </head>
 <body>
-    <header class="header">
-        <h1 class="titulo-techfit">TECHFIT</h1>
+      <header class="header">
+        <h1 class="titulo-techfit" onclick="home()">TECHFIT</h1>
 
         <button onclick="franquias()" id="franquias">Franquias</button>
-        <button  onclick="plano()" id="planos" >Planos</button>
+        <button onclick="plano()" id="planos">Planos</button>
         <button onclick="faleconosco()" id="faleconosco">Fale Conosco</button>
 
-       <div class="dropdown">
+        <div class="dropdown">
             <button class="dropbtn">Modalidades</button>
             <div class="dropdown-content">
-                <a href="#">Pilates</a>
-                <a href="#">Boxe</a>
+                <a href="modalidades.html#pilates">Pilates</a>
+                <a href="modalidades.html">Boxe</a>
             </div>
         </div>
-
 
         <button onclick="loja()" id="loja">Loja</button>
 
         <div class="dropdown usuario-dropdown">
-            <img  src="IMG/usuario.png" class="dropbtn usuario-btn"></img>
+            <img src="IMG/usuario.png" class="dropbtn usuario-btn" alt="Usuário" />
             <div class="dropdown-content">
                 <a href="#"><i class="bi bi-person"></i>Perfil</a>
                 <a href="login.html"><i class="bi bi-house"></i>Login</a>
