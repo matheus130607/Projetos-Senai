@@ -10,7 +10,7 @@
 
 /* 1. CORREÇÃO STICKY FOOTER (Global) */
 html {
-    height: 100%; /* Garante que o HTML ocupe a altura total */
+    height: 100%; 
 }
 
 body {
@@ -18,13 +18,7 @@ body {
     color: white;
     font-family: 'Orbitron', sans-serif;
     min-height: 100vh; /* Altura mínima da janela */
-    
-    /* REFORÇO DA RESPONSIVIDADE DO BACKGROUND: */
-    /* Mantém o background fixo na viewport, garantindo que ele preencha a tela toda, */
-    /* mesmo quando o conteúdo é curto. */
     background-attachment: fixed; 
-    
-    /* Regras Flexbox para empurrar o footer */
     display: flex;
     flex-direction: column; 
 }

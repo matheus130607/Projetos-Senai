@@ -1,4 +1,19 @@
  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+
+        html {
+            height: 100%; 
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000 40%, #4b0082 100%);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            min-height: 100vh; /* Altura mínima da janela */
+            background-attachment: fixed; 
+            display: flex;
+            flex-direction: column; 
+        }
        
  
         div.container {
@@ -21,11 +36,7 @@
         h2.title {
             text-align: center;
         }
-        body {  
-            background-color: rgba(0, 0, 0, 0);
-            background: linear-gradient(135deg, #000000 40%, #4b0082 100%);
-            height: auto;
-        }
+        
         button.btn.btn-primary {
             display: block;
             margin: 0 auto;
