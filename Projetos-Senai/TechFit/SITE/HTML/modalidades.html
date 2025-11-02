@@ -1,60 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
     <title>Tech Fit - Modalidades</title>
 </head>
 <body>
- <header class="header">
+    <header class="header">
         <h1 class="titulo-techfit" onclick="home()">TECHFIT</h1>
 
         <button onclick="franquias()" id="franquias">Franquias</button>
-        <button  onclick="plano()" id="planos" >Planos</button>
+        <button onclick="plano()" id="planos">Planos</button>
         <button onclick="faleconosco()" id="faleconosco">Fale Conosco</button>
-
-       <div class="dropdown">
-            <button class="dropbtn">Modalidades</button>
-            <div class="dropdown-content">
-                <a href="#">Pilates</a>
-                <a href="#">Boxe</a>
-            </div>
-        </div>
-
+        <button onclick="modalidades()" id="modalidades">Modalidades</button>
 
         <button onclick="loja()" id="loja">Loja</button>
 
         <div class="dropdown usuario-dropdown">
-            <img  src="IMG/usuario.png" class="dropbtn usuario-btn"></img>
+            <img src="IMG/usuario.png" class="dropbtn usuario-btn">
             <div class="dropdown-content">
-                <a href="#"><i class="bi bi-person"></i>  Perfil</a>
-                <a href="login.html"><i class="bi bi-house"></i>  Login</a>
+                <a href="#"><i class="bi bi-person"></i> Perfil</a>
+                <a href="login.html"><i class="bi bi-house"></i> Login</a>
             </div>
         </div>
     </header>
 
-   <section class="modalidades">
-    <h1>Modalidades</h1>
+    
 
-    <div class="pilates">
-        <h2>Pilates</h2>
-        <img src="IMG/Pilates.png" alt="Pilates">
-        <p>Fortaleça o corpo e melhore sua postura com treinos focados em equilíbrio e flexibilidade.</p>
-        <button class="agendar" onclick="agendar()">Agendar</button>
-    </div>
+    <main>
+        <div class="secao">
+            <h2>Aulas</h2>
+            <div class="secaoUnidades">
+                <hr>
+                <button onclick="Unidade('boxe')">Boxe</button>
+                <hr>
+                <button onclick="Unidade('pilates')">Pilates</button>
+            </div>
+        </div>
 
-    <div class="boxe">
-        <h2>Boxe</h2>
-        <img src="IMG/Boxe.png" alt="Boxe">
-        <p>Queime calorias e aprenda técnicas de autodefesa com treinos intensos e dinâmicos.</p>
-        <button class="agendar" onclick="agendar()">Agendar</button>
-    </div>
-</section>
+        <div class="pesquisa">
+            <div class="area_pesquisa">
+                <div class="barra_pesquisa">
+                    <i class="bi bi-search"></i>
+                    <input type="text" id="pesquisa_unidade" placeholder="Unidade">
+                </div>
+            </div>
+        </div>
 
+        <!-- Unidades Limeira -->
+        <div class="modalidades">
 
+            <!-- BOXE -->
+            <div id="boxe" class="hidden">
+                <div class="Flex-Modalidades">
+                    <div class="modalidade" data-local="Limeira">
+                        <h3>Boxe</h3>
+                        <img src="IMG/Boxe.png" alt="#">
+                        <a href="#">Limeira</a>
+                        <p>Queime calorias e aprenda técnicas de autodefesa com treinos intensos e dinâmicos.</p>
+                        <button onclick="Inscrição('boxe')" id="parti" >Participar-se</button>
+                    </div>
 
-    <!-- Footer -->
+                    <div class="modalidade" data-local="Americana">
+                        <h3>Boxe</h3>
+                        <img src="IMG/Boxe.png" alt="#">
+                        <a href="#">Americana</a>
+                        <p>Queime calorias e aprenda técnicas de autodefesa com treinos intensos e dinâmicos.</p>
+                        <button onclick="Inscrição('boxe')" id="parti" >Participar-se</button>
+                    </div>
+
+                    <div class="modalidade" data-local="Rio Claro">
+                        <h3>Boxe</h3>
+                        <img src="IMG/Boxe.png" alt="#">
+                        <a href="#">Rio Claro</a>
+                        <p>Queime calorias e aprenda técnicas de autodefesa com treinos intensos e dinâmicos.</p>
+                        <button onclick="Inscrição('boxe')" id="parti" >Participar-se</button>
+                    </div>
+
+                    <div class="modalidade" data-local="Araras">
+                        <h3>Boxe</h3>
+                        <img src="IMG/Boxe.png" alt="#">
+                        <a href="#">Araras</a>
+                        <p>Queime calorias e aprenda técnicas de autodefesa com treinos intensos e dinâmicos.</p>
+                        <button onclick="Inscrição('boxe')" id="parti" >Participar-se</button>
+                    </div>
+
+                    <div class="modalidade" data-local="Campinas">
+                        <h3>Boxe</h3>
+                        <img src="IMG/Boxe.png" alt="#">
+                        <a href="#">Campinas</a>
+                        <p>Queime calorias e aprenda técnicas de autodefesa com treinos intensos e dinâmicos.</p>
+                        <button onclick="Inscrição('boxe')" id="parti" >Participar-se</button>
+                    </div>
+
+                    <div class="modalidade" data-local="São Paulo">
+                        <h3>Boxe</h3>
+                        <img src="IMG/Boxe.png" alt="#">
+                        <a href="#">São Paulo</a>
+                        <p>Queime calorias e aprenda técnicas de autodefesa com treinos intensos e dinâmicos.</p>
+                        <button onclick="Inscrição('boxe')" id="parti" >Participar-se</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PILATES -->
+            <div id="pilates" class="hidden">
+                <div class="Flex-Modalidades">
+                    <div class="modalidade" data-local="Limeira">
+                        <h3>Pilates</h3>
+                        <img src="IMG/Pilates.png" alt="#">
+                        <a href="#">Limeira</a>
+                        <p>Fortaleça o corpo e melhore sua postura com treinos focados em equilíbrio e flexibilidade.</p>
+                        <button onclick="Inscrição('pilates')" id="parti" >Participar-se</button>
+                    </div>
+
+                    <div class="modalidade" data-local="Americana">
+                        <h3>Pilates</h3>
+                        <img src="IMG/Pilates.png" alt="#">
+                        <a href="#">Americana</a>
+                        <p>Fortaleça o corpo e melhore sua postura com treinos focados em equilíbrio e flexibilidade.</p>
+                        <button onclick="Inscrição('pilates')" id="parti" >Participar-se</button>
+                    </div>
+
+                    <div class="modalidade" data-local="Rio Claro">
+                        <h3>Pilates</h3>
+                        <img src="IMG/Pilates.png" alt="#">
+                        <a href="#">Rio Claro</a>
+                        <p>Fortaleça o corpo e melhore sua postura com treinos focados em equilíbrio e flexibilidade.</p>
+                        <button onclick="Inscrição('pilates')" id="parti" >Participar-se</button>
+                    </div>
+
+                    <div class="modalidade" data-local="Araras">
+                        <h3>Pilates</h3>
+                        <img src="IMG/Pilates.png" alt="#">
+                        <a href="#">Araras</a>
+                        <p>Fortaleça o corpo e melhore sua postura com treinos focados em equilíbrio e flexibilidade.</p>
+                        <button onclick="Inscrição('pilates')" id="parti" >Participar-se</button>
+                    </div>
+
+                    <div class="modalidade" data-local="Campinas">
+                        <h3>Pilates</h3>
+                        <img src="IMG/Pilates.png" alt="#">
+                        <a href="#">Campinas</a>
+                        <p>Fortaleça o corpo e melhore sua postura com treinos focados em equilíbrio e flexibilidade.</p>
+                        <button onclick="Inscrição('pilates')" id="parti" >Participar-se</button>
+                    </div>
+
+                    <div class="modalidade" data-local="São Paulo">
+                        <h3>Pilates</h3>
+                        <img src="IMG/Pilates.png" alt="#">
+                        <a href="#">São Paulo</a>
+                        <p>Fortaleça o corpo e melhore sua postura com treinos focados em equilíbrio e flexibilidade.</p>
+                        <button onclick="Inscrição('pilates')" id="parti" >Participar-se</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
     <footer class="footer" id="footer">
         <div class="footer-left">
             <h2>TECHFIT</h2>
@@ -86,7 +194,7 @@
         <p class="direitos">&copy; Todos os direitos reservados TechFit</p>
     </footer>
 
-
     <script src="JS/index.js"></script>
+    <script src="JS/modalidades.js"></script>
 </body>
 </html>

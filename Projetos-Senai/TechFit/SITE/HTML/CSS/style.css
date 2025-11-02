@@ -8,13 +8,25 @@
     box-sizing: border-box;
 }
 
+/* 1. CORREÇÃO STICKY FOOTER (Global) */
+html {
+    height: 100%; /* Garante que o HTML ocupe a altura total */
+}
+
 body {
     background: linear-gradient(135deg, #000000 40%, #4b0082 100%);
     color: white;
     font-family: 'Orbitron', sans-serif;
-    min-height: 100vh;
+    min-height: 100vh; /* Altura mínima da janela */
     
-
+    /* REFORÇO DA RESPONSIVIDADE DO BACKGROUND: */
+    /* Mantém o background fixo na viewport, garantindo que ele preencha a tela toda, */
+    /* mesmo quando o conteúdo é curto. */
+    background-attachment: fixed; 
+    
+    /* Regras Flexbox para empurrar o footer */
+    display: flex;
+    flex-direction: column; 
 }
 
 /* ===== Header ===== */
@@ -232,7 +244,7 @@ body {
     justify-content: space-between;
 }
 
-/* Cores dos ícones */
+/* Cores dos ícones (Assumindo que você usa emojis como conteúdo, ou substitua por classes de ícones) */
 .cursos-opcoes li:has(✅) {
     color: #00ff66;
 }
@@ -267,159 +279,230 @@ body {
 }
 
 /* Parte do Rodapé */
-
 .footer {
-  position: relative;
-  background-color: rgba(28, 28, 28, 0.708);
-  backdrop-filter: blur(5px);
-  padding: 30px 50px;
-  color: white;
-  font-family: 'Orbitron', sans-serif;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+    background-color: rgba(28, 28, 28, 0.708);
+    backdrop-filter: blur(5px);
+    padding: 30px 50px;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  min-height: 180px;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: 180px;
+    flex-wrap: wrap;
+    /* 2. REMOVIDO: position: relative; */ 
 }
 
 /* Left side: título + ícones alinhados à esquerda */
 .footer-left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .footer-left h2 {
-  margin-bottom: 15px;
-  font-weight: 600;
-  font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 2rem;
 }
 
 /* Ícones em linha */
 .links-footer {
-  display: flex;
-  gap: 15px;
+    display: flex;
+    gap: 15px;
 }
 
 .links-footer a {
-  color: white;
-  font-size: 20px; /* tamanho dos ícones */
-  transition: transform 0.25s ease, color 0.25s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    color: white;
+    font-size: 20px; /* tamanho dos ícones */
+    transition: transform 0.25s ease, color 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .links-footer a:hover {
-  color: #8a2be2;
-  transform: scale(1.2);
+    color: #8a2be2;
+    transform: scale(1.2);
 }
 
 /* Right side: links deslocados para direita */
-/* Variável para ajustar margin-left e deslocar os links */
 .footer-right {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-left: 50px; 
-  
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 50px; 
 }
 
 .footer-right .link {
-  font-size: 1.1rem;
-  color: white;
-  font-family: 'Orbitron', sans-serif;
-  user-select: none;
-  transition: color 0.3s;
+    font-size: 1.1rem;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    user-select: none;
+    transition: color 0.3s;
 }
 
 .footer-right .link:hover {
-  color: #8a2be2;
+    color: #8a2be2;
 }
 
 /* Direitos autorais centralizado embaixo e full width */
 .direitos {
-  width: 100%;
-  text-align: center;
-  font-size: 0.85rem;
-  color: #aaa;
-  font-family: 'Orbitron', sans-serif;
-  margin-top: 25px;
-}
-
-/* Responsividade simples */
-@media (max-width: 600px) {
-  .footer {
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 20px;
-  }
-  .footer-left, .footer-right {
-    margin-left: 0 !important; /* remove deslocamento no mobile */
-    align-items: center;
+    width: 100%;
     text-align: center;
-  }
-  .footer-right {
-    margin-top: 20px;
-  }
+    font-size: 0.85rem;
+    color: #aaa;
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 25px;
 }
 
+/* ======= PÁGINA MODALIDADES ======= */
 
-/* Pagina modalidades.html */
-
-
-/* ===== Seção Modalidades ===== */
-.modalidades {
-    margin-top: 150px; /* distância do header fixo */
+/* Seção principal */
+main {
+    flex-grow: 1; /* 3. CORREÇÃO STICKY FOOTER: Ocupa o espaço restante */
+    margin-top: 140px; /* distância do header fixo */
     padding: 40px 20px;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* ======= Seção Aulas ======= */
+.secao {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.secao h2 {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+}
+
+/* Botões Boxe / Pilates */
+.secaoUnidades {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.secaoUnidades hr {
+    height: 2px;
+    width: 40px;
+    background-color: #8a2be2;
+    border: none;
+}
+
+.secaoUnidades button {
+    background-color: #8a2be2;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.secaoUnidades button:hover {
+    background-color: #a855f7;
+    transform: scale(1.05);
+}
+
+/* ======= Barra de Pesquisa ======= */
+.pesquisa {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.area_pesquisa {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.barra_pesquisa {
+    background-color: rgba(28, 28, 28, 0.85);
+    padding: 10px 20px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+    width: 320px;
+    transition: box-shadow 0.3s;
+}
+
+.barra_pesquisa:hover {
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+}
+
+.barra_pesquisa i {
+    color: #8a2be2;
+    margin-right: 10px;
+}
+
+.barra_pesquisa input {
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    width: 100%;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+}
+
+/* ======= Modalidades ======= */
+.modalidades {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.modalidades h1 {
-    font-family: 'Anton SC', sans-serif;
-    font-size: 3rem;
-    margin-bottom: 50px;
-    color: #fff;
-    text-transform: uppercase;
-    text-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
-    text-align: center; /* centraliza o texto */
-    width: 100%; /* para garantir que o texto fique centralizado no container */
+.Flex-Modalidades {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
 }
 
-/* Container de cada modalidade */
-.modalidades .pilates,
-.modalidades .boxe {
-    background-color: rgba(28, 28, 28, 0.85);
+/* Cada card de modalidade - CORRIGIDO para empilhamento vertical */
+.modalidade {
+    background-color: rgba(28, 28, 28, 0.9);
     border-radius: 15px;
-    padding: 30px;
+    padding: 25px;
     width: 300px;
-    margin: 20px;
     text-align: center;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+    
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
 }
 
-.modalidades .pilates:hover,
-.modalidades .boxe:hover {
+.modalidade:hover {
     transform: translateY(-10px);
-    box-shadow: 0 0 25px rgba(138, 43, 226, 0.7);
+    box-shadow: 0 0 25px rgba(138,43,226,0.7);
 }
 
-/* Título das modalidades */
-.modalidades h2 {
+.modalidade h3 {
     font-family: 'Anton SC', sans-serif;
     font-size: 1.8rem;
+    color: white;
     margin-bottom: 15px;
-    color: #fff;
+    width: 100%; 
+    text-align: center;
 }
 
-/* Imagens */
-.modalidades img {
+.modalidade img {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -427,50 +510,130 @@ body {
     margin-bottom: 15px;
 }
 
-/* Descrição */
-.modalidades p {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1rem;
-    color: #ccc;
-    margin-bottom: 20px;
+.modalidade a {
+    color: #8a2be2;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+    width: 100%;
+    text-align: center;
 }
 
-/* Botão “Agendar” */
-.agendar {
-    padding: 10px 25px;
-    border: none;
-    border-radius: 8px;
+.modalidade a:hover {
+    color: #a855f7;
+}
+
+.modalidade p {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 0 10px; 
+}
+
+.modalidade button {
     background-color: #8a2be2;
     color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
     font-family: 'Orbitron', sans-serif;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
 
-.agendar:hover {
+.modalidade button:hover {
     background-color: #a855f7;
     transform: scale(1.05);
 }
 
-/* Layout das modalidades em linha */
-.modalidades {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Esconde seções */
+.hidden {
+    display: none;
 }
 
-.modalidades .pilates,
-.modalidades .boxe {
-    display: inline-block;
-}
+/* ======= RESPONSIVIDADE (Suas regras originais) ======= */
 
-@media (min-width: 768px) {
-    .modalidades {
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
+@media (max-width: 1024px) {
+    /* Diminui a largura do card em tablets e laptops menores */
+    .modalidade {
+        width: 260px;
     }
 }
 
+@media (max-width: 768px) {
+    .secaoUnidades {
+        flex-direction: column;
+        gap: 10px;
+    }
 
+    .Flex-Modalidades {
+        gap: 20px;
+    }
+
+    .secao h2 {
+        font-size: 2rem;
+    }
+    
+    /* Ajuste para o header */
+    .header {
+        padding: 15px 20px;
+    }
+    
+    .header button,
+    .header select,
+    .dropbtn {
+        font-size: 1rem;
+        margin: 0 5px;
+    }
+    
+    .titulo-techfit {
+        font-size: 1.2rem;
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Responsividade do Footer */
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 20px;
+    }
+    .footer-left, .footer-right {
+        margin-left: 0 !important;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-right {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 20px;
+        margin-top: 120px;
+    }
+
+    /* Torna o card quase totalmente responsivo na menor tela */
+    .modalidade {
+        width: 90%; 
+    }
+
+    .barra_pesquisa {
+        width: 90%;
+    }
+
+    .secao h2 {
+        font-size: 1.8rem;
+    }
+    
+    .anuncio {
+        font-size: 3rem;
+        left: 5%;
+    }
+}

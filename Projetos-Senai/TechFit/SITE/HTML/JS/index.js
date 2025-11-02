@@ -29,4 +29,21 @@
             window.location.href = "login.html"
         }
 
+        function modalidades() {
+            window.location.href = "modalidades.html"
+        }
+
+
+    
+
+// Pagina Modalidades
+
+        function Unidade(secao) {
+            document.getElementById('boxe').classList.add('hidden');
+            document.getElementById('pilates').classList.add('hidden');
+
+
+            document.getElementById(secao).classList.remove('hidden');
+        }
+
        
