@@ -173,7 +173,9 @@ body {
     font-size: 5rem;
     text-transform: uppercase;
     text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8);
+    color: white;
 }
+
 
 /* ===== Planos ===== */
 .planos-container {

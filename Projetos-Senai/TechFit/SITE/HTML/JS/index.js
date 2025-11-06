@@ -10,7 +10,7 @@
         }
 
         function faleconosco() {
-            location.href ="Pag_Inicial_CL.html #links-footer"
+            location.href ="#links-footer"
         }
 
         function loja() {
