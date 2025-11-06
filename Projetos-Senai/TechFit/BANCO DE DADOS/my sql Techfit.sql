@@ -182,9 +182,9 @@ INSERT INTO Agendamentos (data_agendamentos, id_funcionario, id_modalidades) VAL
 
 select * from Agendamentos;
 
-INSERT INTO Planos (id_planos, beneficios_planos, nome_planos, id_cliente, id_funcionario) VALUES
-(1,'renovamento altomatico, acesso a equipamentos', 'plano basico', 1, 1),
-(2,'renovamento altomatico, acesso a equipamentos', 'plano casal', 2, 2),
-(3,'acesso as academias, renovamento altomatico, treine com 5 amigos, acesso a massagem, acesso a equipamentos, avaliação fisica', 'plano premium', 3, 3);
+INSERT INTO Planos (beneficios_planos, nome_planos, id_cliente, id_funcionario) VALUES
+(1,'renovamento automatico, acesso a equipamentos', 'plano basico', 1, 1),
+(2,'renovamento automatico, acesso a equipamentos', 'plano casal', 2, 2),
+(3,'acesso as academias, renovamento automatico, treine com 5 amigos, acesso a massagem, acesso a equipamentos, avaliação fisica', 'plano premium', 3, 3);
 
 select * from Planos
