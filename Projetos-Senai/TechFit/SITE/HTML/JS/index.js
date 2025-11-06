@@ -33,6 +33,10 @@
             window.location.href = "modalidades.html"
         }
 
+        function franquias() {
+            window.location.href = "franquias.html"
+        }
+
 
     
 
@@ -45,5 +49,24 @@
 
             document.getElementById(secao).classList.remove('hidden');
         }
+        
+        
+        // Função para a barra de pesquisa na página de franquias
+function buscarFranquia() {
+    const input = document.querySelector('.barra_pesquisa input');
+    const filtro = input.value.toLowerCase();
+    const franquias = document.querySelectorAll('.modalidade');
 
-       
+    franquias.forEach(franquia => {
+        const titulo = franquia.querySelector('h3').textContent.toLowerCase();
+        if (titulo.includes(filtro)) {
+            franquia.style.display = '';
+        } else {
+            franquia.style.display = 'none';
+        }
+    });
+}
+
+// Adiciona evento de input na barra de pesquisa
+document.querySelector('.barra_pesquisa input').addEventListener('input', buscarFranquia);
+
