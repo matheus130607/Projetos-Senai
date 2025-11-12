@@ -4,41 +4,41 @@
 
 main {
     flex-grow: 1; 
-    margin-top: 120px; 
-    padding: 20px;
+    margin-top: 100px; /* Reduzido de 120px */
+    padding: 15px; /* Reduzido de 20px */
     font-family: 'Orbitron', sans-serif;
 }
 
 .loja-content-wrapper {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 20px; /* Reduzido de 30px */
     width: 95%; 
-    max-width: 1300px;
-    margin: 40px auto;
+    max-width: 1200px; /* Reduzido de 1300px */
+    margin: 30px auto; /* Reduzido de 40px */
 }
 
 .loja-sidebar-filters {
-    width: 250px; 
-    padding: 20px 15px;
+    width: 220px; /* Reduzido de 250px */
+    padding: 15px 10px; /* Reduzido de 20px 15px */
     background-color: rgba(28, 28, 28, 0.7);
-    border-radius: 12px;
+    border-radius: 10px; /* Reduzido de 12px */
     align-self: flex-start; 
     border: 1px solid #4b0082;
-    box-shadow: 0 0 10px rgba(138, 43, 226, 0.2);
+    box-shadow: 0 0 8px rgba(138, 43, 226, 0.2);
 }
 
 .loja-main-area {
     flex-grow: 1; 
-    max-width: 1000px;
+    max-width: 900px; /* Reduzido de 1000px */
 }
 
 .secao h2 {
     font-family: 'Anton SC', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2.0rem; /* Reduzido de 2.5rem */
     color: #fff;
-    text-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
-    margin-bottom: 30px;
+    text-shadow: 0 0 8px rgba(138, 43, 226, 0.6);
+    margin-bottom: 25px; /* Reduzido de 30px */
     text-align: center;
 }
 
@@ -48,11 +48,11 @@ main {
 
 .sidebar-title {
     font-family: 'Anton SC', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.1rem; /* Reduzido de 1.3rem */
     color: #8a2be2;
-    margin-bottom: 25px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #4b0082;
+    margin-bottom: 20px; /* Reduzido de 25px */
+    padding-bottom: 6px; /* Reduzido de 8px */
+    border-bottom: 1px solid #4b0082; /* Borda um pouco mais fina */
     text-align: center;
     text-transform: uppercase;
 }
@@ -60,27 +60,28 @@ main {
 .secaoLoja-vertical {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 25px;
+    gap: 10px; /* Reduzido de 12px */
+    margin-bottom: 20px; /* Reduzido de 25px */
 }
 
 .loja-sidebar-filters button {
     width: 100%;
-    padding: 10px 15px;
+    padding: 8px 12px; /* Reduzido de 10px 15px */
     background-color: #333;
     color: white;
     border: 1px solid #8a2be2;
-    border-radius: 6px;
+    border-radius: 5px; /* Reduzido de 6px */
     font-family: 'Orbitron', sans-serif;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
     text-align: left;
+    font-size: 0.9rem; /* Levemente reduzido */
 }
 
 .loja-sidebar-filters button:hover {
     background-color: #8a2be2;
-    box-shadow: 0 0 8px rgba(138, 43, 226, 0.7);
+    box-shadow: 0 0 6px rgba(138, 43, 226, 0.7);
 }
 
 /* ========================================================= */
@@ -90,33 +91,39 @@ main {
 .pesquisa-wrapper {
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 40px;
+    margin-bottom: 30px; /* Reduzido de 40px */
     width: 100%;
 }
 
-.input-pesquisa-hitech {
-    width: 100%;
-    max-width: 600px;
-    padding: 12px 20px;
-    background-color: rgba(28, 28, 28, 0.9);
+.barra_pesquisa {
+    background-color: rgba(28, 28, 28, 0.85);
+    padding: 8px 15px; /* Reduzido de 10px 20px */
+    border-radius: 20px; /* Reduzido de 25px */
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 8px rgba(138, 43, 226, 0.4);
+    width: 300px; /* Reduzido de 320px */
+    transition: box-shadow 0.3s;
+    margin: 0 auto;
+}
+
+.barra_pesquisa:hover {
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+}
+
+.barra_pesquisa i {
+    color: #8a2be2;
+    margin-right: 8px; /* Reduzido de 10px */
+}
+
+.barra_pesquisa input {
+    background: none;
+    border: none;
+    outline: none;
     color: white;
+    width: 100%;
     font-family: 'Orbitron', sans-serif;
-    font-size: 1rem;
-    border: 1px solid #4b0082; 
-    border-radius: 25px; 
-    outline: none; 
-    box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
-    transition: all 0.3s ease;
-}
-
-.input-pesquisa-hitech:focus {
-    border-color: #8a2be2;
-    box-shadow: 0 0 15px rgba(138, 43, 226, 0.8);
-}
-
-.input-pesquisa-hitech::placeholder {
-    color: #999;
-    opacity: 0.8;
+    font-size: 0.95rem; /* Levemente reduzido */
 }
 
 /* ========================================================= */
@@ -125,72 +132,82 @@ main {
 
 .Flex-produtos {
     display: grid; 
-    /* Ajuste para 250px para caber 3-4 produtos */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 25px; 
-    padding-bottom: 50px;
+    /* Mantido 300px, pois já é um bom tamanho mínimo para 3 colunas em 900px de área */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px; /* Reduzido de 25px */
+    padding-bottom: 40px; /* Reduzido de 50px */
 }
 
-.modalidade .produto-nome {
+.produto {
+    background-color: rgba(28, 28, 28, 0.9);
+    border-radius: 12px; /* Reduzido de 15px */
+    padding: 20px; /* Reduzido de 25px */
+    text-align: center;
+    box-shadow: 0 0 12px rgba(255,255,255,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.produto:hover {
+    transform: translateY(-5px); /* Movimento menor */
+    box-shadow: 0 0 20px rgba(138,43,226,0.7); /* Sombra menor */
+}
+
+.produto .produto-nome {
     font-family: 'Anton SC', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.4rem; /* Reduzido de 1.6rem */
     color: white;
-    margin-bottom: 10px;
+    margin-bottom: 8px; /* Reduzido de 10px */
     width: 100%; 
     text-align: center;
 }
 
-.modalidade .produto-descricao {
-    color: #ccc;
-    font-size: 0.95rem;
-    margin-bottom: 10px;
-    text-align: center;
-    padding: 0 5px; 
-    flex-grow: 1; 
+.produto img {
+    width: 100%;
+    height: 180px; /* Reduzido de 200px */
+    object-fit: cover;
+    border-radius: 8px; /* Reduzido de 10px */
+    margin-bottom: 12px; /* Reduzido de 15px */
 }
 
 .produto-preco {
     font-family: 'Anton SC', sans-serif;
-    font-size: 2.0rem;
-    color: #ffffff;
-    margin-bottom: 15px;
+    font-size: 1.8rem; /* Reduzido de 2.0rem */
+    color: #00ff66; 
+    margin-bottom: 12px; /* Reduzido de 15px */
     font-weight: bold;
+}
+
+.produto .produto-descricao {
+    color: #ccc;
+    font-size: 0.85rem; /* Reduzido de 0.95rem */
+    margin-bottom: 8px; /* Reduzido de 10px */
+    text-align: center;
+    padding: 0 5px; 
+    flex-grow: 1; 
 }
 
 .comprar-btn {
     background-color: #8a2be2;
     color: white;
     border: none;
-    padding: 12px 30px; 
-    border-radius: 8px;
+    padding: 10px 25px; /* Reduzido de 12px 30px */
+    border-radius: 6px; /* Reduzido de 8px */
     font-family: 'Orbitron', sans-serif;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
     width: 80%; 
-    margin-top: 15px;
+    margin-top: 12px; /* Reduzido de 15px */
 }
 
 .comprar-btn:hover {
     background-color: #a855f7;
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+    transform: scale(1.03); /* Escala de hover menor */
+    box-shadow: 0 0 8px rgba(138, 43, 226, 0.5);
 }
-
-.produto {
-    background-color: rgba(28, 28, 28, 0.9);
-    border-radius: 15px;
-    padding: 25px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(255,255,255,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    
-}
-
 
 /* ========================================================= */
 /* ===== 5. RESPONSIVIDADE (GARANTINDO AJUSTE) ===== */
@@ -200,13 +217,13 @@ main {
     .loja-content-wrapper {
         flex-direction: column;
         align-items: center;
-        gap: 40px;
+        gap: 30px; /* Reduzido de 40px */
     }
 
     .loja-sidebar-filters {
         order: -1;
         width: 100%;
-        max-width: 600px;
+        max-width: 500px; /* Reduzido de 600px */
     }
     
     .loja-main-area {
@@ -218,7 +235,7 @@ main {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
+        gap: 8px; /* Reduzido de 10px */
     }
     .loja-sidebar-filters button {
         width: auto;
@@ -234,15 +251,16 @@ main {
 @media (max-width: 580px) {
     .Flex-produtos {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 15px; /* Reduzido de 20px */
     }
     
-    .modalidade {
+    .produto {
         min-height: auto;
         width: 100%; 
     }
     
-    .input-pesquisa-hitech {
-        max-width: 90%;
+    .barra_pesquisa {
+        width: 90%;
+        max-width: none;
     }
 }
