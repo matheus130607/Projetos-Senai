@@ -45,4 +45,3 @@ document.querySelector('.barra_pesquisa input').addEventListener('input', buscar
             modalLocalizacao.textContent = localizacao;
         });
     });
-  

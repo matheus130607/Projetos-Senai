@@ -44,3 +44,4 @@
         function perfil_usuario() {
             window.location.href = "perfil_usuario.html"
         }
+        
