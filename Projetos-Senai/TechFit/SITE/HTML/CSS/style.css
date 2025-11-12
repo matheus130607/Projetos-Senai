@@ -1036,7 +1036,7 @@ ADIÇÕES PARA O MODAL (POP-UP)
 
 /* Fundo escuro do modal */
 .modal-content {
-    background: linear-gradient(135deg, #1c1c1c 90%, #330044 100%);
+    background: #1c1c1c;
     color: white;
     box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
 }
