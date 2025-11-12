@@ -41,6 +41,10 @@
             window.location.href = "saibamais_franc.html"
         }
 
+        function perfil_usuario() {
+            window.location.href = "perfil_usuario.html"
+        }
+
 
     
 
