@@ -632,14 +632,76 @@ main {
     }
 }
 
-/* ======= franquias ======= */
-.franquias {
+.modalidade:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(138,43,226,0.7);
+}
+
+.modalidade h3 {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 15px;
+    width: 100%; 
+    text-align: center;
+}
+
+.modalidade img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.modalidade a {
+    color: #8a2be2;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.modalidade a:hover {
+    color: #a855f7;
+}
+
+.modalidade p {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 0 10px; 
+}
+
+.modalidade button {
+    background-color: #8a2be2;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.modalidade button:hover {
+    background-color: #a855f7;
+    transform: scale(1.05);
+}
+
+/* ======= Modalidades ======= */
+.modalidades {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.Flex-franquias {
+.Flex-Modalidades {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -647,7 +709,7 @@ main {
 }
 
 /* Cada card de modalidade - CORRIGIDO para empilhamento vertical */
-.franquias {
+.modalidade {
     background-color: rgba(28, 28, 28, 0.9);
     border-radius: 15px;
     padding: 25px;
@@ -719,6 +781,247 @@ main {
 }
 
 .modalidade button:hover {
+    background-color: #a855f7;
+    transform: scale(1.05);
+}
+
+/* ======= franquias ======= */
+.franquias {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Flex-franquias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* Cada card de modalidade - CORRIGIDO para empilhamento vertical */
+.franquias {
+    background-color: rgba(28, 28, 28, 0.9);
+    border-radius: 15px;
+    padding: 25px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.franquias:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(138,43,226,0.7);
+}
+
+.franquias h3 {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 15px;
+    width: 100%; 
+    text-align: center;
+}
+
+.franquias img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.franquias a {
+    color: #8a2be2;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.franquias a:hover {
+    color: #a855f7;
+}
+
+.franquias p {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 0 10px; 
+}
+
+.franquias button {
+    background-color: #8a2be2;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.franquias button:hover {
+    background-color: #a855f7;
+    transform: scale(1.05);
+}
+
+/* Esconde seções */
+.hidden {
+    display: none;
+}
+
+/* ======= RESPONSIVIDADE (Suas regras originais) ======= */
+
+@media (max-width: 1024px) {
+    /* Diminui a largura do card em tablets e laptops menores */
+    .franquias {
+        width: 260px;
+    }
+}
+
+@media (max-width: 768px) {
+    .secaoUnidades {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .Flex-franquias {
+        gap: 20px;
+    }
+
+    .secao h2 {
+        font-size: 2rem;
+    }
+    
+    /* Ajuste para o header */
+    .header {
+        padding: 15px 20px;
+    }
+    
+    .header button,
+    .header select,
+    .dropbtn {
+        font-size: 1rem;
+        margin: 0 5px;
+    }
+    
+    .titulo-techfit {
+        font-size: 1.2rem;
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Responsividade do Footer */
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 20px;
+    }
+    .footer-left, .footer-right {
+        margin-left: 0 !important;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-right {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 20px;
+        margin-top: 120px;
+    }
+
+    /* Torna o card quase totalmente responsivo na menor tela */
+    .modalidade {
+        width: 90%; 
+    }
+
+    .barra_pesquisa {
+        width: 90%;
+    }
+
+    .secao h2 {
+        font-size: 1.8rem;
+    }
+    
+    .anuncio {
+        font-size: 3rem;
+        left: 5%;
+    }
+}
+
+.franquias:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(138,43,226,0.7);
+}
+
+.franquias h3 {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 15px;
+    width: 100%; 
+    text-align: center;
+}
+
+.franquias img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.franquias a {
+    color: #8a2be2;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.franquias a:hover {
+    color: #a855f7;
+}
+
+.franquias p {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 0 10px; 
+}
+
+.franquias button {
+    background-color: #8a2be2;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.franquias button:hover {
     background-color: #a855f7;
     transform: scale(1.05);
 }
