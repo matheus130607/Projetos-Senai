@@ -1,0 +1,234 @@
+/* ========================================================= */
+/* ===== 1. LAYOUT PRINCIPAL (DUAS COLUNAS) E ESTRUTURA BASE ===== */
+/* ========================================================= */
+
+main {
+    flex-grow: 1; 
+    margin-top: 120px; 
+    padding: 20px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.loja-content-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 95%; 
+    max-width: 1300px;
+    margin: 40px auto;
+}
+
+.loja-sidebar-filters {
+    width: 250px; 
+    padding: 20px 15px;
+    background-color: rgba(28, 28, 28, 0.7);
+    border-radius: 12px;
+    align-self: flex-start; 
+    border: 1px solid #4b0082;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.2);
+}
+
+.loja-main-area {
+    flex-grow: 1; 
+    max-width: 1000px;
+}
+
+.secao h2 {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+/* ========================================================= */
+/* ===== 2. ESTILO DOS FILTROS (SIDEBAR) E BOTÕES ===== */
+/* ========================================================= */
+
+.sidebar-title {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 1.3rem;
+    color: #8a2be2;
+    margin-bottom: 25px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #4b0082;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.secaoLoja-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.loja-sidebar-filters button {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #333;
+    color: white;
+    border: 1px solid #8a2be2;
+    border-radius: 6px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-align: left;
+}
+
+.loja-sidebar-filters button:hover {
+    background-color: #8a2be2;
+    box-shadow: 0 0 8px rgba(138, 43, 226, 0.7);
+}
+
+/* ========================================================= */
+/* ===== 3. PESQUISA (INPUT HITECH) ===== */
+/* ========================================================= */
+
+.pesquisa-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.input-pesquisa-hitech {
+    width: 100%;
+    max-width: 600px;
+    padding: 12px 20px;
+    background-color: rgba(28, 28, 28, 0.9);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    border: 1px solid #4b0082; 
+    border-radius: 25px; 
+    outline: none; 
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+    transition: all 0.3s ease;
+}
+
+.input-pesquisa-hitech:focus {
+    border-color: #8a2be2;
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.8);
+}
+
+.input-pesquisa-hitech::placeholder {
+    color: #999;
+    opacity: 0.8;
+}
+
+/* ========================================================= */
+/* ===== 4. GRID DE PRODUTOS E ESTILOS EXCLUSIVOS DA LOJA ===== */
+/* ========================================================= */
+
+.Flex-produtos {
+    display: grid; 
+    /* Ajuste para 250px para caber 3-4 produtos */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 25px; 
+    padding-bottom: 50px;
+}
+
+.modalidade .produto-nome {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 1.6rem;
+    color: white;
+    margin-bottom: 10px;
+    width: 100%; 
+    text-align: center;
+}
+
+.modalidade .produto-descricao {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 0 5px; 
+    flex-grow: 1; 
+}
+
+.produto-preco {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 2.0rem;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.comprar-btn {
+    background-color: #8a2be2;
+    color: white;
+    border: none;
+    padding: 12px 30px; 
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    width: 80%; 
+    margin-top: 15px;
+}
+
+.comprar-btn:hover {
+    background-color: #a855f7;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+}
+
+
+/* ========================================================= */
+/* ===== 5. RESPONSIVIDADE (GARANTINDO AJUSTE) ===== */
+/* ========================================================= */
+
+@media (max-width: 980px) {
+    .loja-content-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .loja-sidebar-filters {
+        order: -1;
+        width: 100%;
+        max-width: 600px;
+    }
+    
+    .loja-main-area {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .secaoLoja-vertical {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .loja-sidebar-filters button {
+        width: auto;
+        flex-grow: 1; 
+        text-align: center;
+    }
+    
+    .secao h2 {
+        text-align: center;
+    }
+}
+
+@media (max-width: 580px) {
+    .Flex-produtos {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .modalidade {
+        min-height: auto;
+        width: 100%; 
+    }
+    
+    .input-pesquisa-hitech {
+        max-width: 90%;
+    }
+}
