@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/loja.css">
 
     <title>Tech Fit - Loja</title>
 </head>
@@ -29,37 +30,60 @@
 
 
 
-    <main>
-        <div class="secao">
-            <h2>Principais produtos</h2>
-            <div class="secaoUnidades">
-                <button onclick="Unidade('Masculino')">Masculino</button>
-                <hr>
-                <button onclick="Unidade('Feminino')">Feminino</button>
-                <hr>
-                <button onclick="Unidade('Unisex')">Unisex</button>
+   <main>
+    <div class="loja-content-wrapper">
+        
+        <aside class="loja-sidebar-filters">
+            <h3 class="sidebar-title">Filtrar</h3> 
+            <div class="secaoLoja-vertical"> 
+                <button>Vestuário</button>
+                <button>Suplementos</button>
+                <button>Acessórios</button>
             </div>
-        </div>
-
-        <div class="pesquisa">
+            
+            <h3 class="sidebar-title">Gênero</h3>
+            <div class="secaoLoja-vertical"> 
+                <button>Masculino</button>
+                <button>Feminino</button>
+                <button>Unisex</button>
+            </div>
+        </aside>
+        
+        <div class="loja-main-area">
+            
+            <div class="secao">
+                <h2>Todos os Produtos</h2>
+            </div>
+            
+             <div class="pesquisa">
             <div class="area_pesquisa">
                 <div class="barra_pesquisa">
                     <i class="bi bi-search"></i>
-                    <input type="text" id="pesquisa_unidade" placeholder="Produto...">
+                    <input type="text" id="pesquisa_produtos" placeholder="Produtos">
                 </div>
             </div>
         </div>
 
-        <div class="modalidades">
-
-        <div id="boxe" class="" onclick="compra()">
-                <div class="Flex-Modalidades">
-                    <div class="modalidade" data-local="Limeira">
-                        <img src="IMG/Garrafa techfit.png" alt="#">
-                        <h4>Garrafa - 1,5L </h4>
-                        <p>Sua garrafa, seu monitor de hidratação. Design futurista e metas em tempo real (como 90%). Eleve seu treino.</p>
-                    </div>
+            <section class="Flex-produtos">
+                <div class="produto">
+                    <h4 class="produto-nome">Garrafa Smart - 1,5L</h4>
+                    <img src="IMG/Garrafa techfit.png" alt="">
+                    <h4 class="produto-preco">R$ 75,99</h4>
+                    <p class="produto-descricao">Sua garrafa, seu monitor de hidratação. Design futurista e metas em tempo real (como 90%). Eleve seu treino.</p>
+                    <button class="comprar-btn" onclick="comprar()">Comprar</button>
                 </div>
+
+                <div class="produto">
+                    <h4 class="produto-nome">Garrafa Smart - 1,5L</h4>
+                    <img src="IMG/Garrafa techfit.png" alt="">
+                    <h4 class="produto-preco">R$ 75,99</h4>
+                    <p class="produto-descricao">Sua garrafa, seu monitor de hidratação. Design futurista e metas em tempo real (como 90%). Eleve seu treino.</p>
+                    <button class="comprar-btn" onclick="comprar()">Comprar</button>
+                </div>
+            </section>
+        </div>
+        
+    </div>
 </main>
     
     <footer class="footer" id="footer">

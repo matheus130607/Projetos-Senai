@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Orbitron:wght@400..900&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 
-/* Reset básico */
+/* ========================================================= */
+/* ===== 1. RESET E ESTILOS BASE (HTML, BODY) ===== */
+/* ========================================================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* 1. CORREÇÃO STICKY FOOTER (Global) */
 html {
     height: 100%; 
 }
@@ -17,13 +19,21 @@ body {
     background: linear-gradient(135deg, #000000 40%, #4b0082 100%);
     color: white;
     font-family: 'Orbitron', sans-serif;
-    min-height: 100vh; /* Altura mínima da janela */
+    min-height: 100vh;
     background-attachment: fixed; 
     display: flex;
     flex-direction: column; 
 }
 
-/* ===== Header ===== */
+/* Esconde seções (Utilitário) */
+.hidden {
+    display: none;
+}
+
+/* ========================================================= */
+/* ===== 2. HEADER E DROPDOWNS (MENU) ===== */
+/* ========================================================= */
+
 .header {
     display: flex;
     align-items: center;
@@ -66,7 +76,6 @@ body {
     color: #8a2be2;
 }
 
-/* ===== Dropdown padrão ===== */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -87,7 +96,6 @@ body {
     color: #8a2be2;
 }
 
-/* Conteúdo do dropdown */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -113,12 +121,10 @@ body {
     color: white;
 }
 
-/* Mostrar o menu quando passa o mouse */
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-/* ===== Dropdown do usuário ===== */
 .usuario-dropdown {
     position: relative;
 }
@@ -142,11 +148,46 @@ body {
     text-align: center;
 }
 
+/* ========================================================= */
+/* ===== 3. LAYOUT PRINCIPAL E ELEMENTOS DE CONTEÚDO (MAIN) ===== */
+/* ========================================================= */
 
+main {
+    flex-grow: 1;
+    margin-top: 140px;
+    padding: 40px 20px;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
 
-/* ===== Anúncio ===== */
+.secao {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.secao h2 {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+}
+
+.secao-divisoria {
+    width: 100%; 
+    height: 4px; 
+    background-color: #8a2be2;
+    margin: 0px auto; 
+    border-radius: 5px; 
+    box-shadow: 0 0 10px 3px rgba(138, 43, 226, 0.7),
+                0 0 20px 5px rgba(138, 43, 226, 0.3);
+}
+
+/* ===== Anúncio (Geral) ===== */
+
 .anuncios {
-    margin-top: 50px;
+    margin-top: 100px;
     width: 100%;
     height: 99vh;
     display: flex;
@@ -160,7 +201,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.9;
+    opacity: 0.8;
     border-radius: 0;
 }
 
@@ -176,8 +217,198 @@ body {
     color: white;
 }
 
+/* ===== Seção Aulas / Botões ===== */
 
-/* ===== Planos ===== */
+.secaoUnidades {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.secaoUnidades hr {
+    height: 2px;
+    width: 40px;
+    background-color: #8a2be2;
+    border: none;
+}
+
+.secaoUnidades button {
+    background-color: #8a2be2;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.secaoUnidades button:hover {
+    background-color: #a855f7;
+    transform: scale(1.05);
+}
+
+/* ===== Barra de Pesquisa (Estilo Antigo) ===== */
+
+.pesquisa {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.area_pesquisa {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.barra_pesquisa {
+    background-color: rgba(28, 28, 28, 0.85);
+    padding: 10px 20px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+    width: 320px;
+    transition: box-shadow 0.3s;
+}
+
+.barra_pesquisa:hover {
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+}
+
+.barra_pesquisa i {
+    color: #8a2be2;
+    margin-right: 10px;
+}
+
+.barra_pesquisa input {
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    width: 100%;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+}
+
+/* ========================================================= */
+/* ===== 4. CARDS DE CONTEÚDO (PLANOS, MODALIDADES, FRANQUIAS) ===== */
+/* ========================================================= */
+
+/* Container Flex Geral para Modalidades/Franquias */
+.modalidades, 
+.franquias {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Flex-Modalidades,
+.Flex-franquias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* Estilo Base do Card (Usado por .modalidade e .franquias) - CONSOLIDADO */
+.modalidade, 
+.franquias {
+    background-color: rgba(28, 28, 28, 0.9);
+    border-radius: 15px;
+    padding: 25px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+/* Ajuste específico para Franquias, pois tinha um padding de 30px */
+.franquias {
+    padding: 30px; 
+}
+
+.modalidade:hover,
+.franquias:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(138,43,226,0.7);
+}
+
+.modalidade h3,
+.franquias h3 {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 15px;
+    width: 100%; 
+    text-align: center;
+}
+
+.modalidade img,
+.franquias img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.modalidade a,
+.franquias a {
+    color: #8a2be2;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.modalidade a:hover,
+.franquias a:hover {
+    color: #a855f7;
+}
+
+.modalidade p,
+.franquias p {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 0 10px; 
+}
+
+.modalidade button,
+.franquias button {
+    background-color: #8a2be2;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.modalidade button:hover,
+.franquias button:hover {
+    background-color: #a855f7;
+    transform: scale(1.05);
+}
+
+
+/* ===== Planos (Estilo Exclusivo) ===== */
+
 .planos-container {
     display: flex;
     justify-content: center;
@@ -240,16 +471,6 @@ body {
     justify-content: space-between;
 }
 
-/* Cores dos ícones (Assumindo que você usa emojis como conteúdo, ou substitua por classes de ícones) */
-.cursos-opcoes li:has(✅) {
-    color: #00ff66;
-}
-
-.cursos-opcoes li:has(❌) {
-    color: #ff3333;
-}
-
-/* Botão */
 .cursos-compra {
     margin-top: 25px;
     padding: 10px 25px;
@@ -268,13 +489,184 @@ body {
     transform: scale(1.05);
 }
 
-/* Destaque no plano do meio */
 .destaque {
     border: 2px solid #8a2be2;
     box-shadow: 0 0 25px rgba(138, 43, 226, 0.6);
 }
 
-/* Parte do Rodapé */
+/* ========================================================= */
+/* ===== 5. ESTILOS DO MODAL (POP-UP) ===== */
+/* ========================================================= */
+
+.modal-content {
+    background: #1c1c1c;
+    color: white;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
+}
+
+.modal-header {
+    border-bottom: 1px solid #4b0082;
+}
+
+.modal-header .modal-title {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+    transition: transform 0.3s;
+}
+.btn-close-white:hover {
+    transform: scale(1.1);
+}
+
+.modal-body hr {
+    border-color: #8a2be2;
+    opacity: 0.5;
+}
+
+.modal-info-card {
+    background-color: rgba(28, 28, 28, 0.7);
+    border-radius: 10px;
+    padding: 15px;
+    border-left: 5px solid #8a2be2;
+}
+
+.modal-info-card h5 {
+    color: #8a2be2;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.modal-info-card p {
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.modal-footer {
+    border-top: 1px solid #4b0082;
+}
+
+
+/* ========================================================= */
+/* ===== 6. PERFIL DE USUÁRIO (ABAS E CONTEÚDO) ===== */
+/* ========================================================= */
+
+.nav-tabs {
+    border-bottom: 1px solid #8a2be2;
+}
+
+.nav-tabs .nav-link {
+    color: #ccc;
+    background-color: #222;
+    border: 1px solid #333;
+    border-bottom: none;
+    margin-right: 5px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.nav-tabs .nav-link.active {
+    color: #ffffff;
+    background-color: #8a2be2;
+    border-color: #8a2be2;
+    font-weight: bold;
+}
+
+.nav-tabs .nav-link:hover:not(.active) {
+    color: white;
+    background-color: #3a3a3a;
+    border-color: #555;
+}
+
+.tab-content {
+    background-color: rgba(28, 28, 28, 0.85);
+    padding: 2.5rem;
+    border-radius: 0 0 15px 15px;
+    border: 1px solid #4b0082;
+    border-top: none;
+    box-shadow: 0 0 20px rgba(138,43,226,0.3);
+}
+
+.tab-content h3 {
+    color: #8a2be2;
+    font-family: 'Anton SC', sans-serif;
+    font-size: 2rem;
+    border-bottom: 2px solid #8a2be2;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.agendamento-card {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-left: 5px solid #8a2be2;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+.agendamento-card:hover {
+    background-color: #333;
+    transform: translateY(-3px);
+}
+.agendamento-card-info {
+    flex-grow: 1;
+}
+.agendamento-card-info h5 {
+    color: white;
+    font-family: 'Anton SC', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+.agendamento-card-info p {
+    margin-bottom: 0;
+    color: #ccc;
+}
+.agendamento-card .btn-cancelar {
+    background-color: #444;
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+}
+ .agendamento-card .btn-cancelar:hover {
+    background-color: #ff4d4d;
+    color: white;
+ }
+
+.accordion-item {
+    background-color: #2a2a2a;
+    border: 1px solid #4b0082;
+    color: white;
+}
+.accordion-button {
+    background-color: #333;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+}
+.accordion-button:not(.collapsed) {
+    background-color: #8a2be2;
+    color: white;
+    box-shadow: none;
+}
+.accordion-button:focus {
+    box-shadow: none;
+}
+.accordion-button::after {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+.accordion-body {
+    background-color: #1c1c1c;
+}
+
+/* ========================================================= */
+/* ===== 7. RODAPÉ (FOOTER) ===== */
+/* ========================================================= */
+
 .footer {
     background-color: rgba(28, 28, 28, 0.708);
     backdrop-filter: blur(5px);
@@ -283,16 +675,13 @@ body {
     font-family: 'Orbitron', sans-serif;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     min-height: 180px;
     flex-wrap: wrap;
-    /* 2. REMOVIDO: position: relative; */ 
 }
 
-/* Left side: título + ícones alinhados à esquerda */
 .footer-left {
     display: flex;
     flex-direction: column;
@@ -305,7 +694,6 @@ body {
     font-size: 2rem;
 }
 
-/* Ícones em linha */
 .links-footer {
     display: flex;
     gap: 15px;
@@ -313,7 +701,7 @@ body {
 
 .links-footer a {
     color: white;
-    font-size: 20px; /* tamanho dos ícones */
+    font-size: 20px;
     transition: transform 0.25s ease, color 0.25s ease;
     display: flex;
     align-items: center;
@@ -325,7 +713,6 @@ body {
     transform: scale(1.2);
 }
 
-/* Right side: links deslocados para direita */
 .footer-right {
     display: flex;
     flex-direction: column;
@@ -345,7 +732,6 @@ body {
     color: #8a2be2;
 }
 
-/* Direitos autorais centralizado embaixo e full width */
 .direitos {
     width: 100%;
     text-align: center;
@@ -355,538 +741,14 @@ body {
     margin-top: 25px;
 }
 
-/* ======= PÁGINA MODALIDADES ======= */
-
-/* Seção principal */
-main {
-    flex-grow: 1; /* 3. CORREÇÃO STICKY FOOTER: Ocupa o espaço restante */
-    margin-top: 140px; /* distância do header fixo */
-    padding: 40px 20px;
-    color: #fff;
-    font-family: 'Orbitron', sans-serif;
-}
-
-/* ======= Seção Aulas ======= */
-.secao {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.secao h2 {
-    font-family: 'Anton SC', sans-serif;
-    font-size: 2.5rem;
-    color: #fff;
-    text-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
-}
-
-/* Botões Boxe / Pilates */
-.secaoUnidades {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
-
-.secaoUnidades hr {
-    height: 2px;
-    width: 40px;
-    background-color: #8a2be2;
-    border: none;
-}
-
-.secaoUnidades button {
-    background-color: #8a2be2;
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 10px;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.secaoUnidades button:hover {
-    background-color: #a855f7;
-    transform: scale(1.05);
-}
-
-/* ======= Barra de Pesquisa ======= */
-.pesquisa {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 50px;
-}
-
-.area_pesquisa {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.barra_pesquisa {
-    background-color: rgba(28, 28, 28, 0.85);
-    padding: 10px 20px;
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
-    width: 320px;
-    transition: box-shadow 0.3s;
-}
-
-.barra_pesquisa:hover {
-    box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
-}
-
-.barra_pesquisa i {
-    color: #8a2be2;
-    margin-right: 10px;
-}
-
-.barra_pesquisa input {
-    background: none;
-    border: none;
-    outline: none;
-    color: white;
-    width: 100%;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1rem;
-}
-
-/* ======= Modalidades ======= */
-.modalidades {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.Flex-Modalidades {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-}
-
-/* Cada card de modalidade - CORRIGIDO para empilhamento vertical */
-.modalidade {
-    background-color: rgba(28, 28, 28, 0.9);
-    border-radius: 15px;
-    padding: 25px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(255,255,255,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-}
-
-.modalidade:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 25px rgba(138,43,226,0.7);
-}
-
-.modalidade h3 {
-    font-family: 'Anton SC', sans-serif;
-    font-size: 1.8rem;
-    color: white;
-    margin-bottom: 15px;
-    width: 100%; 
-    text-align: center;
-}
-
-.modalidade img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-.modalidade a {
-    color: #8a2be2;
-    font-weight: bold;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 10px;
-    transition: color 0.3s;
-    width: 100%;
-    text-align: center;
-}
-
-.modalidade a:hover {
-    color: #a855f7;
-}
-
-.modalidade p {
-    color: #ccc;
-    font-size: 0.95rem;
-    margin-bottom: 15px;
-    text-align: center;
-    padding: 0 10px; 
-}
-
-.modalidade button {
-    background-color: #8a2be2;
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 8px;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.modalidade button:hover {
-    background-color: #a855f7;
-    transform: scale(1.05);
-}
-
-/* Esconde seções */
-.hidden {
-    display: none;
-}
-
-/* ======= RESPONSIVIDADE (Suas regras originais) ======= */
+/* ========================================================= */
+/* ===== 8. RESPONSIVIDADE (MEDIA QUERIES) ===== */
+/* ========================================================= */
 
 @media (max-width: 1024px) {
-    /* Diminui a largura do card em tablets e laptops menores */
     .modalidade {
         width: 260px;
     }
-}
-
-@media (max-width: 768px) {
-    .secaoUnidades {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .Flex-Modalidades {
-        gap: 20px;
-    }
-
-    .secao h2 {
-        font-size: 2rem;
-    }
-    
-    /* Ajuste para o header */
-    .header {
-        padding: 15px 20px;
-    }
-    
-    .header button,
-    .header select,
-    .dropbtn {
-        font-size: 1rem;
-        margin: 0 5px;
-    }
-    
-    .titulo-techfit {
-        font-size: 1.2rem;
-        margin-right: 15px;
-    }
-}
-
-@media (max-width: 600px) {
-    /* Responsividade do Footer */
-    .footer {
-        flex-direction: column;
-        align-items: center;
-        padding: 30px 20px;
-    }
-    .footer-left, .footer-right {
-        margin-left: 0 !important;
-        align-items: center;
-        text-align: center;
-    }
-    .footer-right {
-        margin-top: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    main {
-        padding: 20px;
-        margin-top: 120px;
-    }
-
-    /* Torna o card quase totalmente responsivo na menor tela */
-    .modalidade {
-        width: 90%; 
-    }
-
-    .barra_pesquisa {
-        width: 90%;
-    }
-
-    .secao h2 {
-        font-size: 1.8rem;
-    }
-    
-    .anuncio {
-        font-size: 3rem;
-        left: 5%;
-    }
-}
-
-.modalidade:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 25px rgba(138,43,226,0.7);
-}
-
-.modalidade h3 {
-    font-family: 'Anton SC', sans-serif;
-    font-size: 1.8rem;
-    color: white;
-    margin-bottom: 15px;
-    width: 100%; 
-    text-align: center;
-}
-
-.modalidade img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-.modalidade a {
-    color: #8a2be2;
-    font-weight: bold;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 10px;
-    transition: color 0.3s;
-    width: 100%;
-    text-align: center;
-}
-
-.modalidade a:hover {
-    color: #a855f7;
-}
-
-.modalidade p {
-    color: #ccc;
-    font-size: 0.95rem;
-    margin-bottom: 15px;
-    text-align: center;
-    padding: 0 10px; 
-}
-
-.modalidade button {
-    background-color: #8a2be2;
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 8px;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.modalidade button:hover {
-    background-color: #a855f7;
-    transform: scale(1.05);
-}
-
-/* ======= Modalidades ======= */
-.modalidades {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.Flex-Modalidades {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-}
-
-/* Cada card de modalidade - CORRIGIDO para empilhamento vertical */
-.modalidade {
-    background-color: rgba(28, 28, 28, 0.9);
-    border-radius: 15px;
-    padding: 25px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(255,255,255,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-}
-
-.modalidade:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 25px rgba(138,43,226,0.7);
-}
-
-.modalidade h3 {
-    font-family: 'Anton SC', sans-serif;
-    font-size: 1.8rem;
-    color: white;
-    margin-bottom: 15px;
-    width: 100%; 
-    text-align: center;
-}
-
-.modalidade img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-.modalidade a {
-    color: #8a2be2;
-    font-weight: bold;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 10px;
-    transition: color 0.3s;
-    width: 100%;
-    text-align: center;
-}
-
-.modalidade a:hover {
-    color: #a855f7;
-}
-
-.modalidade p {
-    color: #ccc;
-    font-size: 0.95rem;
-    margin-bottom: 15px;
-    text-align: center;
-    padding: 0 10px; 
-}
-
-.modalidade button {
-    background-color: #8a2be2;
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 8px;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.modalidade button:hover {
-    background-color: #a855f7;
-    transform: scale(1.05);
-}
-
-/* ======= franquias ======= */
-.franquias {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.Flex-franquias {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-}
-
-/* Cada card de modalidade - CORRIGIDO para empilhamento vertical */
-.franquias {
-    background-color: rgba(28, 28, 28, 0.9);
-    border-radius: 15px;
-    padding: 30px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(255,255,255,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-}
-
-.franquias:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 25px rgba(138,43,226,0.7);
-}
-
-.franquias h3 {
-    font-family: 'Anton SC', sans-serif;
-    font-size: 1.8rem;
-    color: white;
-    margin-bottom: 15px;
-    width: 100%; 
-    text-align: center;
-}
-
-.franquias img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-.franquias a {
-    color: #8a2be2;
-    font-weight: bold;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 10px;
-    transition: color 0.3s;
-    width: 100%;
-    text-align: center;
-}
-
-.franquias a:hover {
-    color: #a855f7;
-}
-
-.franquias p {
-    color: #ccc;
-    font-size: 0.95rem;
-    margin-bottom: 15px;
-    text-align: center;
-    padding: 0 10px; 
-}
-
-.franquias button {
-    background-color: #8a2be2;
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 8px;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.franquias button:hover {
-    background-color: #a855f7;
-    transform: scale(1.05);
-}
-
-/* Esconde seções */
-.hidden {
-    display: none;
-}
-
-/* ======= RESPONSIVIDADE (Suas regras originais) ======= */
-
-@media (max-width: 1024px) {
-    /* Diminui a largura do card em tablets e laptops menores */
     .franquias {
         width: 260px;
     }
@@ -898,6 +760,7 @@ main {
         gap: 10px;
     }
 
+    .Flex-Modalidades,
     .Flex-franquias {
         gap: 20px;
     }
@@ -906,7 +769,6 @@ main {
         font-size: 2rem;
     }
     
-    /* Ajuste para o header */
     .header {
         padding: 15px 20px;
     }
@@ -925,7 +787,6 @@ main {
 }
 
 @media (max-width: 600px) {
-    /* Responsividade do Footer */
     .footer {
         flex-direction: column;
         align-items: center;
@@ -947,7 +808,7 @@ main {
         margin-top: 120px;
     }
 
-    /* Torna o card quase totalmente responsivo na menor tela */
+    .modalidade,
     .franquias {
         width: 90%; 
     }
@@ -965,256 +826,3 @@ main {
         left: 5%;
     }
 }
-
-.franquias:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 25px rgba(138,43,226,0.7);
-}
-
-.franquias h3 {
-    font-family: 'Anton SC', sans-serif;
-    font-size: 1.8rem;
-    color: white;
-    margin-bottom: 15px;
-    width: 100%; 
-    text-align: center;
-}
-
-.franquias img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-.franquias a {
-    color: #8a2be2;
-    font-weight: bold;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 10px;
-    transition: color 0.3s;
-    width: 100%;
-    text-align: center;
-}
-
-.franquias a:hover {
-    color: #a855f7;
-}
-
-.franquias p {
-    color: #ccc;
-    font-size: 0.95rem;
-    margin-bottom: 15px;
-    text-align: center;
-    padding: 0 10px; 
-}
-
-.franquias button {
-    background-color: #8a2be2;
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 8px;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.franquias button:hover {
-    background-color: #a855f7;
-    transform: scale(1.05);
-}
-
-/*
-=====================================
-ADIÇÕES PARA O MODAL (POP-UP)
-=====================================
-*/
-
-/* Fundo escuro do modal */
-.modal-content {
-    background: #1c1c1c;
-    color: white;
-    box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
-}
-
-/* Cabeçalho do modal */
-.modal-header {
-    border-bottom: 1px solid #4b0082;
-}
-
-.modal-header .modal-title {
-    font-family: 'Anton SC', sans-serif;
-    font-size: 1.8rem;
-    color: white;
-}
-
-/* Botão de fechar (X) branco */
-.btn-close-white {
-    filter: invert(1) grayscale(100%) brightness(200%);
-    transition: transform 0.3s;
-}
-.btn-close-white:hover {
-    transform: scale(1.1);
-}
-
-/* Corpo do modal */
-.modal-body hr {
-    border-color: #8a2be2;
-    opacity: 0.5;
-}
-
-/* Card de informação da localização */
-.modal-info-card {
-    background-color: rgba(28, 28, 28, 0.7);
-    border-radius: 10px;
-    padding: 15px;
-    border-left: 5px solid #8a2be2;
-}
-
-.modal-info-card h5 {
-    color: #8a2be2;
-    font-weight: bold;
-    font-family: 'Orbitron', sans-serif;
-}
-
-.modal-info-card p {
-    color: #ccc;
-    font-size: 0.95rem;
-}
-
-/* Rodapé do modal */
-.modal-footer {
-    border-top: 1px solid #4b0082;
-}
-/* perfil usuario - abas e conteudo */
-
-
-    /* Aplicando o fundo gradiente ao main, já que o body é flex */
-    main {
-        flex-grow: 1; /* Faz o main ocupar o espaço restante */
-        padding-top: 2rem;
-        padding-bottom: 4rem;
-    }
-
-    /* Estilizando as Abas (Tabs) do Bootstrap para o tema escuro */
-    .nav-tabs {
-        border-bottom: 1px solid #8a2be2; /* Borda roxa neon */
-    }
-
-    .nav-tabs .nav-link {
-        color: #ccc;
-        background-color: #222;
-        border: 1px solid #333;
-        border-bottom: none;
-        margin-right: 5px;
-        font-family: 'Orbitron', sans-serif;
-    }
-
-    .nav-tabs .nav-link.active {
-        color: #ffffff;
-        background-color: #8a2be2; /* Fundo roxo ativo */
-        border-color: #8a2be2;
-        font-weight: bold;
-    }
-
-    .nav-tabs .nav-link:hover:not(.active) {
-        color: white;
-        background-color: #3a3a3a;
-        border-color: #555;
-    }
-
-    /* Conteúdo da Aba */
-    .tab-content {
-        background-color: rgba(28, 28, 28, 0.85); /* Fundo escuro semi-transparente */
-        padding: 2.5rem;
-        border-radius: 0 0 15px 15px;
-        border: 1px solid #4b0082;
-        border-top: none;
-        box-shadow: 0 0 20px rgba(138,43,226,0.3);
-    }
-    
-    .tab-content h3 {
-        color: #8a2be2; /* Títulos roxos */
-        font-family: 'Anton SC', sans-serif;
-        font-size: 2rem;
-        border-bottom: 2px solid #8a2be2;
-        padding-bottom: 10px;
-        margin-bottom: 20px;
-    }
-
-    /* Estilos para tabelas (Carrinho / Histórico) */
-    .table {
-        margin-top: 1.5rem;
-    }
-    
-    /* Cartão de Agendamento */
-    .agendamento-card {
-        background-color: #2a2a2a;
-        border: 1px solid #444;
-        border-left: 5px solid #8a2be2;
-        padding: 20px;
-        border-radius: 8px;
-        margin-bottom: 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: all 0.3s ease;
-    }
-    .agendamento-card:hover {
-        background-color: #333;
-        transform: translateY(-3px);
-    }
-    .agendamento-card-info {
-        flex-grow: 1;
-    }
-    .agendamento-card-info h5 {
-        color: white;
-        font-family: 'Anton SC', sans-serif;
-        font-size: 1.5rem;
-        margin-bottom: 5px;
-    }
-    .agendamento-card-info p {
-        margin-bottom: 0;
-        color: #ccc;
-    }
-    .agendamento-card .btn-cancelar {
-        background-color: #444;
-        color: #ff4d4d;
-        border: 1px solid #ff4d4d;
-    }
-     .agendamento-card .btn-cancelar:hover {
-        background-color: #ff4d4d;
-        color: white;
-     }
-
-    /* Histórico de Compras (Acordeão) */
-    .accordion-item {
-        background-color: #2a2a2a;
-        border: 1px solid #4b0082;
-        color: white;
-    }
-    .accordion-button {
-        background-color: #333;
-        color: white;
-        font-family: 'Orbitron', sans-serif;
-        font-weight: bold;
-    }
-    .accordion-button:not(.collapsed) {
-        background-color: #8a2be2;
-        color: white;
-        box-shadow: none;
-    }
-    .accordion-button:focus {
-        box-shadow: none;
-    }
-    .accordion-button::after {
-        /* Muda o ícone de seta para branco */
-        filter: invert(1) grayscale(100%) brightness(200%);
-    }
-    .accordion-body {
-        background-color: #1c1c1c;
-    }
