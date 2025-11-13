@@ -544,276 +544,120 @@ main {
 .modal-footer {
     border-top: 1px solid #4b0082;
 }
-
-
-/*abas e conteudo dos agendamentos*/
-
-.nav-tabs {
-    border-bottom: 1px solid #8a2be2;
-}
-
-.nav-tabs .nav-link {
-    color: #ccc;
-    background-color: #222;
-    border: 1px solid #333;
-    border-bottom: none;
-    margin-right: 5px;
-    font-family: 'Orbitron', sans-serif;
-}
-
-.nav-tabs .nav-link.active {
-    color: #ffffff;
-    background-color: #8a2be2;
-    border-color: #8a2be2;
-    font-weight: bold;
-}
-
-.nav-tabs .nav-link:hover:not(.active) {
-    color: white;
-    background-color: #3a3a3a;
-    border-color: #555;
-}
-
-.tab-content {
-    background-color: rgba(28, 28, 28, 0.85);
-    padding: 2.5rem;
-    border-radius: 0 0 15px 15px;
-    border: 1px solid #4b0082;
-    border-top: none;
-    box-shadow: 0 0 20px rgba(138,43,226,0.3);
-}
-
-.tab-content h3 {
-    color: #8a2be2;
-    font-family: 'Anton SC', sans-serif;
-    font-size: 2rem;
-    border-bottom: 2px solid #8a2be2;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.agendamento-card {
-    background-color: #2a2a2a;
-    border: 1px solid #444;
-    border-left: 5px solid #8a2be2;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-.agendamento-card:hover {
-    background-color: #333;
-    transform: translateY(-3px);
-}
-.agendamento-card-info {
-    flex-grow: 1;
-}
-.agendamento-card-info h5 {
-    color: white;
-    font-family: 'Anton SC', sans-serif;
-    font-size: 1.5rem;
-    margin-bottom: 5px;
-}
-.agendamento-card-info p {
-    margin-bottom: 0;
-    color: #ccc;
-}
-.agendamento-card .btn-cancelar {
-    background-color: #444;
-    color: #ff4d4d;
-    border: 1px solid #ff4d4d;
-}
- .agendamento-card .btn-cancelar:hover {
-    background-color: #ff4d4d;
-    color: white;
- }
-
-.accordion-item {
-    background-color: #2a2a2a;
-    border: 1px solid #4b0082;
-    color: white;
-}
-.accordion-button {
-    background-color: #333;
-    color: white;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: bold;
-}
-.accordion-button:not(.collapsed) {
-    background-color: #8a2be2;
-    color: white;
-    box-shadow: none;
-}
-.accordion-button:focus {
-    box-shadow: none;
-}
-.accordion-button::after {
-    filter: invert(1) grayscale(100%) brightness(200%);
-}
-.accordion-body {
-    background-color: #1c1c1c;
-}
-
-
-.footer {
-    background-color: rgba(28, 28, 28, 0.708);
-    backdrop-filter: blur(5px);
-    padding: 30px 50px;
-    color: white;
-    font-family: 'Orbitron', sans-serif;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    min-height: 180px;
-    flex-wrap: wrap;
-}
-
-.footer-left {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.footer-left h2 {
-    margin-bottom: 15px;
-    font-weight: 600;
-    font-size: 2rem;
-}
-
-.links-footer {
-    display: flex;
-    gap: 15px;
-}
-
-.links-footer a {
-    color: white;
-    font-size: 20px;
-    transition: transform 0.25s ease, color 0.25s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.links-footer a:hover {
-    color: #8a2be2;
-    transform: scale(1.2);
-}
-
-.footer-right {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-left: 50px; 
-}
-
-.footer-right .link {
-    font-size: 1.1rem;
-    color: white;
-    font-family: 'Orbitron', sans-serif;
-    user-select: none;
-    transition: color 0.3s;
-}
-
-.footer-right .link:hover {
-    color: #8a2be2;
-}
-
-.direitos {
-    width: 100%;
-    text-align: center;
-    font-size: 0.85rem;
-    color: #aaa;
-    font-family: 'Orbitron', sans-serif;
-    margin-top: 25px;
-}
-
-/* ========================================================= */
-/* ===== 8. RESPONSIVIDADE (MEDIA QUERIES) ===== */
-/* ========================================================= */
-
-@media (max-width: 1024px) {
-    .modalidade {
-        width: 260px;
-    }
-    .franquias {
-        width: 260px;
-    }
-}
-
-@media (max-width: 768px) {
-    .secaoUnidades {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .Flex-Modalidades,
-    .Flex-franquias {
-        gap: 20px;
-    }
-
-    .secao h2 {
-        font-size: 2rem;
-    }
-    
-    .header {
-        padding: 15px 20px;
-    }
-    
-    .header button,
-    .header select,
-    .dropbtn {
-        font-size: 1rem;
-        margin: 0 5px;
-    }
-    
-    .titulo-techfit {
-        font-size: 1.2rem;
-        margin-right: 15px;
-    }
-}
-
-@media (max-width: 600px) {
-    .footer {
-        flex-direction: column;
-        align-items: center;
-        padding: 30px 20px;
-    }
-    .footer-left, .footer-right {
-        margin-left: 0 !important;
-        align-items: center;
-        text-align: center;
-    }
-    .footer-right {
-        margin-top: 20px;
-    }
-}
-
-@media (max-width: 480px) {
+    /* Aplicando o fundo gradiente ao main, já que o body é flex */
     main {
-        padding: 20px;
-        margin-top: 120px;
+        flex-grow: 1; /* Faz o main ocupar o espaço restante */
+        padding-top: 2rem;
+        padding-bottom: 4rem;
     }
 
-    .modalidade,
-    .franquias {
-        width: 90%; 
+    /* ======================================
+    CSS DAS ABAS VERTICAIS (MODIFICADO)
+    ======================================
+    */
+
+    /* Estilizando as Abas (Pills) Verticais */
+    .nav-pills .nav-link {
+        color: #ccc;
+        background-color: #222;
+        border: 1px solid #333;
+        margin-bottom: 8px; /* Espaçamento vertical entre os botões */
+        font-family: 'Orbitron', sans-serif;
+        text-align: left; /* Alinha o texto à esquerda */
+        border-radius: 8px;
+        padding: 12px 15px;
+        transition: all 0.3s ease;
     }
 
-    .barra_pesquisa {
-        width: 90%;
+    .nav-pills .nav-link.active {
+        color: #ffffff;
+        background-color: #8a2be2; /* Fundo roxo ativo */
+        border-color: #8a2be2;
+        font-weight: bold;
+        box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
     }
 
-    .secao h2 {
-        font-size: 1.8rem;
+    .nav-pills .nav-link:hover:not(.active) {
+        color: white;
+        background-color: #3a3a3a;
+        border-color: #555;
+        transform: translateX(3px);
+    }
+
+    /* Conteúdo da Aba (agora na direita) */
+    .tab-content {
+        background-color: rgba(28, 28, 28, 0.85); /* Fundo escuro semi-transparente */
+        padding: 2.5rem;
+        border-radius: 15px; /* Borda arredondada em todos os cantos */
+        border: 1px solid #4b0082; /* Borda completa */
+        box-shadow: 0 0 20px rgba(138,43,226,0.3);
+        height: 100%; /* Ocupa a altura total da coluna */
     }
     
-    .anuncio {
-        font-size: 3rem;
-        left: 5%;
+    /* Demais estilos (títulos, tabelas, etc. permanecem os mesmos) */
+    .tab-content h3 {
+        color: #8a2be2; /* Títulos roxos */
+        font-family: 'Anton SC', sans-serif;
+        font-size: 2rem;
+        border-bottom: 2px solid #8a2be2;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
     }
-}
+
+    .table { margin-top: 1.5rem; }
+    
+    .agendamento-card {
+        background-color: #2a2a2a;
+        border: 1px solid #444;
+        border-left: 5px solid #8a2be2;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+    .agendamento-card:hover {
+        background-color: #333;
+        transform: translateY(-3px);
+    }
+    .agendamento-card-info { flex-grow: 1; }
+    .agendamento-card-info h5 {
+        color: white;
+        font-family: 'Anton SC', sans-serif;
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+    .agendamento-card-info p { margin-bottom: 0; color: #ccc; }
+    .agendamento-card .btn-cancelar {
+        background-color: #444;
+        color: #ff4d4d;
+        border: 1px solid #ff4d4d;
+    }
+     .agendamento-card .btn-cancelar:hover {
+        background-color: #ff4d4d;
+        color: white;
+     }
+
+    .accordion-item {
+        background-color: #2a2a2a;
+        border: 1px solid #4b0082;
+        color: white;
+    }
+    .accordion-button {
+        background-color: #333;
+        color: white;
+        font-family: 'Orbitron', sans-serif;
+        font-weight: bold;
+    }
+    .accordion-button:not(.collapsed) {
+        background-color: #8a2be2;
+        color: white;
+        box-shadow: none;
+    }
+    .accordion-button:focus { box-shadow: none; }
+    .accordion-button::after {
+        filter: invert(1) grayscale(100%) brightness(200%);
+    }
+    .accordion-body { background-color: #1c1c1c; }
