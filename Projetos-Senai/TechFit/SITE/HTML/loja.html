@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/loja.css">
 
-    <title>Tech Fit - Loja</title>
+    <title>Tech Fit - Loja Oficial</title>
 </head>
 <body>
-      <header class="header">
+    <header class="header">
         <h1 class="titulo-techfit" onclick="home()">TECHFIT</h1>
 
         <button onclick="franquias()" id="franquias">Franquias</button>
@@ -22,7 +22,7 @@
         <div class="dropdown usuario-dropdown">
             <img src="IMG/usuario.png" class="dropbtn usuario-btn">
             <div class="dropdown-content">
-                <a onclick="perfil_usuario()"<i class="bi bi-person"></i> Perfil</a>
+                <a onclick="perfil_usuario()"><i class="bi bi-person"></i> Perfil</a>
                 <a href="login.html"><i class="bi bi-house"></i> Login</a>
             </div>
         </div>
@@ -34,15 +34,15 @@
     <div class="loja-content-wrapper">
         
         <aside class="loja-sidebar-filters">
-            <h3 class="sidebar-title">Filtrar</h3> 
-            <div class="secaoLoja-vertical"> 
+            <h3 class="sidebar-title">Filtrar</h3>
+            <div class="secaoLoja-vertical">
                 <button>Vestuário</button>
                 <button>Suplementos</button>
                 <button>Acessórios</button>
             </div>
             
             <h3 class="sidebar-title">Gênero</h3>
-            <div class="secaoLoja-vertical"> 
+            <div class="secaoLoja-vertical">
                 <button>Masculino</button>
                 <button>Feminino</button>
                 <button>Unisex</button>
@@ -52,128 +52,185 @@
         <div class="loja-main-area">
             
             <div class="secao">
-                <h2>Todos os Produtos</h2>
+                <h2>Kit Performance TechFit</h2>
+                <p>Equipamentos, vestuário e suplementos com o melhor preço e tecnologia.</p>
             </div>
             
              <div class="pesquisa">
-            <div class="area_pesquisa">
-                <div class="barra_pesquisa">
-                    <i class="bi bi-search"></i>
-                    <input type="text" id="pesquisa_produtos" placeholder="Produtos">
+                <div class="area_pesquisa">
+                    <div class="barra_pesquisa">
+                        <i class="bi bi-search"></i>
+                        <input type="text" id="pesquisa_produtos" placeholder="Encontre o produto perfeito...">
+                    </div>
                 </div>
             </div>
-        </div>
 
 <section class="produtos-container">
     
-    <div id="Flex-produtos-acessorios" class="Flex-produtos"> 
+    <div id="Flex-produtos-acessorios" class="Flex-produtos">
         <div class="produto">
-            <h4 class="produto-nome">Garrafa Smart - 1,5L</h4>
+            <h4 class="produto-nome">Garrafa Smart Hydration 1.5L</h4>
             <img src="IMG/Garrafa techfit.png" alt="Garrafa Smart TechFit">
-            <h4 class="produto-preco">R$ 119,90</h4>
-            <p class="produto-descricao">**Hidratação Nível Tech.** Monitora sua ingestão e te avisa. Seu treino, **máxima performance**.</p>
-            <button class="comprar-btn" onclick="comprar()">Comprar</button>
+            <h4 class="produto-preco">R$ 99,90</h4>
+            <p class="produto-descricao">**Garrafa Smart TechFit:** Mantém a água gelada por horas. **Hidratação total e foco** no seu treino diário.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
         </div>
 
         <div class="produto">
-            <h4 class="produto-nome">Luvas Power Grip</h4>
-            <img src="IMG/Luva.png" alt="Luvas Power Grip">
-            <h4 class="produto-preco">R$ 59,99</h4>
-            <p class="produto-descricao">**Domine o peso.** Tecnologia antiderrapante e proteção total para treinos de alta intensidade.</p>
-            <button class="comprar-btn" onclick="comprar()">Comprar</button>
+            <h4 class="produto-nome">Meia de Compressão Profissional</h4>
+            <img src="IMG/Meia techfit.png" alt="Meia techfit">
+            <h4 class="produto-preco">R$ 49,99</h4>
+            <p class="produto-descricao">**Meia techfit:** Reduz a fadiga muscular e melhora a circulação. **Conforto e recuperação** rápida pós-treino.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
         </div>
 
         <div class="produto">
-            <h4 class="produto-nome">Smartwatch Pro X</h4>
-            <img src="IMG/Smartwatch.png" alt="Smartwatch Pro X">
-            <h4 class="produto-preco">R$ 499,99</h4>
-            <p class="produto-descricao">Seu parceiro de treino: GPS, cardíaco e muito mais. **Dados em tempo real** para bater suas metas.</p>
-            <button class="comprar-btn" onclick="comprar()">Comprar</button>
+            <h4 class="produto-nome">Pochete Running Ciclone</h4>
+            <img src="IMG/Pochete techfit.png" alt="Pochete techfit">
+            <h4 class="produto-preco">R$ 39,90 <span style="text-decoration: line-through; color: #aaa; font-size: 0.8em;">R$ 59,99</span></h4>
+            <p class="produto-descricao">**Pochete techfit:** Leve, compacta e ajustável. **Perfeita para correr** sem se preocupar com celular e chaves.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
         </div>
     </div>
 
 
-    <div id="Flex-produtos-feminino" class="Flex-produtos hidden"> 
+    <div id="Flex-produtos-feminino" class="Flex-produtos hidden">
         <div class="produto">
-            <h4 class="produto-nome">Legging TechFit Alpha</h4>
+            <h4 class="produto-nome">Legging Power Lift - Zero Transparência</h4>
             <img src="IMG/Produto feminino 1.png" alt="Legging feminina">
-            <h4 class="produto-preco">R$ 149,90</h4>
-            <p class="produto-descricao">Zero transparência e compressão ideal. **Liberdade total** em qualquer movimento. Estilo e força.</p>
-            <button class="comprar-btn" onclick="comprar()">Comprar</button>
+            <h4 class="produto-preco">R$ 139,90</h4>
+            <p class="produto-descricao">**Legging feminina:** Compressão ideal e zero transparência. **Sinta-se poderosa e segura** em todos os exercícios.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
         </div>
 
         <div class="produto">
-            <h4 class="produto-nome">Top Esportivo Max</h4>
+            <h4 class="produto-nome">Top Esportivo High Impact</h4>
             <img src="IMG/Produto feminino 4.png" alt="Top Esportivo Max">
             <h4 class="produto-preco">R$ 89,90</h4>
-            <p class="produto-descricao">Suporte máximo e tecido que respira. Perfeito para **cardio e treinos de impacto**.</p>
-            <button class="comprar-btn" onclick="comprar()">Comprar</button>
+            <p class="produto-descricao">**Top Esportivo Max:** Suporte máximo para treinos de **alto impacto**. Mantenha o **conforto** durante todo o exercício.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
         </div>
 
         <div class="produto">
-            <h4 class="produto-nome">Camiseta Dry-Fit Zero</h4>
+            <h4 class="produto-nome">Camiseta Dry-Fit Ultra-Leve</h4>
             <img src="IMG/Produto feminino 3.png" alt="Camiseta Dry-Fit">
-            <h4 class="produto-preco">R$ 65,00</h4>
-            <p class="produto-descricao">Tecnologia Dry-Fit, leve e ultrasseca. Sinta-se **sempre fresca** para ir além dos limites.</p>
-            <button class="comprar-btn" onclick="comprar()">Comprar</button>
+            <h4 class="produto-preco">R$ 64,90</h4>
+            <p class="produto-descricao">**Camiseta Dry-Fit:** Tecnologia de secagem rápida. **Mantenha-se fresca e seca** do início ao fim do treino.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
         </div>
 
         <div class="produto">
-            <h4 class="produto-nome">Shorts Pro Action</h4>
+            <h4 class="produto-nome">Shorts 2 em 1 para Corrida</h4>
             <img src="IMG/Produto feminino 2.png" alt="Shorts Pro Action">
-            <h4 class="produto-preco">R$ 95,90</h4>
-            <p class="produto-descricao">Design moderno e mobilidade sem igual. Ideal para **corrida** e funcional.</p>
-            <button class="comprar-btn" onclick="comprar()">Comprar</button>
+            <h4 class="produto-preco">R$ 99,00</h4>
+            <p class="produto-descricao">**Shorts Pro Action:** Forro de compressão interna. **Performance e estilo** para corridas e treinos funcionais.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
         </div>
 
         <div class="produto">
-            <h4 class="produto-nome">Jaqueta Corta-Vento</h4>
+            <h4 class="produto-nome">Jaqueta Corta-Vento Estilosa</h4>
             <img src="IMG/Produto feminino 5.png" alt="Jaqueta Corta-Vento">
-            <h4 class="produto-preco">R$ 199,90</h4>
-            <p class="produto-descricao">Leve, compacta e protetora. O item essencial para seus **treinos ao ar livre**.</p>
-            <button class="comprar-btn" onclick="comprar()">Comprar</button>
+            <h4 class="produto-preco">R$ 179,90</h4>
+            <p class="produto-descricao">**Jaqueta Corta-Vento:** Protege contra vento e chuva leve. **Ideal para treinos externos.** Estilo moderno e versátil.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
         </div>
 
         <div class="produto">
-            <h4 class="produto-nome">Meia de Compressão</h4>
+            <h4 class="produto-nome">Meia de Compressão Recovery Pro</h4>
             <img src="IMG/Produto feminino 6.png" alt="Meia de Compressão">
             <h4 class="produto-preco">R$ 45,90</h4>
-            <p class="produto-descricao">Recupere-se mais rápido. **Aumenta a circulação** e reduz a fadiga pós-treino.</p>
-            <button class="comprar-btn" onclick="comprar()">Comprar</button>
+            <p class="produto-descricao">**Meia de Compressão:** Auxilia na recuperação muscular. **Mais energia e menos dor** após atividades intensas.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
         </div>
     </div>
 
-    <div id="Flex-produtos-masculino" class="Flex-produtos hidden"> 
+    <div id="Flex-produtos-masculino" class="Flex-produtos hidden">
         <div class="produto">
-            <h4 class="produto-nome">Camiseta Performance Masculina</h4>
-            <img src="IMG/Produto-masculino-exemplo-1.png" alt="Camiseta Masculina">
-            <h4 class="produto-preco">R$ 79,90</h4>
-            <p class="produto-descricao">Tecido antiodor e leveza. Ideal para **treinos longos** e máxima ventilação.</p>
-            <button class="comprar-btn" onclick="comprar()">Comprar</button>
+            <h4 class="produto-nome">Kit Performance PRO (Camiseta e Shorts)</h4>
+            <img src="IMG/Modelo Masculino 1 Performance Pro - Camiseta de Performance e Shorts de Treino.png" alt="Masculino 1 Performance Pro - Camiseta de Performance e Shorts de Treino">
+            <h4 class="produto-preco">R$ 149,90</h4>
+            <p class="produto-descricao">**Kit Performance PRO:** Leveza e respirabilidade. **Kit completo** para sua performance máxima nos treinos.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
         </div>
         <div class="produto">
-            <h4 class="produto-nome">Shorts Power Lift</h4>
-            <img src="IMG/Produto-masculino-exemplo-2.png" alt="Shorts Masculino">
-            <h4 class="produto-preco">R$ 129,90</h4>
-            <p class="produto-descricao">Com forro de compressão interna. **Suporte e segurança** para agachamentos e saltos.</p>
-            <button class="comprar-btn" onclick="comprar()">Comprar</button>
+            <h4 class="produto-nome">Conjunto Conforto Urbano - Oversized</h4>
+            <img src="IMG/Modelo Masculino 2 Conforto Urbano - Camiseta Oversized e Calça Jogger.png" alt="Masculino 2 Conforto Urbano - Camiseta Oversized e Calça Jogger">
+            <h4 class="produto-preco">R$ 189,90</h4>
+            <p class="produto-descricao">**Conforto Urbano:** Estilo e conforto em um conjunto oversized e jogger. **Ideal para o dia a dia** e aquecimento.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
+        </div>
+        <div class="produto">
+            <h4 class="produto-nome">Regata e Shorts Agilidade Total</h4>
+            <img src="IMG/Modelo Masculino 3 Agilidade Total - Regata de Treino e Shorts com Detalhes Laterais.png" alt="Masculino 3 Agilidade Total - Regata de Treino e Shorts com Detalhes Laterais">
+            <h4 class="produto-preco">R$ 119,90</h4>
+            <p class="produto-descricao">**Agilidade Total:** Feitos para liberdade máxima de movimento. **Perfeito para funcional** e cross training.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
+        </div>
+        <div class="produto">
+            <h4 class="produto-nome">Kit Compressão Força e Foco</h4>
+            <img src="IMG/Modelo Masculino 4 Força e Foco - Camisa de Compressão de Manga Longa e Calça de Compressão.png" alt="Masculino 4 Força e Foco - Camisa de Compressão de Manga Longa e Calça de Compressão">
+            <h4 class="produto-preco">R$ 199,90</h4>
+            <p class="produto-descricao">**Kit Compressão:** Aumenta a performance e reduz o risco de lesões. **Foco Total** para treinos de força.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
+        </div>
+        <div class="produto">
+            <h4 class="produto-nome">Conjunto Blusão e Calça Cargo Esportiva</h4>
+            <img src="IMG/Modelo Masculino 5 Estilo Urbano Ativo - Blusão com Capuz e Calça Cargo Esportiva.png" alt="Masculino 5 Estilo Urbano Ativo - Blusão com Capuz e Calça Cargo Esportiva">
+            <h4 class="produto-preco">R$ 239,90</h4>
+            <p class="produto-descricao">**Estilo Urbano:** Blusão e Calça Cargo. Confortável e quente. **O visual perfeito** para o pós-treino e o dia a dia.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
+        </div>
+        <div class="produto">
+            <h4 class="produto-nome">Camiseta V-Neck Foco Total e Shorts Ajustado</h4>
+            <img src="IMG/Modelo Masculino 6 Foco Total - Camiseta de Treino com Gola V e Shorts Ajustado.png" alt="Modelo Masculino 6 Foco Total - Camiseta de Treino com Gola V e Shorts Ajustado">
+            <h4 class="produto-preco">R$ 109,90</h4>
+            <p class="produto-descricao">**Foco Total:** Conforto e caimento ideal com Gola V e shorts. **Foco Total** para a sua meta diária de treino.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
         </div>
     </div>
 
-    <div id="Flex-produtos-suplementos" class="Flex-produtos hidden"> 
+    <div id="Flex-produtos-suplementos" class="Flex-produtos hidden">
         <div class="produto">
-            <h4 class="produto-nome">Whey Protein Ultra 900g</h4>
-            <img src="IMG/Suplemento-exemplo-1.png" alt="Whey Protein">
+            <h4 class="produto-nome">Whey Protein Baunilha - Isolado Premium</h4>
+            <img src="IMG/Whey Protein TechFit Baunilha Bean Isolado.png" alt="Whey Protein TechFit Baunilha Bean Isolado">
             <h4 class="produto-preco">R$ 169,00</h4>
-            <p class="produto-descricao">25g de proteína por dose. **Recuperação e construção muscular** turbo.</p>
-            <button class="comprar-btn" onclick="comprar()">Comprar</button>
+            <p class="produto-descricao">**Whey Baunilha Isolado:** 25g de proteína por dose. **Acelera a construção muscular** com qualidade e o melhor sabor.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
         </div>
         <div class="produto">
-            <h4 class="produto-nome">Creatina Monohidratada</h4>
-            <img src="IMG/Suplemento-exemplo-2.png" alt="Creatina">
-            <h4 class="produto-preco">R$ 89,90</h4>
-            <p class="produto-descricao">Aumenta força e explosão. **Potencialize** seus treinos de alta intensidade.</p>
-            <button class="comprar-btn" onclick="comprar()">Comprar</button>
+            <h4 class="produto-nome">Whey Protein Berry Blast - Isolado</h4>
+            <img src="IMG/Whey Protein TechFit Berry Blast Isolado.png" alt="Whey Protein TechFit Berry Blast Isolado">
+            <h4 class="produto-preco">R$ 169,00</h4>
+            <p class="produto-descricao">**Whey Berry Blast Isolado:** Sabor explosivo de frutas. **Recuperação rápida** e eficaz. Zero adição de açúcar!</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
+        </div>
+        <div class="produto">
+            <h4 class="produto-nome">Whey Protein Chocolate Fudge - O Clássico</h4>
+            <img src="IMG/Whey Protein TechFit Chocolate Fudge Isolado.png" alt="Whey Protein TechFit Chocolate Fudge Isolado">
+            <h4 class="produto-preco">R$ 159,00 <span style="text-decoration: line-through; color: #aaa; font-size: 0.8em;">R$ 169,00</span></h4>
+            <p class="produto-descricao">**Whey Chocolate Isolado:** O sabor clássico que não pode faltar. **Máxima absorção** e delicioso. Oferta de lançamento!</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
+        </div>
+        <div class="produto">
+            <h4 class="produto-nome">Whey Cookies & Cream - Sabor Irresistível</h4>
+            <img src="IMG/Whey Protein TechFit Cookies & Cream Isolado.png" alt="Whey Protein TechFit Cookies & Cream Isolado">
+            <h4 class="produto-preco">R$ 169,00</h4>
+            <p class="produto-descricao">**Whey Cookies & Cream:** O lanche proteico irresistível. **Alto valor biológico** para resultados e construção muscular.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
+        </div>
+        <div class="produto">
+            <h4 class="produto-nome">Whey Protein Morango Silvestre - Isolado</h4>
+            <img src="IMG/Whey Protein TechFit Morango Silvestre Isolado.png" alt="Whey Protein TechFit Morango Silvestre Isolado">
+            <h4 class="produto-preco">R$ 169,00</h4>
+            <p class="produto-descricao">**Whey Morango Isolado:** Sabor leve e refrescante. **Nutrição completa** e deliciosa para o seu dia a dia.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
+        </div>
+        <div class="produto">
+            <h4 class="produto-nome">Whey Protein Banana Tropical - Potência Pura</h4>
+            <img src="IMG/Whey Protein TechFit Potência em Cada Dose - sabor de tropical banana.png" alt="Whey Protein TechFit Potência em Cada Dose - sabor de tropical banana">
+            <h4 class="produto-preco">R$ 169,00</h4>
+            <p class="produto-descricao">**Whey Banana Tropical:** Energia e sabor de fruta. **Potência em Cada Dose** para ir além dos seus limites.</p>
+            <button class="comprar-btn" onclick="comprar()">Comprar Agora!</button>
         </div>
     </div>
 
