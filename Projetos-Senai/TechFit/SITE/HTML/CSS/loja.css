@@ -4,25 +4,25 @@
 
 main {
     flex-grow: 1; 
-    margin-top: 100px; /* Reduzido de 120px */
-    padding: 15px; /* Reduzido de 20px */
+    margin-top: 100px; 
+    padding: 15px; 
     font-family: 'Orbitron', sans-serif;
 }
 
 .loja-content-wrapper {
     display: flex;
     justify-content: center;
-    gap: 20px; /* Reduzido de 30px */
+    gap: 20px; 
     width: 95%; 
-    max-width: 1200px; /* Reduzido de 1300px */
-    margin: 30px auto; /* Reduzido de 40px */
+    max-width: 1200px; 
+    margin: 30px auto; 
 }
 
 .loja-sidebar-filters {
-    width: 220px; /* Reduzido de 250px */
-    padding: 15px 10px; /* Reduzido de 20px 15px */
+    width: 220px; 
+    padding: 15px 10px; 
     background-color: rgba(28, 28, 28, 0.7);
-    border-radius: 10px; /* Reduzido de 12px */
+    border-radius: 10px; 
     align-self: flex-start; 
     border: 1px solid #4b0082;
     box-shadow: 0 0 8px rgba(138, 43, 226, 0.2);
@@ -30,15 +30,15 @@ main {
 
 .loja-main-area {
     flex-grow: 1; 
-    max-width: 900px; /* Reduzido de 1000px */
+    max-width: 900px; 
 }
 
 .secao h2 {
     font-family: 'Anton SC', sans-serif;
-    font-size: 2.0rem; /* Reduzido de 2.5rem */
+    font-size: 2.0rem; 
     color: #fff;
     text-shadow: 0 0 8px rgba(138, 43, 226, 0.6);
-    margin-bottom: 25px; /* Reduzido de 30px */
+    margin-bottom: 25px; 
     text-align: center;
 }
 
@@ -48,11 +48,11 @@ main {
 
 .sidebar-title {
     font-family: 'Anton SC', sans-serif;
-    font-size: 1.1rem; /* Reduzido de 1.3rem */
+    font-size: 1.1rem; 
     color: #8a2be2;
-    margin-bottom: 20px; /* Reduzido de 25px */
-    padding-bottom: 6px; /* Reduzido de 8px */
-    border-bottom: 1px solid #4b0082; /* Borda um pouco mais fina */
+    margin-bottom: 20px; 
+    padding-bottom: 6px; 
+    border-bottom: 1px solid #4b0082; 
     text-align: center;
     text-transform: uppercase;
 }
@@ -60,23 +60,23 @@ main {
 .secaoLoja-vertical {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Reduzido de 12px */
-    margin-bottom: 20px; /* Reduzido de 25px */
+    gap: 10px; 
+    margin-bottom: 20px; 
 }
 
 .loja-sidebar-filters button {
     width: 100%;
-    padding: 8px 12px; /* Reduzido de 10px 15px */
+    padding: 8px 12px; 
     background-color: #333;
     color: white;
     border: 1px solid #8a2be2;
-    border-radius: 5px; /* Reduzido de 6px */
+    border-radius: 5px; 
     font-family: 'Orbitron', sans-serif;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
     text-align: left;
-    font-size: 0.9rem; /* Levemente reduzido */
+    font-size: 0.9rem; 
 }
 
 .loja-sidebar-filters button:hover {
@@ -85,24 +85,29 @@ main {
 }
 
 /* ========================================================= */
-/* ===== 3. PESQUISA (INPUT HITECH) ===== */
+/* ===== 3. PESQUISA (INPUT HITECH) E CLASSE HIDDEN ===== */
 /* ========================================================= */
+
+/* Classe para esconder elementos (usada para filtros) */
+.hidden {
+    display: none !important;
+}
 
 .pesquisa-wrapper {
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 30px; /* Reduzido de 40px */
+    margin-bottom: 30px; 
     width: 100%;
 }
 
 .barra_pesquisa {
     background-color: rgba(28, 28, 28, 0.85);
-    padding: 8px 15px; /* Reduzido de 10px 20px */
-    border-radius: 20px; /* Reduzido de 25px */
+    padding: 8px 15px; 
+    border-radius: 20px; 
     display: flex;
     align-items: center;
     box-shadow: 0 0 8px rgba(138, 43, 226, 0.4);
-    width: 300px; /* Reduzido de 320px */
+    width: 300px; 
     transition: box-shadow 0.3s;
     margin: 0 auto;
 }
@@ -113,7 +118,7 @@ main {
 
 .barra_pesquisa i {
     color: #8a2be2;
-    margin-right: 8px; /* Reduzido de 10px */
+    margin-right: 8px; 
 }
 
 .barra_pesquisa input {
@@ -123,25 +128,34 @@ main {
     color: white;
     width: 100%;
     font-family: 'Orbitron', sans-serif;
-    font-size: 0.95rem; /* Levemente reduzido */
+    font-size: 0.95rem; 
 }
 
 /* ========================================================= */
 /* ===== 4. GRID DE PRODUTOS E ESTILOS EXCLUSIVOS DA LOJA ===== */
 /* ========================================================= */
 
+.produtos-container {
+    /* Garante que os contêineres Flex-produtos fiquem empilhados verticalmente */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaço entre as seções de produtos (ex: acessórios e femininos) */
+    padding-bottom: 40px; 
+}
+
+
 .Flex-produtos {
     display: grid; 
-    /* Mantido 300px, pois já é um bom tamanho mínimo para 3 colunas em 900px de área */
+    /* Esta regra é que cria as colunas e é aplicada agora aos contêineres de filtro */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 20px; /* Reduzido de 25px */
-    padding-bottom: 40px; /* Reduzido de 50px */
+    gap: 20px;
+    /* Removido o padding-bottom daqui, agora está no .produtos-container */
 }
 
 .produto {
     background-color: rgba(28, 28, 28, 0.9);
-    border-radius: 12px; /* Reduzido de 15px */
-    padding: 20px; /* Reduzido de 25px */
+    border-radius: 12px; 
+    padding: 20px; 
     text-align: center;
     box-shadow: 0 0 12px rgba(255,255,255,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -151,39 +165,39 @@ main {
 }
 
 .produto:hover {
-    transform: translateY(-5px); /* Movimento menor */
-    box-shadow: 0 0 20px rgba(138,43,226,0.7); /* Sombra menor */
+    transform: translateY(-5px); 
+    box-shadow: 0 0 20px rgba(138,43,226,0.7); 
 }
 
 .produto .produto-nome {
     font-family: 'Anton SC', sans-serif;
-    font-size: 1.4rem; /* Reduzido de 1.6rem */
+    font-size: 1.4rem; 
     color: white;
-    margin-bottom: 8px; /* Reduzido de 10px */
+    margin-bottom: 8px; 
     width: 100%; 
     text-align: center;
 }
 
 .produto img {
     width: 100%;
-    height: 180px; /* Reduzido de 200px */
+    height: 180px; 
     object-fit: cover;
-    border-radius: 8px; /* Reduzido de 10px */
-    margin-bottom: 12px; /* Reduzido de 15px */
+    border-radius: 8px; 
+    margin-bottom: 12px; 
 }
 
 .produto-preco {
     font-family: 'Anton SC', sans-serif;
-    font-size: 1.8rem; /* Reduzido de 2.0rem */
+    font-size: 1.8rem; 
     color: #00ff66; 
-    margin-bottom: 12px; /* Reduzido de 15px */
+    margin-bottom: 12px; 
     font-weight: bold;
 }
 
 .produto .produto-descricao {
     color: #ccc;
-    font-size: 0.85rem; /* Reduzido de 0.95rem */
-    margin-bottom: 8px; /* Reduzido de 10px */
+    font-size: 0.85rem; 
+    margin-bottom: 8px; 
     text-align: center;
     padding: 0 5px; 
     flex-grow: 1; 
@@ -193,19 +207,19 @@ main {
     background-color: #8a2be2;
     color: white;
     border: none;
-    padding: 10px 25px; /* Reduzido de 12px 30px */
-    border-radius: 6px; /* Reduzido de 8px */
+    padding: 10px 25px; 
+    border-radius: 6px; 
     font-family: 'Orbitron', sans-serif;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
     width: 80%; 
-    margin-top: 12px; /* Reduzido de 15px */
+    margin-top: 12px; 
 }
 
 .comprar-btn:hover {
     background-color: #a855f7;
-    transform: scale(1.03); /* Escala de hover menor */
+    transform: scale(1.03); 
     box-shadow: 0 0 8px rgba(138, 43, 226, 0.5);
 }
 
@@ -217,13 +231,13 @@ main {
     .loja-content-wrapper {
         flex-direction: column;
         align-items: center;
-        gap: 30px; /* Reduzido de 40px */
+        gap: 30px; 
     }
 
     .loja-sidebar-filters {
         order: -1;
         width: 100%;
-        max-width: 500px; /* Reduzido de 600px */
+        max-width: 500px; 
     }
     
     .loja-main-area {
@@ -235,7 +249,7 @@ main {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 8px; /* Reduzido de 10px */
+        gap: 8px; 
     }
     .loja-sidebar-filters button {
         width: auto;
@@ -251,7 +265,7 @@ main {
 @media (max-width: 580px) {
     .Flex-produtos {
         grid-template-columns: 1fr;
-        gap: 15px; /* Reduzido de 20px */
+        gap: 15px; 
     }
     
     .produto {
