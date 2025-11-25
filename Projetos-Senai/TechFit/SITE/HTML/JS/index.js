@@ -1,7 +1,7 @@
 // Pagina Usuario
 
         function Login() {
-            window.location.href = "login.html"; 
+            window.location.href = "/TechFit/SITE/HTML/View/login.php"; 
         
         }
 
