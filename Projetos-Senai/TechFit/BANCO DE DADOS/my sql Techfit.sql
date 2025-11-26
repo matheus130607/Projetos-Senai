@@ -187,4 +187,7 @@ INSERT INTO Planos (beneficios_planos, nome_planos, id_cliente, id_funcionario) 
 ('renovamento automatico, acesso a equipamentos', 'plano casal', 2, 2),
 ('acesso as academias, renovamento automatico, treine com 5 amigos, acesso a massagem, acesso a equipamentos, avaliação fisica', 'plano premium', 3, 3);
 
-select * from Planos
+select * from Planos;
+
+ALTER TABLE Clientes
+ADD COLUMN perfil_acesso VARCHAR(10) NOT NULL DEFAULT 'cliente';
