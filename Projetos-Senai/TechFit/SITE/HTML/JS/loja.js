@@ -122,4 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 6. Listener do Input de Pesquisa (executa a cada tecla digitada)
     inputPesquisa.addEventListener('input', pesquisarProdutos);
-});
+}); 
+    function comprar() {
+        location.href = "compra.html"
+    }
