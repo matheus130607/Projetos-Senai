@@ -104,7 +104,7 @@ if (isset($_GET['msg'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADM Tech Fit - Gerenciamento de Produtos</title>
-    <link rel="stylesheet" href="./adm.css">
+    <link rel="stylesheet" href="CSS/adm.css">
 </head>
 <body>
     <div class="container mt-5">

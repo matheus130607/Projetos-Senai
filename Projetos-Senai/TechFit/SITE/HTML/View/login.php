@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Fit - Login</title>
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="login_register.css">
+    <link rel="stylesheet" href="CSS/login_register.css">
 </head>
 <body>
     <h1>TECHFIT</h1>
