@@ -18,6 +18,7 @@ class ProdutoDAO {
                 tipo_produtos VARCHAR(100) NOT NULL,
                 nome_produtos VARCHAR(100) NOT NULL,
                 quant_produtos INT NOT NULL,
+                preco_produtos DECIMAL(10, 2) NOT NULL,
                 data_venc_produtos DATETIME NOT NULL
             )
         ");
@@ -25,22 +26,21 @@ class ProdutoDAO {
 
     // CREATE: Cadastra novo produto
     public function criar(Produto $produto) {
-        // Opcional: Chama a criação da tabela, caso a conexão não garanta isso.
-        $this->criarTabelaSeNaoExistir(); 
-
+        // ... (chamada a criarTabelaSeNaoExistir, se existir)
+        
         $stmt = $this->conn->prepare("
             INSERT INTO Produtos 
-                (tipo_produtos, nome_produtos, quant_produtos, data_venc_produtos)
+                (tipo_produtos, nome_produtos, quant_produtos, preco_produtos, data_venc_produtos) -- ATUALIZADO
             VALUES 
-                (:tipo, :nome, :quantidade, :dataVenc)
+                (:tipo, :nome, :quantidade, :preco, :dataVenc) -- ATUALIZADO
         ");
         $stmt->execute([
             ':tipo' => $produto->getTipo(),
             ':nome' => $produto->getNome(),
             ':quantidade' => $produto->getQuantidade(),
+            ':preco' => $produto->getPreco(), 
             ':dataVenc' => $produto->getDataVencimento()
         ]);
-        return $this->conn->lastInsertId();
     }
 
     // READ ALL: Lista todos os produtos
@@ -70,6 +70,7 @@ class ProdutoDAO {
                 $row['tipo_produtos'], 
                 $row['nome_produtos'], 
                 $row['quant_produtos'], 
+                $row['preco_produtos'], 
                 $row['data_venc_produtos'], 
                 $row['id_produtos']
             );
@@ -82,14 +83,13 @@ class ProdutoDAO {
         $stmt = $this->conn->prepare("
             UPDATE Produtos
             SET tipo_produtos = :tipo, nome_produtos = :nome, 
-                quant_produtos = :quantidade, data_venc_produtos = :dataVenc
+                quant_produtos = :quantidade, preco_produtos = :preco, data_venc_produtos = :dataVenc -- ATUALIZADO
             WHERE id_produtos = :id
         ");
         $stmt->execute([
-            ':id' => $produto->getId(),
-            ':tipo' => $produto->getTipo(),
-            ':nome' => $produto->getNome(),
+            // ... (mapeamento de parâmetros)
             ':quantidade' => $produto->getQuantidade(),
+            ':preco' => $produto->getPreco(), 
             ':dataVenc' => $produto->getDataVencimento()
         ]);
     }

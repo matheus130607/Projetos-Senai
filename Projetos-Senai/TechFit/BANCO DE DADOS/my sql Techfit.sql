@@ -83,6 +83,15 @@ id_funcionario int not  null,
 FOREIGN KEY(id_funcionario) REFERENCES Funcionarios (id_funcionario)
 );
 
+CREATE TABLE Produtos (
+    id_produtos int auto_increment not null PRIMARY KEY,
+    tipo_produtos varchar(100) not null,
+    nome_produtos varchar(100) not null,
+    quant_produtos int not null,
+    preco_produtos DECIMAL(10, 2) NOT NULL, -- NOVO CAMPO
+    data_venc_produtos datetime not null
+);
+
 ALTER TABLE Agendamentos ADD FOREIGN KEY(id_funcionario) REFERENCES Funcionarios (id_funcionario);
 ALTER TABLE Agendamentos ADD FOREIGN KEY(id_modalidades) REFERENCES Modalidades (id_modalidades);
 ALTER TABLE Vende ADD FOREIGN KEY(id_funcionario) REFERENCES Funcionarios (id_funcionario);
@@ -91,6 +100,7 @@ ALTER TABLE Planos ADD FOREIGN KEY(id_cliente) REFERENCES Clientes (id_cliente);
 ALTER TABLE Planos ADD FOREIGN KEY(id_funcionario) REFERENCES Funcionarios (id_funcionario);
 ALTER TABLE Agenda ADD FOREIGN KEY(id_cliente) REFERENCES Clientes (id_cliente);
 ALTER TABLE Interage ADD FOREIGN KEY(id_cliente) REFERENCES Clientes (id_cliente);
+ALTER TABLE Produtos ADD COLUMN preco_produtos DECIMAL(10, 2) NOT NULL DEFAULT 0.00;
 
 INSERT INTO Funcionarios (nome_funcionario, CPF_funcioario, CEP_funcionario, data_nasc_funcionario, email_funcionario, senha_funcionario, endereco_funcionario) VALUES
 ('Carlos Andrade', '111.222.333-44', '13480010', '1990-05-15 00:00:00', 'carlos.andrade@email.com', 'senhaForte123', 'Rua das Flores, 10, Centro, Limeira'),
@@ -187,10 +197,14 @@ INSERT INTO Planos (beneficios_planos, nome_planos, id_cliente, id_funcionario) 
 ('renovamento automatico, acesso a equipamentos', 'plano casal', 2, 2),
 ('acesso as academias, renovamento automatico, treine com 5 amigos, acesso a massagem, acesso a equipamentos, avaliação fisica', 'plano premium', 3, 3);
 
+<<<<<<< HEAD
+select * from Planos;
+=======
 select * from Planos;
 
 ALTER TABLE Clientes
 ADD COLUMN perfil_acesso VARCHAR(10) NOT NULL DEFAULT 'cliente';
+<<<<<<< HEAD
 
 /* Tabela de Franquias (adicionada para CRUD de franquias no painel ADM) */
 CREATE TABLE Franquias (
@@ -207,3 +221,6 @@ CREATE TABLE Franquias (
 INSERT INTO Franquias (nome_franquia, descricao_franquia, endereco_franquia, cidade_franquia, estado_franquia, telefone_franquia, email_franquia) VALUES
 ('TechFit Limeira', 'Unidade central com equipamentos modernos e aulas variadas.', 'Av. do Progresso, 500', 'Limeira', 'SP', '(19) 1234-5678', 'limeira@techfit.com'),
 ('TechFit Rio Claro', 'Unidade no centro com área de musculação e piscina.', 'Rua da Energia, 123', 'Rio Claro', 'SP', '(19) 9876-5432', 'rioclaro@techfit.com');
+=======
+>>>>>>> 92395a3885dccbf2d90b0cd9dc09a04784b851dc
+>>>>>>> ed559ce6f009364b2216375d4aa227e91077ab88
