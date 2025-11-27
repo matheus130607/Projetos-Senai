@@ -81,6 +81,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Carrega a lista de modalidades atualizada (o DAO já faz JOIN para trazer o nome do funcionário)
 $listaModalidades = $controller->ler();
 
+// Ordena por ID (menor -> maior)
+if (is_array($listaModalidades)) {
+    usort($listaModalidades, function($a, $b) { return $a->getId() <=> $b->getId(); });
+}
+
 // Verifica se há mensagem de redirecionamento na URL
 if (isset($_GET['msg'])) {
     $mensagem = htmlspecialchars($_GET['msg']);
@@ -93,7 +98,7 @@ if (isset($_GET['msg'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADM Tech Fit - Gerenciamento de Modalidades</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/adm.css">
 </head>
 <body>
     <div class="container mt-5">
@@ -166,7 +171,10 @@ if (isset($_GET['msg'])) {
         <hr>
 
         <h2>Lista de Modalidades (Total: <?php echo count($listaModalidades); ?>)</h2>
-        <table class="table table-striped table-hover mt-3">
+        <div class="mb-3">
+            <input type="text" id="searchModalidades" class="form-control" placeholder="Pesquisar por nome..." onkeyup="filterTableByName('modalidadesTable', 1, this.value)">
+        </div>
+        <table id="modalidadesTable" class="table table-striped table-hover mt-3">
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
@@ -193,14 +201,14 @@ if (isset($_GET['msg'])) {
                                 echo htmlspecialchars($modalidade->nomeFuncionario ?? 'ID não encontrado: ' . $modalidade->getIdFuncionario()); 
                             ?>
                         </td>
-                        <td>
-                            <form method="POST" style="display: inline;">
+                        <td class="acoes">
+                            <form method="POST">
                                 <input type="hidden" name="acao" value="editar">
                                 <input type="hidden" name="id_modalidade" value="<?php echo $modalidade->getId(); ?>">
                                 <button type="submit" class="btn btn-sm btn-primary">Editar</button>
                             </form>
                             
-                            <form method="POST" style="display: inline;" onsubmit="return confirm('Tem certeza que deseja excluir a modalidade: <?php echo htmlspecialchars($modalidade->getNome()); ?>?');">
+                            <form method="POST" onsubmit="return confirm('Tem certeza que deseja excluir a modalidade: <?php echo htmlspecialchars($modalidade->getNome()); ?>?');">
                                 <input type="hidden" name="acao" value="deletar">
                                 <input type="hidden" name="id_modalidade" value="<?php echo $modalidade->getId(); ?>">
                                 <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
@@ -212,5 +220,19 @@ if (isset($_GET['msg'])) {
             </tbody>
         </table>
     </div>
+    <script>
+        function filterTableByName(tableId, nameColIndex, query) {
+            const filter = query.trim().toLowerCase();
+            const table = document.getElementById(tableId);
+            if (!table) return;
+            const rows = table.tBodies[0].rows;
+            for (let i = 0; i < rows.length; i++) {
+                const cell = rows[i].cells[nameColIndex];
+                if (!cell) continue;
+                const text = cell.textContent || cell.innerText;
+                rows[i].style.display = text.toLowerCase().indexOf(filter) > -1 ? '' : 'none';
+            }
+        }
+    </script>
 </body>
 </html>

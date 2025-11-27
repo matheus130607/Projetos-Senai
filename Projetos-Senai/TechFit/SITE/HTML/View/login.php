@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
         if ($_SESSION['user_perfil'] === 'admin') {
             header('Location: adm_clientes.php'); // Próximo arquivo a ser criado
         } else {
-            header('Location: painel_cliente.php'); // Página a ser criada para clientes normais
+            header('Location: Pag_Inicial_CL.html'); // Página a ser criada para clientes normais
         }
         exit;
     } else {
@@ -43,10 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Fit - Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="CSS/login_register.css">
 </head>
 <body>
-    <div class="container mt-5" style=" max-width: 400px;">
+    <h1>TECHFIT</h1>
+    <div class="container mt-5">
         <h2 class="title mb-4">Acesso ao Cliente</h2>
         
         <?php if ($mensagemErro): ?>

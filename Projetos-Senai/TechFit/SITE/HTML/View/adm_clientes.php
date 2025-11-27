@@ -25,9 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $acao = $_POST['acao'] ?? '';
     $id = $_POST['id_cliente'] ?? null;
     
-    // Converte a data de volta para AAAA-MM-DD, se necessário (segurança)
-    $dataNascPost = $_POST['data_nasc_cliente'] ?? null;
-    $dataNascFormatada = date('Y-m-d', strtotime($dataNascPost));
+    // CORREÇÃO DO ERRO DEPRECATED (LINHAS 29-31):
+    // 1. Garante que $dataNascPost é uma string vazia se não for postada.
+    $dataNascPost = $_POST['data_nasc_cliente'] ?? '';
+    
+    // 2. Converte a data APENAS se a string não estiver vazia, caso contrário é null.
+    $dataNascFormatada = empty($dataNascPost) ? null : date('Y-m-d', strtotime($dataNascPost));
 
     try {
         if ($acao === 'salvar') {
@@ -36,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_POST['nome_cliente'],
                 $_POST['CPF_cliente'],
                 $_POST['CEP_cliente'],
-                $dataNascFormatada,
+                $dataNascFormatada, // Usa o valor corrigido
                 $_POST['email_cliente'],
                 $_POST['endereco_cliente'],
                 $_POST['estado_cliente'],
@@ -63,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_POST['nome_cliente'],
                 $_POST['CPF_cliente'],
                 $_POST['CEP_cliente'],
-                $dataNascFormatada,
+                $dataNascFormatada, // Usa o valor corrigido
                 $_POST['email_cliente'],
                 $_POST['endereco_cliente'],
                 $_POST['estado_cliente'],
@@ -71,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_POST['perfil_acesso'] // O perfil é atualizado aqui!
             );
             $mensagem = "Sucesso! Cliente ID $id atualizado.";
-            // Redireciona para limpar o POST
+            // Redireciona para limpar o POST e a URL
             header('Location: ' . $_SERVER['PHP_SELF'] . '?msg=' . urlencode($mensagem));
             exit;
         }
@@ -93,6 +96,13 @@ foreach ($listaTotal as $cliente) {
         $listaClientes[] = $cliente;
     }
 }
+// Ordena as listas por ID (menor -> maior)
+if (is_array($listaFuncionarios)) {
+    usort($listaFuncionarios, function($a, $b) { return $a->getId() <=> $b->getId(); });
+}
+if (is_array($listaClientes)) {
+    usort($listaClientes, function($a, $b) { return $a->getId() <=> $b->getId(); });
+}
 
 // Verifica se há mensagem de redirecionamento na URL
 if (isset($_GET['msg'])) {
@@ -106,7 +116,7 @@ if (isset($_GET['msg'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADM Tech Fit - Gerenciamento de Clientes</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/adm.css">
 </head>
 <body>
     <div class="container mt-5">
@@ -216,7 +226,10 @@ if (isset($_GET['msg'])) {
         <hr>
 
         <h2>Funcionários e Administradores (Total: <?php echo count($listaFuncionarios); ?>)</h2>
-        <table class="table table-striped table-hover mt-3">
+        <div class="mb-3">
+            <input type="text" id="searchFuncionarios" class="form-control" placeholder="Pesquisar por nome..." onkeyup="filterTableByName('funcionariosTable', 1, this.value)">
+        </div>
+        <table id="funcionariosTable" class="table table-striped table-hover mt-3">
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
@@ -240,14 +253,14 @@ if (isset($_GET['msg'])) {
                         <td><?php echo htmlspecialchars($cliente->getEmail()); ?></td>
                         <td><?php echo htmlspecialchars($cliente->getCPF()); ?></td>
                         <td><span class="badge bg-warning"><?php echo ucfirst($cliente->getPerfilAcesso()); ?></span></td>
-                        <td>
-                            <form method="POST" style="display: inline;">
+                        <td class="acoes">
+                            <form method="POST">
                                 <input type="hidden" name="acao" value="editar">
                                 <input type="hidden" name="id_cliente" value="<?php echo $cliente->getId(); ?>">
                                 <button type="submit" class="btn btn-sm btn-primary">Editar</button>
                             </form>
                             
-                            <form method="POST" style="display: inline;" onsubmit="return confirm('Tem certeza que deseja excluir o funcionário: <?php echo htmlspecialchars($cliente->getNome()); ?>?');">
+                            <form method="POST" onsubmit="return confirm('Tem certeza que deseja excluir o funcionário: <?php echo htmlspecialchars($cliente->getNome()); ?>?');">
                                 <input type="hidden" name="acao" value="deletar">
                                 <input type="hidden" name="id_cliente" value="<?php echo $cliente->getId(); ?>">
                                 <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
@@ -262,7 +275,10 @@ if (isset($_GET['msg'])) {
         <hr class="mt-5 mb-5">
 
         <h2>Clientes Comuns (Total: <?php echo count($listaClientes); ?>)</h2>
-        <table class="table table-striped table-hover mt-3">
+        <div class="mb-3">
+            <input type="text" id="searchClientes" class="form-control" placeholder="Pesquisar por nome..." onkeyup="filterTableByName('clientesTable', 1, this.value)">
+        </div>
+        <table id="clientesTable" class="table table-striped table-hover mt-3">
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
@@ -285,15 +301,15 @@ if (isset($_GET['msg'])) {
                         <td><?php echo htmlspecialchars($cliente->getNome()); ?></td>
                         <td><?php echo htmlspecialchars($cliente->getEmail()); ?></td>
                         <td><?php echo htmlspecialchars($cliente->getCPF()); ?></td>
-                        <td><?php echo date('d/m/Y', strtotime($cliente->getDataNasc())); ?></td>
-                        <td>
-                            <form method="POST" style="display: inline;">
+                        <td><?php echo $cliente->getDataNasc() ? date('d/m/Y', strtotime($cliente->getDataNasc())) : 'N/A'; ?></td>
+                        <td class="acoes">
+                            <form method="POST">
                                 <input type="hidden" name="acao" value="editar">
                                 <input type="hidden" name="id_cliente" value="<?php echo $cliente->getId(); ?>">
                                 <button type="submit" class="btn btn-sm btn-primary">Editar</button>
                             </form>
                             
-                            <form method="POST" style="display: inline;" onsubmit="return confirm('Tem certeza que deseja excluir o cliente: <?php echo htmlspecialchars($cliente->getNome()); ?>?');">
+                            <form method="POST" onsubmit="return confirm('Tem certeza que deseja excluir o cliente: <?php echo htmlspecialchars($cliente->getNome()); ?>?');">
                                 <input type="hidden" name="acao" value="deletar">
                                 <input type="hidden" name="id_cliente" value="<?php echo $cliente->getId(); ?>">
                                 <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
@@ -305,7 +321,19 @@ if (isset($_GET['msg'])) {
             </tbody>
         </table>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script>
+        function filterTableByName(tableId, nameColIndex, query) {
+            const filter = query.trim().toLowerCase();
+            const table = document.getElementById(tableId);
+            if (!table) return;
+            const rows = table.tBodies[0].rows;
+            for (let i = 0; i < rows.length; i++) {
+                const cell = rows[i].cells[nameColIndex];
+                if (!cell) continue;
+                const text = cell.textContent || cell.innerText;
+                rows[i].style.display = text.toLowerCase().indexOf(filter) > -1 ? '' : 'none';
+            }
+        }
+    </script>
 </body>
 </html>

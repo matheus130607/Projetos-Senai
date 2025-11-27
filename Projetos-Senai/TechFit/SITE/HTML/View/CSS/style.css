@@ -13,6 +13,11 @@ html {
     height: 100%; 
 }
 
+/* Scroll suave para âncoras/JS */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: linear-gradient(135deg, #000000 40%, #4b0082 100%);
     color: white;
