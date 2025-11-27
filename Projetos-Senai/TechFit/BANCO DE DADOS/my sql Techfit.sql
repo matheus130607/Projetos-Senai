@@ -83,6 +83,15 @@ id_funcionario int not  null,
 FOREIGN KEY(id_funcionario) REFERENCES Funcionarios (id_funcionario)
 );
 
+CREATE TABLE Produtos (
+    id_produtos int auto_increment not null PRIMARY KEY,
+    tipo_produtos varchar(100) not null,
+    nome_produtos varchar(100) not null,
+    quant_produtos int not null,
+    preco_produtos DECIMAL(10, 2) NOT NULL, -- NOVO CAMPO
+    data_venc_produtos datetime not null
+);
+
 ALTER TABLE Agendamentos ADD FOREIGN KEY(id_funcionario) REFERENCES Funcionarios (id_funcionario);
 ALTER TABLE Agendamentos ADD FOREIGN KEY(id_modalidades) REFERENCES Modalidades (id_modalidades);
 ALTER TABLE Vende ADD FOREIGN KEY(id_funcionario) REFERENCES Funcionarios (id_funcionario);
@@ -91,6 +100,7 @@ ALTER TABLE Planos ADD FOREIGN KEY(id_cliente) REFERENCES Clientes (id_cliente);
 ALTER TABLE Planos ADD FOREIGN KEY(id_funcionario) REFERENCES Funcionarios (id_funcionario);
 ALTER TABLE Agenda ADD FOREIGN KEY(id_cliente) REFERENCES Clientes (id_cliente);
 ALTER TABLE Interage ADD FOREIGN KEY(id_cliente) REFERENCES Clientes (id_cliente);
+ALTER TABLE Produtos ADD COLUMN preco_produtos DECIMAL(10, 2) NOT NULL DEFAULT 0.00;
 
 INSERT INTO Funcionarios (nome_funcionario, CPF_funcioario, CEP_funcionario, data_nasc_funcionario, email_funcionario, senha_funcionario, endereco_funcionario) VALUES
 ('Carlos Andrade', '111.222.333-44', '13480010', '1990-05-15 00:00:00', 'carlos.andrade@email.com', 'senhaForte123', 'Rua das Flores, 10, Centro, Limeira'),
@@ -187,4 +197,4 @@ INSERT INTO Planos (beneficios_planos, nome_planos, id_cliente, id_funcionario) 
 ('renovamento automatico, acesso a equipamentos', 'plano casal', 2, 2),
 ('acesso as academias, renovamento automatico, treine com 5 amigos, acesso a massagem, acesso a equipamentos, avaliação fisica', 'plano premium', 3, 3);
 
-select * from Planos
+select * from Planos;
