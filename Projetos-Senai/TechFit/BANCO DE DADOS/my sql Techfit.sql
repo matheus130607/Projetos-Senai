@@ -83,6 +83,15 @@ id_funcionario int not  null,
 FOREIGN KEY(id_funcionario) REFERENCES Funcionarios (id_funcionario)
 );
 
+CREATE TABLE Carrinho (
+    id_carrinho INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT NOT NULL,
+    id_produtos INT NOT NULL,
+    quantidade INT DEFAULT 1,
+    data_adicao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_produtos) REFERENCES Produtos(id_produtos)
+);
+
 ALTER TABLE Agendamentos ADD FOREIGN KEY(id_funcionario) REFERENCES Funcionarios (id_funcionario);
 ALTER TABLE Agendamentos ADD FOREIGN KEY(id_modalidades) REFERENCES Modalidades (id_modalidades);
 ALTER TABLE Vende ADD FOREIGN KEY(id_funcionario) REFERENCES Funcionarios (id_funcionario);

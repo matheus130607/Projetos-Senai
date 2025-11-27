@@ -769,3 +769,17 @@ main {
         align-items: center;
     }
 }
+
+/* Estilos específicos do Carrinho */
+.carrinho-total-preco {
+    color: #8a2be2;
+}
+
+/* Esta classe JÁ EXISTE no seu CSS, 
+   apenas certifique-se de que ela está lá */
+.btn-finalizar-compra {
+  background-color: #8a2be2;
+  color: white;
+  font-weight: bold;
+  padding: 10px 30px;
+}

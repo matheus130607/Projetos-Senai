@@ -54,50 +54,33 @@
         </div>
 
         <div class="col-lg-9 col-md-8">
-          <div class="tab-content" id="perfilTabsContent">
-            
-            <div class="tab-pane fade show active" id="agendamentos-pane" role="tabpanel" aria-labelledby="agendamentos-tab" tabindex="0">
-              <h3>Próximas Aulas</h3>
-              <div class="agendamento-card">
-                <div class="agendamento-card-info">
-            <div class="tab-pane fade" id="carrinho-pane" role="tabpanel" aria-labelledby="carrinho-tab" tabindex="0">
-              <h3>Meu Carrinho</h3>
-              <table class="table table-dark table-striped align-middle">
-                <thead>
-                  <tr>
-                    <th scope="col">Produto</th>
-                    <th scope="col">Preço</th>
-                    <th scope="col" class="text-center">Quantidade</th>
-                    <th scope="col" class="text-end">Subtotal</th>
-                    <th scope="col" class="text-center">Ação</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-                <tfoot>
-                  <tr class="border-top-2 border-white">
-                    <td colspan="3" class="text-end fs-5"><strong>TOTAL:</strong></td>
-                    <td class="text-end fs-5" style="color: #8a2be2;"><strong>R$ 209,80</strong></td>
-                    <td></td>
-                  </tr>
-                </tfoot>
-              </table>
-              <div class="text-end mt-4">
-                <button class="btn" style="background-color: #8a2be2; color: white; font-weight: bold; padding: 10px 30px;">
-                  Finalizar Compra <i class="bi bi-arrow-right-short"></i>
-                </button>
-              </div>
-            </div>
-            
-            <div class="tab-pane fade" id="historico-pane" role="tabpanel" aria-labelledby="historico-tab" tabindex="0">
-              <h3>Histórico de Pedidos</h3>
-              <div class="accordion" id="accordionHistorico"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="tab-content" id="perfilTabsContent">
 
-      </div> </div>
+    <div class="tab-pane fade show active" id="agendamentos-pane" role="tabpanel" aria-labelledby="agendamentos-tab" tabindex="0">
+      <h3>Próximas Aulas</h3>
+      <div class="agendamento-card">
+        <div class="agendamento-card-info">
+          </div>
+      </div>
+    </div> <div class="tab-pane fade" id="carrinho-pane" role="tabpanel" aria-labelledby="carrinho-tab" tabindex="0">
+<div class="container mt-5">
+    <h3>Meu Carrinho de Compras</h3>
+    <table class="table table-striped" id="tabela-carrinho">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Tipo</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+</div> <div class="tab-pane fade" id="historico-pane" role="tabpanel" aria-labelledby="historico-tab" tabindex="0">
+      <h3>Histórico de Pedidos</h3>
+      <div class="accordion" id="accordionHistorico">
+        </div>
+    </div> </div> </div>
   </main>
 
   <footer class="footer">
@@ -131,5 +114,6 @@
 
   <script src="JS/index.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
 </body>
 </html>

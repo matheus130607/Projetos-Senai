@@ -124,5 +124,49 @@ document.addEventListener('DOMContentLoaded', () => {
     inputPesquisa.addEventListener('input', pesquisarProdutos);
 }); 
     function comprar() {
-        location.href = "compra.html"
+        
     }
+
+function adicionarAoCarrinho(evento) {
+    const botao = evento.target;
+    
+    // Verifica se o clique foi no botão "Comprar Agora!"
+    if (!botao.classList.contains('btn-comprar')) return;
+
+    const produtoCard = botao.closest('.produto');
+    const id = produtoCard.getAttribute('data-id');
+    const nome = produtoCard.getAttribute('data-nome');
+    // Preço e outros dados podem ser pegos, mas para o banco só precisamos do ID
+    
+    // Feedback visual para o usuário
+    botao.textContent = "Adicionando...";
+    botao.disabled = true;
+
+    // Envia para o PHP via AJAX
+    fetch('Controller/adicionar_carrinho.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id_produto: id
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.sucesso) {
+            alert("Produto '" + nome + "' adicionado ao seu perfil!");
+        } else {
+            alert("Erro: " + data.mensagem);
+            // Se der erro de login, redirecionar: window.location.href = 'login.php';
+        }
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        alert("Erro ao comunicar com o servidor.");
+    })
+    .finally(() => {
+        botao.textContent = "Comprar Agora!";
+        botao.disabled = false;
+    });
+}
