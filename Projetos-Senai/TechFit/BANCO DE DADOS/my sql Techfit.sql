@@ -191,3 +191,19 @@ select * from Planos;
 
 ALTER TABLE Clientes
 ADD COLUMN perfil_acesso VARCHAR(10) NOT NULL DEFAULT 'cliente';
+
+/* Tabela de Franquias (adicionada para CRUD de franquias no painel ADM) */
+CREATE TABLE Franquias (
+	id_franquia INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	nome_franquia VARCHAR(150) NOT NULL,
+	descricao_franquia TEXT NULL,
+	endereco_franquia VARCHAR(255) NULL,
+	cidade_franquia VARCHAR(100) NULL,
+	estado_franquia CHAR(2) DEFAULT 'SP' NOT NULL,
+	telefone_franquia VARCHAR(30) NULL,
+	email_franquia VARCHAR(100) NULL
+);
+
+INSERT INTO Franquias (nome_franquia, descricao_franquia, endereco_franquia, cidade_franquia, estado_franquia, telefone_franquia, email_franquia) VALUES
+('TechFit Limeira', 'Unidade central com equipamentos modernos e aulas variadas.', 'Av. do Progresso, 500', 'Limeira', 'SP', '(19) 1234-5678', 'limeira@techfit.com'),
+('TechFit Rio Claro', 'Unidade no centro com área de musculação e piscina.', 'Rua da Energia, 123', 'Rio Claro', 'SP', '(19) 9876-5432', 'rioclaro@techfit.com');

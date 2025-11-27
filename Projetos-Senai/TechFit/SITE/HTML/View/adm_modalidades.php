@@ -112,8 +112,8 @@ if (isset($_GET['msg'])) {
             <a class="nav-link" href="adm_clientes.php">Clientes</a>
             <a class="nav-link" href="adm_produtos.php">Produtos</a>
             <a class="nav-link active" aria-current="page" href="adm_modalidades.php">Modalidades</a>
-            <a class="nav-link disabled" href="#">Agendamentos (Em Breve)</a>
-            <a class="nav-link disabled" href="#">Franquias (Em Breve)</a>
+            <a class="nav-link" href="adm_agendamentos.php">Agendamentos</a>
+            <a class="nav-link" href="adm_franquias.php">Franquias</a>
         </nav>
         <?php if ($mensagem): ?>
             <div class="alert <?php echo strpos($mensagem, 'Sucesso!') !== false ? 'alert-success' : 'alert-warning'; ?>" role="alert">

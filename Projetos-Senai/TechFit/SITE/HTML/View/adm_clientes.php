@@ -130,8 +130,8 @@ if (isset($_GET['msg'])) {
             <a class="nav-link active" aria-current="page" href="adm_clientes.php">Clientes</a>
             <a class="nav-link" href="adm_produtos.php">Produtos</a>
             <a class="nav-link" href="adm_modalidades.php">Modalidades</a>
-            <a class="nav-link disabled" href="#">Agendamentos (Em Breve)</a>
-            <a class="nav-link disabled" href="#">Franquias (Em Breve)</a>
+            <a class="nav-link" href="adm_agendamentos.php">Agendamentos</a>
+            <a class="nav-link" href="adm_franquias.php">Franquias</a>
         </nav>
         <p>Logado como: <strong><?php echo htmlspecialchars($_SESSION['user_nome'] ?? 'Admin'); ?></strong> (Perfil: <?php echo $_SESSION['user_perfil']; ?>)</p>
         
@@ -177,8 +177,8 @@ if (isset($_GET['msg'])) {
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="dataNasc" class="form-label">Data de Nascimento:</label>
-                    <input type="date" class="form-control" id="dataNasc" name="data_nasc_cliente" 
-                           value="<?php echo $isEdicao ? htmlspecialchars($clienteParaEdicao->getDataNasc()) : ''; ?>" required>
+                    <input type="date" class="form-control" id="dataNasc" name="data_nasc_cliente"
+                           value="<?php echo ($isEdicao && $clienteParaEdicao->getDataNasc()) ? htmlspecialchars(date('Y-m-d', strtotime($clienteParaEdicao->getDataNasc()))) : ''; ?>" required>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="senha" class="form-label">Senha:</label>
@@ -206,13 +206,15 @@ if (isset($_GET['msg'])) {
             </div>
 
             <?php if ($isEdicao): ?>
-                <div class="mb-3">
-                    <label for="perfil" class="form-label">Perfil de Acesso:</label>
-                    <select class="form-select" id="perfil" name="perfil_acesso" required>
-                        <option value="cliente" <?php echo $clienteParaEdicao->getPerfilAcesso() === 'cliente' ? 'selected' : ''; ?>>Cliente Comum</option>
-                        <option value="admin" <?php echo $clienteParaEdicao->getPerfilAcesso() === 'admin' ? 'selected' : ''; ?>>Funcionário/Admin</option>
-                    </select>
-                    <small class="form-text text-muted">Atenção: Apenas perfis 'Admin' têm acesso a este painel.</small>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="perfil" class="form-label">Perfil de Acesso:</label>
+                        <select class="form-select" id="perfil" name="perfil_acesso" required>
+                            <option value="cliente" <?php echo $clienteParaEdicao->getPerfilAcesso() === 'cliente' ? 'selected' : ''; ?>>Cliente Comum</option>
+                            <option value="admin" <?php echo $clienteParaEdicao->getPerfilAcesso() === 'admin' ? 'selected' : ''; ?>>Funcionário/Admin</option>
+                        </select>
+                        
+                    </div>
                 </div>
             <?php endif; ?>
             
