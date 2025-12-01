@@ -196,17 +196,13 @@ INSERT INTO Planos (beneficios_planos, nome_planos, id_cliente, id_funcionario) 
 ('renovamento automatico, acesso a equipamentos', 'plano casal', 2, 2),
 ('acesso as academias, renovamento automatico, treine com 5 amigos, acesso a massagem, acesso a equipamentos, avaliação fisica', 'plano premium', 3, 3);
 
-<<<<<<< HEAD
-select * from Planos
-=======
-<<<<<<< HEAD
+
 select * from Planos;
-=======
-select * from Planos;
+
 
 ALTER TABLE Clientes
 ADD COLUMN perfil_acesso VARCHAR(10) NOT NULL DEFAULT 'cliente';
-<<<<<<< HEAD
+
 
 /* Tabela de Franquias (adicionada para CRUD de franquias no painel ADM) */
 CREATE TABLE Franquias (
@@ -223,7 +219,4 @@ CREATE TABLE Franquias (
 INSERT INTO Franquias (nome_franquia, descricao_franquia, endereco_franquia, cidade_franquia, estado_franquia, telefone_franquia, email_franquia) VALUES
 ('TechFit Limeira', 'Unidade central com equipamentos modernos e aulas variadas.', 'Av. do Progresso, 500', 'Limeira', 'SP', '(19) 1234-5678', 'limeira@techfit.com'),
 ('TechFit Rio Claro', 'Unidade no centro com área de musculação e piscina.', 'Rua da Energia, 123', 'Rio Claro', 'SP', '(19) 9876-5432', 'rioclaro@techfit.com');
-=======
->>>>>>> 92395a3885dccbf2d90b0cd9dc09a04784b851dc
->>>>>>> ed559ce6f009364b2216375d4aa227e91077ab88
->>>>>>> 94f82d74722142859e8c6b60551260955321c0da
+
