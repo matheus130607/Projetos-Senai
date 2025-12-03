@@ -42,6 +42,9 @@ function parse_price(string $raw): float {
 
 $preco = parse_price($preco_raw);
 
+// LOG: registra dados recebidos
+error_log("add_to_cart DEBUG: produto_nome='$produto_nome', tipo='$tipo', quantidade=$quantidade, preco=$preco, produto_id=$produto_id");
+
 require_once __DIR__ . '/../Model/Connection.php';
 
 try {
@@ -51,8 +54,8 @@ try {
 
     // se foi passado produto_id, buscar dados do catálogo
     if (!empty($produto_id)) {
-        // ajuste o nome da tabela/colunas caso necessário
-        $pstmt = $pdo->prepare("SELECT nome AS produto_nome, tipo, preco FROM Produtos WHERE id = :pid LIMIT 1");
+        // busca usando os nomes reais das colunas na tabela Produtos
+        $pstmt = $pdo->prepare("SELECT nome_produtos AS produto_nome, tipo_produtos AS tipo FROM Produtos WHERE id_produtos = :pid LIMIT 1");
         $pstmt->bindValue(':pid', $produto_id, PDO::PARAM_INT);
         $pstmt->execute();
         $prod = $pstmt->fetch(PDO::FETCH_ASSOC);
@@ -67,17 +70,83 @@ try {
     }
 
     // Verifica colunas existentes na tabela Carrinho
-    $colStmt = $pdo->prepare("
-        SELECT COLUMN_NAME
-        FROM INFORMATION_SCHEMA.COLUMNS
-        WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'Carrinho'
-    ");
+        $colStmt = $pdo->prepare("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'Carrinho'");
     $colStmt->execute();
     $cols = $colStmt->fetchAll(PDO::FETCH_COLUMN, 0);
-    if (!$cols || !in_array('user_id', $cols) || !in_array('produto_nome', $cols) || !in_array('quantidade', $cols) || !in_array('preco', $cols)) {
-        http_response_code(500);
-        echo json_encode(['success' => false, 'error' => 'Estrutura da tabela Carrinho não é compatível. Colunas obrigatórias faltando.']);
-        exit;
+    // aceitar dois schemas: novo (user_id, produto_nome, tipo, quantidade, preco)
+    // ou legado (id_carrinho, id_cliente, id_produtos, quantidade)
+    if (empty($cols)) {
+        // tenta criar a tabela Carrinho no formato legado (mais compatível com o projeto)
+        try {
+            $createSql = "CREATE TABLE IF NOT EXISTS Carrinho (
+                id_carrinho INT AUTO_INCREMENT PRIMARY KEY,
+                id_cliente INT NOT NULL,
+                id_produtos INT NOT NULL,
+                quantidade INT DEFAULT 1,
+                data_adicao DATETIME DEFAULT CURRENT_TIMESTAMP
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
+            $pdo->exec($createSql);
+            // reconsulta colunas
+            $colStmt->execute();
+            $cols = $colStmt->fetchAll(PDO::FETCH_COLUMN, 0);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'error' => 'Não foi possível criar/ler a tabela Carrinho.', 'detail' => $e->getMessage()]);
+            exit;
+        }
+    }
+
+    // detecta qual schema está em uso
+    $hasNewSchema = in_array('user_id', $cols) && in_array('produto_nome', $cols) && in_array('preco', $cols);
+    $hasLegacySchema = in_array('id_cliente', $cols) && in_array('id_produtos', $cols) && in_array('quantidade', $cols);
+
+    if ($hasLegacySchema) {
+        // Schema legado: pode receber ou produto_id (preferencial) ou produto_nome+tipo+preco
+        if (!empty($produto_id)) {
+            // Opção 1: produto_id fornecido, insere direto
+            $sql = "INSERT INTO Carrinho (id_cliente, id_produtos, quantidade) VALUES (:cliente, :produto, :qtd)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':cliente', $userId, PDO::PARAM_INT);
+            $stmt->bindValue(':produto', intval($produto_id), PDO::PARAM_INT);
+            $stmt->bindValue(':qtd', intval($quantidade), PDO::PARAM_INT);
+            $stmt->execute();
+            $insertId = $pdo->lastInsertId();
+            echo json_encode(['success' => true, 'id' => $insertId, 'redirect' => 'perfil.php']);
+            exit;
+        } elseif (!empty($produto_nome)) {
+            // Opção 2: buscar produto_id pelo nome_produtos
+            try {
+                error_log("add_to_cart: buscando produto por nome: '$produto_nome'");
+                $pstmt = $pdo->prepare("SELECT id_produtos FROM Produtos WHERE nome_produtos LIKE :nome LIMIT 1");
+                $pstmt->bindValue(':nome', '%' . $produto_nome . '%', PDO::PARAM_STR);
+                $pstmt->execute();
+                $prod = $pstmt->fetch(PDO::FETCH_ASSOC);
+                error_log("add_to_cart: resultado da busca: " . json_encode($prod));
+                if ($prod) {
+                    $found_id = intval($prod['id_produtos']);
+                    $sql = "INSERT INTO Carrinho (id_cliente, id_produtos, quantidade) VALUES (:cliente, :produto, :qtd)";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->bindValue(':cliente', $userId, PDO::PARAM_INT);
+                    $stmt->bindValue(':produto', $found_id, PDO::PARAM_INT);
+                    $stmt->bindValue(':qtd', intval($quantidade), PDO::PARAM_INT);
+                    $stmt->execute();
+                    $insertId = $pdo->lastInsertId();
+                    echo json_encode(['success' => true, 'id' => $insertId, 'redirect' => 'perfil.php']);
+                    exit;
+                }
+            } catch (Exception $e) {
+                // falha silenciosa, continua abaixo
+                error_log("add_to_cart: erro ao buscar produto: " . $e->getMessage());
+            }
+            // Produto não encontrado pelo nome; redirecionar para novo schema
+            http_response_code(400);
+            echo json_encode(['success' => false, 'error' => "Produto '$produto_nome' não encontrado no banco."]);
+            exit;
+        } else {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'error' => 'Produto inválido. Forneça produto_id ou produto_nome.']);
+            exit;
+        }
     }
 
     $hasProdutoIdCol = in_array('produto_id', $cols);
