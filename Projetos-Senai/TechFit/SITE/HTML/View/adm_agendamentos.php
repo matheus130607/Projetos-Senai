@@ -76,7 +76,6 @@ if (isset($_GET['msg'])) $mensagem = htmlspecialchars($_GET['msg']);
         ?>
         <h2><?php echo $formTitle; ?></h2>
     
-    <?php if ($mensagem): ?><div class="alert <?php echo strpos($mensagem,'Sucesso')!==false? 'alert-success':'alert-warning'; ?>"><?php echo $mensagem; ?></div><?php endif; ?>
         <?php echo exibirAlerta($mensagem, strpos($mensagem,'Sucesso')!==false? 'success':'warning'); ?>
     <form method="POST" class="p-3 mb-4 border rounded bg-light">
         <input type="hidden" name="acao" value="<?php echo $acaoForm; ?>">

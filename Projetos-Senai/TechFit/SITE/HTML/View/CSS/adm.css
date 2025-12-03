@@ -127,12 +127,14 @@ hr {
     background-color: rgba(28, 28, 28, 0.85);
 }
 
-.row {
+.form-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 22px;
     margin-bottom: 20px;
 }
+
+
 
 .row.col-md-6 {
     display: grid;
