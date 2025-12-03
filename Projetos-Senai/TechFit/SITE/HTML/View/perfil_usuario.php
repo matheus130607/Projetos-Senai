@@ -31,7 +31,7 @@
       
       <section class="secao" style="padding-bottom: 0;">
         <h2 style="font-size: 3rem; text-align: left;">Minha Conta</h2>
-        <p class="text-white-50" style="text-align: left;">Olá, Matheus! (Nome fictício)</p>
+        <p class="text-white-50" style="text-align: left;">Olá, Usuario!</p>
       </section>
 
       <div class="row mt-4">
@@ -58,11 +58,23 @@
 
     <div class="tab-pane fade show active" id="agendamentos-pane" role="tabpanel" aria-labelledby="agendamentos-tab" tabindex="0">
       <h3>Próximas Aulas</h3>
-      <div class="agendamento-card">
-        <div class="agendamento-card-info">
-          </div>
+      <table class="table table-striped" id="tabela-agendamentos">
+        <thead>
+            <tr>
+                <th>Modalidade</th>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody id="agendamentos-tbody">
+        </tbody>
+      </table>
+      <div id="agendamentos-vazio" style="text-align: center; padding: 20px;">
+        <p>Você não possui aulas agendadas</p>
       </div>
-    </div> <div class="tab-pane fade" id="carrinho-pane" role="tabpanel" aria-labelledby="carrinho-tab" tabindex="0">
+    </div>
+    <div class="tab-pane fade" id="carrinho-pane" role="tabpanel" aria-labelledby="carrinho-tab" tabindex="0">
 <div class="container mt-5">
     <h3>Meu Carrinho de Compras</h3>
     <table class="table table-striped" id="tabela-carrinho">
@@ -122,48 +134,81 @@
   
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const tbody = document.getElementById('carrinho-tbody');
+      // --- Agendamentos ---
+      const tbody = document.getElementById('agendamentos-tbody');
+      const agendamentosVazio = document.getElementById('agendamentos-vazio');
+      const agendamentos = JSON.parse(localStorage.getItem('agendamentos') || '[]');
+
+      if (agendamentos.length === 0) {
+        if (tbody) tbody.innerHTML = '';
+        if (agendamentosVazio) agendamentosVazio.style.display = 'block';
+      } else {
+        if (agendamentosVazio) agendamentosVazio.style.display = 'none';
+        if (tbody) {
+          tbody.innerHTML = agendamentos.map((item, index) => {
+            const d = new Date(item.data);
+            const dataFormatada = isNaN(d) ? item.data : d.toLocaleDateString('pt-BR');
+            
+            return `
+              <tr>
+                <td>${escapeHtml(capitalize(item.modalidade || ''))}</td>
+                <td>${escapeHtml(dataFormatada)}</td>
+                <td>${escapeHtml(item.horario || '-')}</td>
+                <td>
+                  <button class="btn btn-sm btn-danger" onclick="removerAgendamento(${index})">Remover</button>
+                </td>
+              </tr>
+            `;
+          }).join('');
+        }
+      }
+
+      // --- Carrinho ---
+      const carrinhoTbody = document.getElementById('carrinho-tbody');
       const carrinhoVazio = document.getElementById('carrinho-vazio');
       const carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
 
-      if (carrinho.length === 0) {
-        tbody.innerHTML = '';
-        carrinhoVazio.style.display = 'block';
-      } else {
-        carrinhoVazio.style.display = 'none';
-        let total = 0;
-        
-        const linhasCarrinho = carrinho.map((item, index) => {
-          const subtotal = parseFloat(item.preco) * item.quantidade;
-          total += subtotal;
+      if (carrinhoTbody) {
+        if (carrinho.length === 0) {
+          carrinhoTbody.innerHTML = '';
+          if (carrinhoVazio) carrinhoVazio.style.display = 'block';
+        } else {
+          if (carrinhoVazio) carrinhoVazio.style.display = 'none';
+          let total = 0;
           
-          return `
-            <tr>
-              <td>${escapeHtml(item.produto_nome)}</td>
-              <td>${escapeHtml(item.tipo)}</td>
-              <td>${item.quantidade}</td>
-              <td>R$ ${parseFloat(item.preco).toFixed(2)}</td>
-              <td>
-                <button class="btn btn-sm btn-danger" onclick="removerDoCarrinho(${index})">Remover</button>
-              </td>
+          const linhasCarrinho = carrinho.map((item, index) => {
+            const subtotal = parseFloat(item.preco) * item.quantidade;
+            total += subtotal;
+            
+            return `
+              <tr>
+                <td>${escapeHtml(item.produto_nome)}</td>
+                <td>${escapeHtml(item.tipo)}</td>
+                <td>${item.quantidade}</td>
+                <td>R$ ${parseFloat(item.preco).toFixed(2)}</td>
+                <td>
+                  <button class="btn btn-sm btn-danger" onclick="removerDoCarrinho(${index})">Remover</button>
+                </td>
+              </tr>
+            `;
+          }).join('');
+          
+          // Adicionar linha de total
+          const linhaTotal = `
+            <tr style="background-color: #f0f0f0; font-weight: bold;">
+              <td colspan="3" style="text-align: right;">TOTAL:</td>
+              <td>R$ ${total.toFixed(2)}</td>
+              <td></td>
             </tr>
           `;
-        }).join('');
-        
-        // Adicionar linha de total
-        const linhaTotal = `
-          <tr style="background-color: #f0f0f0; font-weight: bold;">
-            <td colspan="3" style="text-align: right;">TOTAL:</td>
-            <td>R$ ${total.toFixed(2)}</td>
-            <td></td>
-          </tr>
-        `;
-        
-        tbody.innerHTML = linhasCarrinho + linhaTotal;
+          
+          carrinhoTbody.innerHTML = linhasCarrinho + linhaTotal;
+        }
       }
     });
 
     function escapeHtml(text) {
+      if (!text) return '';
       const map = {
         '&': '&amp;',
         '<': '&lt;',
@@ -171,7 +216,12 @@
         '"': '&quot;',
         "'": '&#039;'
       };
-      return text.replace(/[&<>"']/g, m => map[m]);
+      return String(text).replace(/[&<>"']/g, m => map[m]);
+    }
+
+    function capitalize(s) {
+      if (!s) return '';
+      return s.charAt(0).toUpperCase() + s.slice(1);
     }
 
     function removerDoCarrinho(index) {
@@ -179,6 +229,15 @@
       carrinho.splice(index, 1);
       localStorage.setItem('carrinho', JSON.stringify(carrinho));
       location.reload();
+    }
+
+    function removerAgendamento(index) {
+      const ag = JSON.parse(localStorage.getItem('agendamentos') || '[]');
+      if (index >= 0 && index < ag.length) {
+        ag.splice(index, 1);
+        localStorage.setItem('agendamentos', JSON.stringify(ag));
+        location.reload();
+      }
     }
   </script>
 </body>
