@@ -37,16 +37,16 @@
       <div class="area_pesquisa">
         <div class="barra_pesquisa">
           <i class="bi bi-search"></i>
-          <input  type="text" placeholder="Buscar franquia...">
+          <input type="text" id="pesquisa_franquia" placeholder="Buscar franquia...">
         </div>
       </div>
     </div>
 
     <div class="container py-5">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center" id="franquias-container">
         
         <div class="col">
-          <div class="franquias">
+          <div class="franquias" data-franquia="TechFit Limeira">
             <img src="IMG/Gemini_Generated_Image_kps84zkps84zkps8.png" alt="TechFit Limeira">
             <h3>TechFit Limeira</h3>
             <p>Localizada no coração da cidade, equipada com o que há de mais moderno em tecnologia fitness.</p>
@@ -61,7 +61,7 @@
         </div>
 
         <div class="col">
-          <div class="franquias">
+          <div class="franquias" data-franquia="TechFit Rio Claro">
             <img src="IMG/Gemini_Generated_Image_kps84zkps84zkps8.png" alt="TechFit Rio Claro">
             <h3>TechFit Rio Claro</h3>
             <p>Ambiente amplo, vista incrível e treinos personalizados para todas as idades.</p>
@@ -76,7 +76,7 @@
         </div>
 
         <div class="col">
-          <div class="franquias">
+          <div class="franquias" data-franquia="TechFit Americana">
             <img src="IMG/Gemini_Generated_Image_kps84zkps84zkps8.png" alt="TechFit Americana">
             <h3>TechFit Americana</h3>
             <p>Uma das unidades mais completas do sul, com acompanhamento individual.</p>
@@ -91,7 +91,7 @@
         </div>
 
         <div class="col">
-          <div class="franquias">
+          <div class="franquias" data-franquia="TechFit Araras">
             <img src="IMG/Gemini_Generated_Image_kps84zkps84zkps8.png" alt="TechFit Araras" >
             <h3>TechFit Araras</h3>
             <p>Infraestrutura moderna, área climatizada e equipe altamente qualificada.</p>
@@ -106,7 +106,7 @@
         </div>
 
         <div class="col">
-          <div class="franquias">
+          <div class="franquias" data-franquia="TechFit Campinas">
             <img src="IMG/Gemini_Generated_Image_kps84zkps84zkps8.png" alt="TechFit Campinas">
             <h3>TechFit Campinas</h3>
             <p>Treinos inteligentes com integração via app e acompanhamento.</p>
@@ -121,7 +121,7 @@
         </div>
 
         <div class="col">
-          <div class="franquias">
+          <div class="franquias" data-franquia="TechFit São Paulo">
             <img src="IMG/Gemini_Generated_Image_kps84zkps84zkps8.png" alt="TechFit São Paulo">
             <h3>TechFit São Paulo</h3>
             <p>Espaço premium, treinos de alta intensidade e foco total em resultados.</p>
@@ -200,6 +200,17 @@
   <script src="JS/Franquias.js"></script>
   <script src="JS/index.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.getElementById('pesquisa_franquia').addEventListener('keyup', function() {
+      const filtro = this.value.toLowerCase();
+      const franquias = document.querySelectorAll('[data-franquia]');
+      franquias.forEach(franquia => {
+        const nome = franquia.getAttribute('data-franquia').toLowerCase();
+        franquia.parentElement.style.display = nome.includes(filtro) ? '' : 'none';
+      });
+    });
+  </script>
 
 </body>
 </html>
