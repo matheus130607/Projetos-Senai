@@ -91,13 +91,19 @@ require_once __DIR__ . '/../Model/Connection.php';
 $cartItems = [];
 if ($userId) {
     try {
-        $pdo = Connection::getInstance();
-        $stmt = $pdo->prepare("SELECT produto_nome, tipo, quantidade, preco FROM Carrinho WHERE user_id = :uid ORDER BY id DESC");
-        $stmt->execute([':uid' => $userId]);
-        $cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      $pdo = Connection::getInstance();
+      // A tabela Carrinho no banco usa nomes de coluna diferentes (id_carrinho, id_cliente, id_produtos, quantidade).
+      // Fazemos um JOIN com Produtos para obter o nome e o tipo do produto.
+      $stmt = $pdo->prepare(
+        "SELECT p.nome_produtos AS produto_nome, p.tipo_produtos AS tipo, c.quantidade " .
+        "FROM Carrinho c LEFT JOIN Produtos p ON c.id_produtos = p.id_produtos " .
+        "WHERE c.id_cliente = :uid ORDER BY c.id_carrinho DESC"
+      );
+      $stmt->execute([':uid' => $userId]);
+      $cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (Exception $e) {
-        // logar se desejar: error_log($e->getMessage());
-        $cartItems = [];
+      // log se desejar: error_log($e->getMessage());
+      $cartItems = [];
     }
 }
 foreach ($cartItems as $item): ?>
