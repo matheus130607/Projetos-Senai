@@ -1,4 +1,68 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Funcionalidade de filtros por categoria
+    const filtrosCategoria = document.querySelectorAll('.filtro-categoria');
+    const filtrosGenero = document.querySelectorAll('.filtro-genero');
+    const botaoMostrarTodos = document.getElementById('mostrar-todos');
+    
+    filtrosCategoria.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const categoria = btn.textContent.trim().toLowerCase();
+            ocultarTodos();
+            
+            if (categoria === 'vestuário') {
+                exibirContainer('feminino');
+                exibirContainer('masculino');
+            } else if (categoria === 'suplementos') {
+                exibirContainer('suplementos');
+            } else if (categoria === 'acessórios') {
+                exibirContainer('acessorios');
+            }
+        });
+    });
+    
+    filtrosGenero.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const genero = btn.textContent.trim().toLowerCase();
+            ocultarTodos();
+            
+            if (genero === 'masculino') {
+                exibirContainer('masculino');
+            } else if (genero === 'feminino') {
+                exibirContainer('feminino');
+            } else if (genero === 'unisex') {
+                exibirContainer('acessorios');
+                exibirContainer('suplementos');
+            }
+        });
+    });
+    
+    // Botão "Mostrar Todos"
+    if (botaoMostrarTodos) {
+        botaoMostrarTodos.addEventListener('click', () => {
+            exibirTodos();
+        });
+    }
+    
+    function ocultarTodos() {
+        document.querySelectorAll('.Flex-produtos').forEach(container => {
+            container.classList.add('hidden');
+        });
+    }
+    
+    function exibirTodos() {
+        document.querySelectorAll('.Flex-produtos').forEach(container => {
+            container.classList.remove('hidden');
+        });
+    }
+    
+    function exibirContainer(tipo) {
+        const container = document.getElementById('Flex-produtos-' + tipo);
+        if (container) {
+            container.classList.remove('hidden');
+        }
+    }
+    
+    // Funcionalidade de carrinho (código anterior)
     document.querySelectorAll('.comprar-btn').forEach(button => {
         button.addEventListener('click', async (e) => {
             const btn = e.currentTarget;

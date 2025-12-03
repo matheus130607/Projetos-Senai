@@ -131,17 +131,35 @@
         carrinhoVazio.style.display = 'block';
       } else {
         carrinhoVazio.style.display = 'none';
-        tbody.innerHTML = carrinho.map((item, index) => `
-          <tr>
-            <td>${escapeHtml(item.produto_nome)}</td>
-            <td>${escapeHtml(item.tipo)}</td>
-            <td>${item.quantidade}</td>
-            <td>R$ ${parseFloat(item.preco).toFixed(2)}</td>
-            <td>
-              <button class="btn btn-sm btn-danger" onclick="removerDoCarrinho(${index})">Remover</button>
-            </td>
+        let total = 0;
+        
+        const linhasCarrinho = carrinho.map((item, index) => {
+          const subtotal = parseFloat(item.preco) * item.quantidade;
+          total += subtotal;
+          
+          return `
+            <tr>
+              <td>${escapeHtml(item.produto_nome)}</td>
+              <td>${escapeHtml(item.tipo)}</td>
+              <td>${item.quantidade}</td>
+              <td>R$ ${parseFloat(item.preco).toFixed(2)}</td>
+              <td>
+                <button class="btn btn-sm btn-danger" onclick="removerDoCarrinho(${index})">Remover</button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+        
+        // Adicionar linha de total
+        const linhaTotal = `
+          <tr style="background-color: #f0f0f0; font-weight: bold;">
+            <td colspan="3" style="text-align: right;">TOTAL:</td>
+            <td>R$ ${total.toFixed(2)}</td>
+            <td></td>
           </tr>
-        `).join('');
+        `;
+        
+        tbody.innerHTML = linhasCarrinho + linhaTotal;
       }
     });
 
