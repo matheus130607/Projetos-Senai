@@ -1,4 +1,68 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Funcionalidade de filtros por categoria
+    const filtrosCategoria = document.querySelectorAll('.filtro-categoria');
+    const filtrosGenero = document.querySelectorAll('.filtro-genero');
+    const botaoMostrarTodos = document.getElementById('mostrar-todos');
+    
+    filtrosCategoria.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const categoria = btn.textContent.trim().toLowerCase();
+            ocultarTodos();
+            
+            if (categoria === 'vestuário') {
+                exibirContainer('feminino');
+                exibirContainer('masculino');
+            } else if (categoria === 'suplementos') {
+                exibirContainer('suplementos');
+            } else if (categoria === 'acessórios') {
+                exibirContainer('acessorios');
+            }
+        });
+    });
+    
+    filtrosGenero.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const genero = btn.textContent.trim().toLowerCase();
+            ocultarTodos();
+            
+            if (genero === 'masculino') {
+                exibirContainer('masculino');
+            } else if (genero === 'feminino') {
+                exibirContainer('feminino');
+            } else if (genero === 'unisex') {
+                exibirContainer('acessorios');
+                exibirContainer('suplementos');
+            }
+        });
+    });
+    
+    // Botão "Mostrar Todos"
+    if (botaoMostrarTodos) {
+        botaoMostrarTodos.addEventListener('click', () => {
+            exibirTodos();
+        });
+    }
+    
+    function ocultarTodos() {
+        document.querySelectorAll('.Flex-produtos').forEach(container => {
+            container.classList.add('hidden');
+        });
+    }
+    
+    function exibirTodos() {
+        document.querySelectorAll('.Flex-produtos').forEach(container => {
+            container.classList.remove('hidden');
+        });
+    }
+    
+    function exibirContainer(tipo) {
+        const container = document.getElementById('Flex-produtos-' + tipo);
+        if (container) {
+            container.classList.remove('hidden');
+        }
+    }
+    
+    // Funcionalidade de carrinho (código anterior)
     document.querySelectorAll('.comprar-btn').forEach(button => {
         button.addEventListener('click', async (e) => {
             const btn = e.currentTarget;
@@ -28,6 +92,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const quantidade = 1;
 
+            // Salvar no localStorage para efeito visual
+            let carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
+            
+            // Verificar se o produto já existe no carrinho
+            const produtoExistente = carrinho.find(item => item.produto_nome === produto_nome);
+            if (produtoExistente) {
+                produtoExistente.quantidade += quantidade;
+            } else {
+                carrinho.push({ produto_nome, tipo, quantidade, preco });
+            }
+            
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            alert('Produto adicionado ao carrinho.');
+
             try {
                 const resp = await fetch('add_to_cart.php', {
                     method: 'POST',
@@ -41,19 +119,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 const json = await resp.json();
                 if (json.success) {
-                    alert('Produto adicionado ao carrinho.');
-                    // opcional: atualizar contador visual do carrinho
+                    // Produto adicionado ao banco com sucesso
                 } else {
                     if (json.login_required) {
                         alert('Faça login para adicionar ao carrinho.');
                         window.location.href = 'login.php';
-                    } else {
-                        alert(json.error || 'Erro ao adicionar ao carrinho.');
                     }
                 }
             } catch (err) {
                 console.error(err);
-                alert('Erro na requisição ao servidor.');
+                // Continua mesmo com erro, pois o localStorage já foi atualizado
             }
         });
     });

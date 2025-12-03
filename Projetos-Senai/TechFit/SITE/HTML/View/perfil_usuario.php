@@ -71,50 +71,16 @@
                 <th>Produto</th>
                 <th>Tipo</th>
                 <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Ação</th>
             </tr>
         </thead>
-        <tbody>
-<?php
-session_start();
-
-// se sua autenticação guarda o id do usuário em $_SESSION['user_id']
-if (empty($_SESSION['user_id'])) {
-    // redirecionar para login ou mostrar mensagem
-    // header('Location: login.html'); exit;
-    $userId = null; // deixa nulo para não mostrar nada
-} else {
-    $userId = intval($_SESSION['user_id']);
-}
-
-require_once __DIR__ . '/../Model/Connection.php';
-
-$cartItems = [];
-if ($userId) {
-    try {
-      $pdo = Connection::getInstance();
-      // A tabela Carrinho no banco usa nomes de coluna diferentes (id_carrinho, id_cliente, id_produtos, quantidade).
-      // Fazemos um JOIN com Produtos para obter o nome e o tipo do produto.
-      $stmt = $pdo->prepare(
-        "SELECT p.nome_produtos AS produto_nome, p.tipo_produtos AS tipo, c.quantidade " .
-        "FROM Carrinho c LEFT JOIN Produtos p ON c.id_produtos = p.id_produtos " .
-        "WHERE c.id_cliente = :uid ORDER BY c.id_carrinho DESC"
-      );
-      $stmt->execute([':uid' => $userId]);
-      $cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } catch (Exception $e) {
-      // log se desejar: error_log($e->getMessage());
-      $cartItems = [];
-    }
-}
-foreach ($cartItems as $item): ?>
-    <tr>
-        <td><?php echo htmlspecialchars($item['produto_nome'], ENT_QUOTES, 'UTF-8'); ?></td>
-        <td><?php echo htmlspecialchars($item['tipo'], ENT_QUOTES, 'UTF-8'); ?></td>
-        <td><?php echo intval($item['quantidade']); ?></td>
-    </tr>
-<?php endforeach; ?>
+        <tbody id="carrinho-tbody">
         </tbody>
     </table>
+    <div id="carrinho-vazio" style="text-align: center; padding: 20px;">
+        <p>Seu carrinho está vazio</p>
+    </div>
 </div> <div class="tab-pane fade" id="historico-pane" role="tabpanel" aria-labelledby="historico-tab" tabindex="0">
       <h3>Histórico de Pedidos</h3>
       <div class="accordion" id="accordionHistorico">
@@ -154,5 +120,66 @@ foreach ($cartItems as $item): ?>
   <script src="JS/index.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tbody = document.getElementById('carrinho-tbody');
+      const carrinhoVazio = document.getElementById('carrinho-vazio');
+      const carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
+
+      if (carrinho.length === 0) {
+        tbody.innerHTML = '';
+        carrinhoVazio.style.display = 'block';
+      } else {
+        carrinhoVazio.style.display = 'none';
+        let total = 0;
+        
+        const linhasCarrinho = carrinho.map((item, index) => {
+          const subtotal = parseFloat(item.preco) * item.quantidade;
+          total += subtotal;
+          
+          return `
+            <tr>
+              <td>${escapeHtml(item.produto_nome)}</td>
+              <td>${escapeHtml(item.tipo)}</td>
+              <td>${item.quantidade}</td>
+              <td>R$ ${parseFloat(item.preco).toFixed(2)}</td>
+              <td>
+                <button class="btn btn-sm btn-danger" onclick="removerDoCarrinho(${index})">Remover</button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+        
+        // Adicionar linha de total
+        const linhaTotal = `
+          <tr style="background-color: #f0f0f0; font-weight: bold;">
+            <td colspan="3" style="text-align: right;">TOTAL:</td>
+            <td>R$ ${total.toFixed(2)}</td>
+            <td></td>
+          </tr>
+        `;
+        
+        tbody.innerHTML = linhasCarrinho + linhaTotal;
+      }
+    });
+
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, m => map[m]);
+    }
+
+    function removerDoCarrinho(index) {
+      const carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
+      carrinho.splice(index, 1);
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+      location.reload();
+    }
+  </script>
 </body>
 </html>
