@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tech Fit</title>
+    <link rel="stylesheet" href="CSS/style.css" />
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="titulo-techfit" onclick="home()">TECHFIT</h1>
+
+        <button onclick="franquias()" id="franquias">Franquias</button>
+        <button onclick="plano()" id="planos">Planos</button>
+        <button onclick="faleconosco()" id="faleconosco">Fale Conosco</button>
+        <button onclick="modalidades()" id="modalidades">Modalidades</button>
+
+        <button onclick="loja()" id="loja">Loja</button>
+
+        <div class="dropdown usuario-dropdown">
+            <img src="IMG/usuario.png" class="dropbtn usuario-btn">
+            <div class="dropdown-content">
+                <a onclick="perfil_usuario()"><i class="bi bi-person"></i> Perfil</a>
+                <a href="login.php"><i class="bi bi-house"></i> Login</a>
+            </div>
+        </div>
+    </header>
+<a href="../View/login.php"></a>
+   
+        <div class="anuncios">
+            <img
+              src="IMG/de-pe-com-pular-corda-nas-maos-linda-mulher-loira-na-academia-no-fim-de-semana.png"
+              alt="Fitness"
+            />
+            <h1 class="anuncio">
+                Transforme <br />
+                suor <br />
+                em <br />
+                resultado
+            </h1>
+        </div>
+
+        <!-- <div class="anuncios">
+            <img src="IMG/Imagem 2 Carroucel.png" alt="Construa sua Força">
+            <h1 class="anuncio">
+                Construa <br />
+                sua <br />
+                força <br />
+            </h1>
+        </div> -->
+        
+    <div class="secao-divisoria"></div>
+
+    <!-- Planos -->
+    <section class="planos-container" id="planos-container">
+        <div class="cursos">
+            <h4 class="cursos-titulo">Plano Básico</h4>
+            <h1 class="valor">R$119,99<span class="mes">/mês</span></h1>
+            <ul class="cursos-opcoes">
+                <li>Acesso as academias ❌</li>
+                <li>Renovação automática ✅</li>
+                <li>Treine com 5 amigos ❌</li>
+                <li>Acesso a massagem ❌</li>
+                <li>Acesso a equipamentos ✅</li>
+                <li>Avaliação física ❌</li>
+            </ul>
+            <button type="button" class="cursos-compra" onclick="compras()">Comprar</button>
+        </div>
+
+        <div class="cursos destaque">
+            <h4 class="cursos-titulo">Plano Casal</h4>
+            <h1 class="valor">R$199,99<span class="mes">/mês</span></h1>
+            <p class="desconto">20% de desconto</p>
+            <ul class="cursos-opcoes">
+                <li>Acesso as academias ❌</li>
+                <li>Renovação automática ✅</li>
+                <li>Treine com 5 amigos ❌</li>
+                <li>Acesso a massagem ❌</li>
+                <li>Acesso a equipamentos ✅</li>
+                <li>Avaliação física ❌</li>
+            </ul>
+            <button type="button" class="cursos-compra" onclick="compras()">Comprar</button>
+        </div>
+
+        <div class="cursos">
+            <h4 class="cursos-titulo">Plano Premium</h4>
+            <h1 class="valor">R$199,99<span class="mes">/mês</span></h1>
+            <ul class="cursos-opcoes">
+                <li>Acesso as academias ✅</li>
+                <li>Renovação automática ✅</li>
+                <li>Treine com 5 amigos ✅</li>
+                <li>Acesso a massagem ✅</li>
+                <li>Acesso a equipamentos ✅</li>
+                <li>Avaliação física ✅</li>
+            </ul>
+            <button type="button" class="cursos-compra" onclick="compras()">Comprar</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer-left">
+            <h2>TECHFIT</h2>
+            <div class="links-footer" id="links-footer">
+                <a href="https://github.com/matheus130607" target="_blank" rel="noopener noreferrer">
+                    <p class="links"><i class="bi bi-github"></i></p>
+                </a>
+                <a href="https://www.whatsapp.com/?lang=pt" target="_blank" rel="noopener noreferrer">
+                    <p class="links"><i class="bi bi-whatsapp"></i></p>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                    <p class="links"><i class="bi bi-instagram"></i></p>
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <p class="links"><i class="bi bi-linkedin"></i></p>
+                </a>
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                    <p class="links"><i class="bi bi-facebook"></i></p>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <p class="link" onclick="">Sobre Nós &#8599;</p>
+            <p class="link" onclick="">Telefone &#8599;</p>
+            <p class="link" onclick="">Franquias &#8599;</p>
+        </div>
+
+        <p class="direitos">&copy; Todos os direitos reservados TechFit</p>
+    </footer>
+
+    <script src="JS/index.js"></script>
+    
+</body>
+</html>
