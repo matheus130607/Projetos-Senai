@@ -11,7 +11,7 @@ class Connection {
                 $host = 'localhost';
                 $dbname = 'Techfit'; // Nome do seu banco de dados
                 $user = 'root';
-                $pass = '1234'; // ATENÇÃO: Use a senha correta do seu MySQL.
+                $pass = 'senaisp'; // ATENÇÃO: Use a senha correta do seu MySQL.
                 
                 $dsn_server = "mysql:host=$host;charset=utf8";
 
