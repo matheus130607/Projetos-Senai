@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
     <script src="JS/toggle-password.js"></script>
 </head>
 <body>
-    <h1>TECHFIT</h1>
+    <h1 style="cursor: pointer;" onclick="window.location.href='Pag_Inicial_CL.html'">TECHFIT</h1>
     <div class="container mt-5">
         <h2 class="title mb-4">Acesso ao Cliente</h2>
         

@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
 
-    <h1>TECHFIT</h1>
+    <h1 style="cursor: pointer;" onclick="window.location.href='Pag_Inicial_CL.html'">TECHFIT</h1>
 
     <div class="container-cadastro">
         <h2 class="title">Cadastro</h2>
