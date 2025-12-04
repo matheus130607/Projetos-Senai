@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - TechFit</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/loja.css">
+</head>
+<body class="sobre-page">
+    <header class="header">
+        <h1 class="titulo-techfit" onclick="home()">TECHFIT</h1>
+        <button onclick="franquias()" id="franquias">Franquias</button>
+        <button onclick="plano()" id="planos">Planos</button>
+        <button onclick="faleconosco()" id="faleconosco">Fale Conosco</button>
+        <button onclick="modalidades()" id="modalidades">Modalidades</button>
+        <button onclick="loja()" id="loja">Loja</button>
+        <div class="dropdown usuario-dropdown">
+            <img src="IMG/usuario.png" class="dropbtn usuario-btn">
+            <div class="dropdown-content">
+                <a onclick="perfil_usuario()"><i class="bi bi-person"></i> Perfil</a>
+                <a href="login.php"><i class="bi bi-house"></i> Login</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="secao" style="margin-top:40px;">
+            <h2>Sobre a TechFit</h2>
+            <p style="max-width:900px; margin: 18px auto; color:#ccc; font-size:1.05rem; padding:0 12px; text-align:justify;">
+                A TechFit nasceu da paixão por unir tecnologia e bem-estar. Tudo começou em uma pequena garagem,
+                onde um grupo de amigos praticantes de atividades físicas percebeu que faltava no mercado
+                equipamentos e acessórios que realmente acompanhassem a rotina de quem treina com intensidade.
+            </p>
+
+            <div class="sobre-grid" style="max-width:1000px; margin: 20px auto; display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
+                <div class="card modalidade" style="width:320px;">
+                    <h3>Nossa Missão</h3>
+                    <p style="color:#ccc;">Levar qualidade, inovação e confiança aos atletas e entusiastas, tornando o
+                    treino mais eficiente e prazeroso por meio de produtos duráveis e de alto desempenho.</p>
+                </div>
+                <div class="card modalidade" style="width:320px;">
+                    <h3>Nossos Valores</h3>
+                    <p style="color:#ccc;">Inovação, transparência e foco no cliente. Acreditamos que pequenos detalhes
+                    fazem grande diferença no resultado de quem treina.</p>
+                </div>
+                <div class="card modalidade" style="width:320px;">
+                    <h3>Visão</h3>
+                    <p style="color:#ccc;">Ser referência nacional em produtos esportivos que unem design e tecnologia,
+                    inspirando pessoas a buscarem uma vida mais ativa.</p>
+                </div>
+            </div>
+
+            <section style="max-width:900px; margin: 18px auto; color:#ccc; text-align:justify;">
+                <p>
+                    Ao longo dos anos, crescemos com a comunidade: treinadores, atletas e clientes que sugeriram
+                    melhorias, testaram protótipos e ajudaram a lapidar nossos produtos. Hoje a TechFit é mais do que
+                    uma loja — é uma comunidade que acredita no poder do movimento e do suporte certo.
+                </p>
+
+                <p>
+                    Se você quer saber mais, experimentar nossos produtos ou participar de uma de nossas modalidades,
+                    estamos aqui para ajudar. Venha treinar com a gente e ser parte desta história.
+                </p>
+            </section>
+
+            <div style="text-align:center; margin-top:28px;">
+                <a class="participar-btn" href="modalidades.html">Conheça nossas modalidades</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" id="footer">
+        <div class="footer-left">
+            <h2>TECHFIT</h2>
+            <div class="links-footer" id="links-footer">
+                <a href="https://github.com/matheus130607" target="_blank" rel="noopener noreferrer">
+                    <p class="links"><i class="bi bi-github"></i></p>
+                </a>
+                <a href="https://www.whatsapp.com/?lang=pt" target="_blank" rel="noopener noreferrer">
+                    <p class="links"><i class="bi bi-whatsapp"></i></p>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                    <p class="links"><i class="bi bi-instagram"></i></p>
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <p class="links"><i class="bi bi-linkedin"></i></p>
+                </a>
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                    <p class="links"><i class="bi bi-facebook"></i></p>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <a class="link" onclick="window.location.href='sobre_nos.html'">Sobre Nós &#8599;</a>
+            <p class="link" onclick="">Telefone &#8599;</p>
+            <p class="link" onclick="">Franquias &#8599;</p>
+        </div>
+
+        <p class="direitos">&copy; Todos os direitos reservados TechFit</p>
+    </footer>
+
+    <script src="JS/index.js"></script>
+</body>
+</html>

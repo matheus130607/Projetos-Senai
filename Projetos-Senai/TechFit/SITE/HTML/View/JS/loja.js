@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Botão "Mostrar Todos"
     if (botaoMostrarTodos) {
         botaoMostrarTodos.addEventListener('click', () => {
+            const input = document.getElementById('pesquisa_produtos');
+            if (input) input.value = '';
             exibirTodos();
         });
     }
@@ -53,6 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.Flex-produtos').forEach(container => {
             container.classList.remove('hidden');
         });
+        document.querySelectorAll('.produto').forEach(prod => {
+            prod.classList.remove('hidden');
+        });
     }
     
     function exibirContainer(tipo) {
@@ -60,6 +65,68 @@ document.addEventListener('DOMContentLoaded', () => {
         if (container) {
             container.classList.remove('hidden');
         }
+    }
+
+    // Mostrar todos por padrão ao carregar a página
+    exibirTodos();
+
+    // --- Funcionalidade de pesquisa ---
+    const inputPesquisa = document.getElementById('pesquisa_produtos');
+    if (inputPesquisa) {
+        inputPesquisa.addEventListener('input', () => {
+            const termo = inputPesquisa.value.trim().toLowerCase();
+
+            // remover aviso anterior se existir
+            const avisoExistente = document.getElementById('aviso-nenhum-produto');
+            if (avisoExistente) avisoExistente.remove();
+
+            if (!termo) {
+                exibirTodos();
+                return;
+            }
+
+            // esconder todos os produtos primeiro
+            document.querySelectorAll('.produto').forEach(prod => {
+                prod.classList.add('hidden');
+            });
+
+            let encontrou = false;
+
+            // mostrar apenas produtos que correspondem ao termo
+            document.querySelectorAll('.produto').forEach(prod => {
+                const nome = (prod.querySelector('.produto-nome')?.textContent || '').toLowerCase();
+                const desc = (prod.querySelector('.produto-descricao')?.textContent || '').toLowerCase();
+                
+                if (nome.includes(termo) || desc.includes(termo)) {
+                    prod.classList.remove('hidden');
+                    encontrou = true;
+                }
+            });
+
+            // mostrar ou esconder containers baseado se têm produtos visíveis
+            document.querySelectorAll('.Flex-produtos').forEach(container => {
+                const visiveis = container.querySelectorAll('.produto:not(.hidden)');
+                if (visiveis.length > 0) {
+                    container.classList.remove('hidden');
+                } else {
+                    container.classList.add('hidden');
+                }
+            });
+
+            // se não encontrou nada, mostrar mensagem
+            if (!encontrou) {
+                const produtosSecao = document.querySelector('.produtos-container');
+                if (produtosSecao) {
+                    const p = document.createElement('p');
+                    p.id = 'aviso-nenhum-produto';
+                    p.style.color = '#fff';
+                    p.style.padding = '12px 0';
+                    p.style.textAlign = 'center';
+                    p.textContent = 'Nenhum produto encontrado.';
+                    produtosSecao.insertBefore(p, produtosSecao.firstChild);
+                }
+            }
+        });
     }
     
     // Funcionalidade de carrinho (código anterior)

@@ -21,7 +21,7 @@
         <img src="IMG/usuario.png" class="dropbtn usuario-btn" alt="Usuário">
         <div class="dropdown-content">
             <a href="perfil_usuario.php"><i class="bi bi-person"></i> Perfil</a>
-            <a href="login.html"><i class="bi bi-house"></i> Login</a>
+            <a href="login.php"><i class="bi bi-house"></i> Login</a>
         </div>
     </div>
   </header>
@@ -122,9 +122,9 @@
         </div>
     </div>
     <div class="footer-right">
-        <p class="link" onclick="">Sobre Nós &#8599;</p>
-        <p class="link" onclick="">Telefone &#8599;</p>
-        <p class="link" onclick="">Franquias &#8599;</p>
+      <a class="link" onclick="window.location.href='sobre_nos.html'">Sobre Nós &#8599;</a>
+      <p class="link" onclick="">Telefone &#8599;</p>
+      <p class="link" onclick="">Franquias &#8599;</p>
     </div>
     <p class="direitos">&copy; Todos os direitos reservados TechFit</p>
   </footer>
