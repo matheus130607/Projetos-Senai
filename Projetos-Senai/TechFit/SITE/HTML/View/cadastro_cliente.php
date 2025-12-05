@@ -11,7 +11,7 @@ $mensagemErro = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $nome = $_POST['nome_cliente'];
-    $cpf = $_POST['cpf_cliente'];
+    $cpf = preg_replace('/\D/', '', $_POST['cpf_cliente']);
     $cep = $_POST['cep_cliente'];
     $dataNasc = $_POST['data_nasc_cliente'];
     $email = $_POST['email_cliente'];
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <!-- ESQUERDA: CPF -->
                 <div class="cxtexto mb-3 col-left">
                     <label for="cpf">CPF</label>
-                    <input type="text" class="form-control" id="cpf" name="cpf_cliente" placeholder="Digite seu CPF" required>
+                    <input type="text" class="form-control" id="cpf" name="cpf_cliente" placeholder="Digite seu CPF" maxlength="14" oninput="this.value = formatCPF(this.value)" required>
                 </div>
 
                 <!-- DIREITA: Estado -->
@@ -132,5 +132,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </div>
 
+    <script>
+    function formatCPF(value) {
+        value = value.replace(/\D/g, '').slice(0,11);
+        if (value.length > 9) {
+            return value.replace(/^(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4');
+        } else if (value.length > 6) {
+            return value.replace(/^(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3');
+        } else if (value.length > 3) {
+            return value.replace(/^(\d{3})(\d{0,3})/, '$1.$2');
+        }
+        return value;
+    }
+    </script>
 </body>
 </html>
