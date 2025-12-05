@@ -220,3 +220,4 @@ INSERT INTO Franquias (nome_franquia, descricao_franquia, endereco_franquia, cid
 ('TechFit Limeira', 'Unidade central com equipamentos modernos e aulas variadas.', 'Av. do Progresso, 500', 'Limeira', 'SP', '(19) 1234-5678', 'limeira@techfit.com'),
 ('TechFit Rio Claro', 'Unidade no centro com área de musculação e piscina.', 'Rua da Energia, 123', 'Rio Claro', 'SP', '(19) 9876-5432', 'rioclaro@techfit.com');
 
+select * from produtos
