@@ -1,5 +1,5 @@
 <?php
-// Define o fuso horário para consistência (opcional, mas recomendado)
+// Define o fuso horário para consistência (opcional)
 date_default_timezone_set('America/Sao_Paulo');
 
 // Inicia a sessão se ainda não estiver iniciada
@@ -37,9 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Ação de CRIAÇÃO/INSERÇÃO - O perfil será definido no Controller
             $controller->criar(
                 $_POST['nome_cliente'],
-                $_POST['CPF_cliente'],
-                $_POST['CEP_cliente'],
-                $dataNascFormatada, // Usa o valor corrigido
+                // Normaliza CPF removendo pontuação antes de salvar (opcional)
+                preg_replace('/\D/', '', $_POST['CPF_cliente']),
+                substr(preg_replace('/\D/', '', $_POST['CEP_cliente']), 0, 8),
+                $dataNascFormatada,
                 $_POST['email_cliente'],
                 $_POST['endereco_cliente'],
                 $_POST['estado_cliente'],
@@ -64,8 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $controller->atualizar(
                 $id,
                 $_POST['nome_cliente'],
-                $_POST['CPF_cliente'],
-                $_POST['CEP_cliente'],
+                preg_replace('/\D/', '', $_POST['CPF_cliente']),
+                substr(preg_replace('/\D/', '', $_POST['CEP_cliente']), 0, 8),
                 $dataNascFormatada, // Usa o valor corrigido
                 $_POST['email_cliente'],
                 $_POST['endereco_cliente'],
@@ -172,8 +173,9 @@ if (isset($_GET['msg'])) {
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <label for="cpf" class="form-label">CPF:</label>
-                    <input type="text" class="form-control" id="cpf" name="CPF_cliente" 
-                           value="<?php echo $isEdicao ? htmlspecialchars($clienteParaEdicao->getCPF()) : ''; ?>" required>
+                    <input type="text" class="form-control" id="cpf" name="CPF_cliente" maxlength="14"
+                           value="<?php echo $isEdicao ? htmlspecialchars($clienteParaEdicao->getCPF()) : ''; ?>"
+                           oninput="this.value = formatCPF(this.value)" required>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="dataNasc" class="form-label">Data de Nascimento:</label>
@@ -195,8 +197,9 @@ if (isset($_GET['msg'])) {
                 </div>
                 <div class="col-md-3 mb-3">
                     <label for="cep" class="form-label">CEP:</label>
-                    <input type="text" class="form-control" id="cep" name="CEP_cliente" 
-                           value="<?php echo $isEdicao ? htmlspecialchars($clienteParaEdicao->getCEP()) : ''; ?>" required>
+                    <input type="text" class="form-control" id="cep" name="CEP_cliente"
+                           value="<?php echo $isEdicao ? htmlspecialchars($clienteParaEdicao->getCEP()) : ''; ?>"
+                           maxlength="8" oninput="this.value = this.value.replace(/\D/g,'').slice(0,8)" required>
                 </div>
                 <div class="col-md-3 mb-3">
                     <label for="estado" class="form-label">Estado (UF):</label>
@@ -335,6 +338,70 @@ if (isset($_GET['msg'])) {
                 const text = cell.textContent || cell.innerText;
                 rows[i].style.display = text.toLowerCase().indexOf(filter) > -1 ? '' : 'none';
             }
+        }
+
+        // -- Função para formatar CPF: 123.456.789-01
+        function formatCPF(value) {
+            if (!value) return '';
+            // remove tudo que nao for digito
+            value = value.replace(/\D/g, '').slice(0,11);
+            if (value.length > 9) {
+                return value.replace(/^(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4');
+            } else if (value.length > 6) {
+                return value.replace(/^(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3');
+            } else if (value.length > 3) {
+                return value.replace(/^(\d{3})(\d{0,3})/, '$1.$2');
+            }
+            return value;
+        }
+
+        // Formata CPF ao carregar a página (se houver valor vindo do servidor)
+        window.addEventListener('DOMContentLoaded', function() {
+            const cpfInput = document.getElementById('cpf');
+            if (cpfInput && cpfInput.value) {
+                cpfInput.value = formatCPF(cpfInput.value);
+            }
+        });
+
+        function validarIdade(dataNascimento) {
+            const hoje = new Date();
+            const dataNasc = new Date(dataNascimento);
+            let idade = hoje.getFullYear() - dataNasc.getFullYear();
+            const mesAtual = hoje.getMonth();
+            const mesNasc = dataNasc.getMonth();
+
+            if (mesAtual < mesNasc || (mesAtual === mesNasc && hoje.getDate() < dataNasc.getDate())) {
+                idade--;
+            }
+
+            return idade >= 16;
+        }
+
+        function validarFormularioAdmin() {
+            const dataNasc = document.getElementById('dataNasc').value;
+            
+            if (!dataNasc) {
+                alert('Data de nascimento é obrigatória.');
+                return false;
+            }
+
+            if (!validarIdade(dataNasc)) {
+                alert('O usuário deve ter pelo menos 16 anos para se cadastrar.');
+                return false;
+            }
+
+            return true;
+        }
+
+        // Vincula ao primeiro formulário de cadastro/edição na página
+        const admForm = document.querySelector('form[method="POST"]');
+        if (admForm) {
+            admForm.onsubmit = function(e) {
+                if (!validarFormularioAdmin()) {
+                    e.preventDefault();
+                    return false;
+                }
+            };
         }
     </script>
 </body>

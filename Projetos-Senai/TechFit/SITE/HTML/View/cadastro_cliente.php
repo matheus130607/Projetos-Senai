@@ -12,7 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $nome = $_POST['nome_cliente'];
     $cpf = preg_replace('/\D/', '', $_POST['cpf_cliente']);
-    $cep = $_POST['cep_cliente'];
+    $cep = preg_replace('/\D/', '', $_POST['cep_cliente']); // remove não dígitos
+    $cep = substr($cep, 0, 8); // garante no máximo 8 dígitos
     $dataNasc = $_POST['data_nasc_cliente'];
     $email = $_POST['email_cliente'];
     $endereco = $_POST['endereco_cliente'];
@@ -56,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="alert-danger"><?php echo $mensagemErro; ?></div>
         <?php endif; ?>
 
-        <form method="POST">
+        <form method="POST" onsubmit="return validarFormulario()">
             
             <div class="form-grid">
 
@@ -69,7 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <!-- DIREITA: CEP -->
                 <div class="cxtexto mb-3 col-right">
                     <label for="cep">CEP</label>
-                    <input type="text" class="form-control" id="cep" name="cep_cliente" placeholder="Digite seu CEP" required>
+                    <input type="text" class="form-control" id="cep" name="cep_cliente" placeholder="Digite seu CEP" maxlength="8"
+       oninput="this.value = this.value.replace(/\D/g,'').slice(0,8)" required>
                 </div>
 
                 <!-- ESQUERDA: Email -->
@@ -118,6 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="cxtexto mb-3 col-left">
                     <label for="data_nasc">Data de Nascimento</label>
                     <input type="date" class="form-control" id="data_nasc" name="data_nasc_cliente" required>
+                    <small id="erroIdade" style="color: #ff6b6b; display: none;">Você deve ter pelo menos 16 anos.</small>
                 </div>
 
                 <!-- DIREITA: Botão -->
@@ -144,6 +147,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         return value;
     }
+
+    function validarIdade(dataNascimento) {
+        const hoje = new Date();
+        const dataNasc = new Date(dataNascimento);
+        let idade = hoje.getFullYear() - dataNasc.getFullYear();
+        const mesAtual = hoje.getMonth();
+        const mesNasc = dataNasc.getMonth();
+
+        if (mesAtual < mesNasc || (mesAtual === mesNasc && hoje.getDate() < dataNasc.getDate())) {
+            idade--;
+        }
+
+        return idade >= 16;
+    }
+
+    function validarFormulario() {
+        const dataNasc = document.getElementById('data_nasc').value;
+        const erroIdade = document.getElementById('erroIdade');
+
+        if (!dataNasc) {
+            erroIdade.style.display = 'none';
+            return true;
+        }
+
+        if (!validarIdade(dataNasc)) {
+            erroIdade.style.display = 'block';
+            return false;
+        }
+
+        erroIdade.style.display = 'none';
+        return true;
+    }
+
+    // Validar quando mudar a data
+    document.getElementById('data_nasc').addEventListener('change', function() {
+        validarFormulario();
+    });
     </script>
 </body>
 </html>
